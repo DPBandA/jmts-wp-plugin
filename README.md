@@ -1,2 +1,2 @@
-# The Job Management &amp; Tracking System (JMTS) Client WordPress Plugin
-The JMTS client WordPress plugin.
+# The Job Management &amp; Tracking System (JMTS) WordPress Plugin
+The JMTS WordPress plugin.
