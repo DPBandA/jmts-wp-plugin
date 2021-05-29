@@ -7,8 +7,8 @@
  * Author: DPB&A
  * Author URI: https://dpbennett.com.jm
  * Author Email: info@dpbennett.com.jm
- * License: GPLv2 or later
- * License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ * License: GNU AFFERO GENERAL PUBLIC LICENSE, Version 3, 19 November 2007
+ * License URI: https://www.gnu.org/licenses/
  * Text Domain:
  * Domain Path:
  */
