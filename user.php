@@ -1,5 +1,4 @@
 <?php
-
 add_action('show_user_profile', 'importer_user_extra_fields');
 add_action('edit_user_profile', 'importer_user_extra_fields');
 
@@ -61,10 +60,12 @@ function importer_user_action_buttons() {
     ?>
     <script type="text/javascript">
         jQuery(document).ready(function ($) {
-            $('<option>').val('importer_mark_staff_user').text("<?php echo
+            $('<option>').val('importer_mark_staff_user').text("<?php
+    echo
     $mark_as_staff;
     ?>").appendTo("select[name='action']");
-            $('<option>').val('importer_mark_staff_user').text("<?php echo
+            $('<option>').val('importer_mark_staff_user').text("<?php
+    echo
     $mark_as_staff;
     ?>").appendTo("select[name='action2']");
         });
@@ -100,7 +101,7 @@ function importer_recent_user_list($atts, $content) {
         'orderby' => 'registered',
         'order' => 'ASC',
         'number' => 5
-            ));
+    ));
     $user_list = $user_query->get_results();
 
     $user_list_html = '<ul>';
@@ -136,7 +137,7 @@ function importer_profile_user_search($atts, $content) {
                     'compare' => 'LIKE'
                 )
             )
-                ));
+        ));
         $user_list = $user_query->get_results();
         $user_list_html = '<ul>';
         if (count($user_list) > 0) {
@@ -159,4 +160,10 @@ function importer_profile_user_search($atts, $content) {
     $display .= $user_list_html;
 
     return $display;
+}
+
+add_shortcode('jmts_user', 'jmts_user_data');
+
+function jmts_user_data($atts, $content) {
+    return "<h1>Yes Iya!!</h1";
 }
