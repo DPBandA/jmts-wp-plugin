@@ -18,7 +18,7 @@ define( 'jmts', 1 );
 require plugin_dir_path( __FILE__ ).'user.php';
 
 if ( is_admin() ) {
-	require plugin_dir_path( __FILE__ ).'admin.php';	
-	require plugin_dir_path( __FILE__ ).'user-admin.php';
+	require plugin_dir_path( __FILE__ ).'/admin/admin.php';	
+	require plugin_dir_path( __FILE__ ).'/admin/user-admin.php';
 }
 

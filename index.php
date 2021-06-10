@@ -1,6 +1,0 @@
-<?php
-
-/* 
- * Nothing yet :)
- */
-
