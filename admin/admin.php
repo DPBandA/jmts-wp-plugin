@@ -3,7 +3,9 @@ if (!defined('jmts')) {
     exit;
 }
 
+// Register default options
 register_activation_hook(__FILE__, 'jmts_set_default_options_array');
+
 function jmts_set_default_options_array() {
     jmts_get_options();
 }
@@ -95,6 +97,7 @@ function jmts_settings_submenu() {
 }
 
 add_action('admin_init', 'jmts_admin_init');
+
 function jmts_admin_init() {
     add_action('admin_post_save_jmts_options', 'jmts_process_options');
 }
