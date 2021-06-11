@@ -1,5 +1,4 @@
 <?php
-
 // Remove admin toolbar for non-admin users
 add_action('after_setup_theme', 'jmts_remove_admin_bar');
 
@@ -62,9 +61,27 @@ add_shortcode('jmts_user', 'jmts_user_data');
 function jmts_user_data($atts, $content) {
     //return "<h1>User Profile...</h1";
     ?>
-    <h3>It's Your Birthday</h3>
+    <h5 style="text-align:center;">IMPORTERS/MANUFACTURERS REGISTRATION FORM</h5>
+    <h6 style="text-align:center;">Standards Regulations, 1983 </h6>
+    <p style="color: red;">
+        This form must be completed in full to register as an importer and or 
+        manufacturer in accordance with regulation 8B of the Standards Regulations, 1983
+    </p>
     <table class="form-table">
         <tr>
+            <th>
+                <label for="isimporter">Are you an importer?</label>
+            </th>
+            <td>
+                <input type="checkbox"
+                       class="regular-text ltr"
+                       id="isimporter"
+                       name="isimporter"
+                       value="isimporter"
+                       required>
+            </td>            
+        </tr>
+        <tr>            
             <th>
                 <label for="birthday">Birthday</label>
             </th>
@@ -82,6 +99,15 @@ function jmts_user_data($atts, $content) {
                 </p>
             </td>
         </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Cancel">
+            </td>  
+            <td>
+                <input type="submit" value="Submit">
+            </td>            
+        </tr>
     </table>
+
     <?php
 }
