@@ -56,10 +56,16 @@ function save_jmts_user_extra_fields($user_id) {
 }
 
 // A short code to display a user data for editing and viewing
-add_shortcode('jmts_user', 'jmts_user_data');
+add_shortcode('jmts_importer_user', 'jmts_user_data');
 
 function jmts_user_data($atts, $content) {
-    //return "<h1>User Profile...</h1";
+    ?>
+    <?php
+    if (!empty($_POST['form_submitted'])) {
+        echo get_user_meta( wp_get_current_user()->ID, 'first_name', true )." your data was successfully updated!";
+    } else {
+        echo 'Your registration data is not yet updated.';
+    }
     ?>
     <h5 style="text-align:center;">IMPORTERS/MANUFACTURERS REGISTRATION FORM</h5>
     <h6 style="text-align:center;">Standards Regulations, 1983 </h6>
@@ -67,47 +73,47 @@ function jmts_user_data($atts, $content) {
         This form must be completed in full to register as an importer and or 
         manufacturer in accordance with regulation 8B of the Standards Regulations, 1983
     </p>
-    <table class="form-table">
-        <tr>
-            <th>
-                <label for="isimporter">Are you an importer?</label>
-            </th>
-            <td>
-                <input type="checkbox"
-                       class="regular-text ltr"
-                       id="isimporter"
-                       name="isimporter"
-                       value="isimporter"
-                       required>
-            </td>            
-        </tr>
-        <tr>            
-            <th>
-                <label for="birthday">Birthday</label>
-            </th>
-            <td>
-                <input type="date"
-                       class="regular-text ltr"
-                       id="birthday"
-                       name="birthday"
-                       value="<?= esc_attr(get_user_meta($user->ID, 'birthday', true)) ?>"
-                       title="Please use YYYY-MM-DD as the date format."
-                       pattern="(19[0-9][0-9]|20[0-9][0-9])-(1[0-2]|0[1-9])-(3[01]|[21][0-9]|0[1-9])"
-                       required>
-                <p class="description">
-                    Please enter your birthday date.
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <input type="submit" value="Cancel">
-            </td>  
-            <td>
-                <input type="submit" value="Submit">
-            </td>            
-        </tr>
-    </table>
+    <form method="post" action="" >
+        <input type="hidden" name="form_submitted" value="true" />
+        <table class="form-table" style="border: 0;">    
+            <tr>
+                <th style="border: 0;">
+                    <label for="isimporter">Are you an importer?</label>
+                </th>
+                <td style="border: 0;">
+                    <input type="checkbox"
+                           class="regular-text ltr"
+                           id="isimporter"
+                           name="isimporter"
+                           value="isimporter" >
+                </td>            
+            </tr>
+            <tr>            
+                <th style="border: 0;">
+                    <label for="birthday">Birthday</label>
+                </th>
+                <td style="border: 0;">
+                    <input type="date"
+                           class="regular-text ltr"
+                           id="birthday"
+                           name="birthday"
+                           value="<?= esc_attr(get_user_meta($user->ID, 'birthday', true)) ?>"
+                           title="Please use YYYY-MM-DD as the date format."
+                           pattern="(19[0-9][0-9]|20[0-9][0-9])-(1[0-2]|0[1-9])-(3[01]|[21][0-9]|0[1-9])" >
+                    <p class="description">
+                        Please enter your birthday date.
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 0;">
 
+                </td>  
+                <td style="border: 0;">
+                    <input type="submit" value="Submit">
+                </td>            
+            </tr>
+        </table>
+    </form>
     <?php
 }
