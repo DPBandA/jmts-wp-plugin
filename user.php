@@ -56,13 +56,20 @@ function save_jmts_user_extra_fields($user_id) {
 }
 
 // A short code to display a user data for editing and viewing
-add_shortcode('jmts_importer_user', 'jmts_user_data');
+add_shortcode('jmts_user', 'jmts_user_data');
 
-function jmts_user_data($atts, $content) {
+function jmts_user_data() {
     ?>
     <?php
-    if (!empty($_POST['form_submitted'])) {
-        echo get_user_meta( wp_get_current_user()->ID, 'first_name', true )." your data was successfully updated!";
+    // tk - $user will be provided as a parameter
+    $user = wp_get_current_user();
+    // Retrieve stored user meta data
+    $trn = get_user_meta($user->ID, 'jmts_user_trn', true);
+    $user_is_importer = "no"; //get_user_meta($user->ID, 'jmts_user_is_importer', true);
+
+
+    if (!empty($_POST['form_submitted'])) { //tk
+        echo get_user_meta($user->ID, 'first_name', true) . " your data was successfully updated!";
     } else {
         echo 'Your registration data is not yet updated.';
     }
@@ -81,11 +88,14 @@ function jmts_user_data($atts, $content) {
                     <label for="isimporter">Are you an importer?</label>
                 </th>
                 <td style="border: 0;">
-                    <input type="checkbox"
-                           class="regular-text ltr"
-                           id="isimporter"
-                           name="isimporter"
-                           value="isimporter" >
+                    <select id="isimporter">
+                        <option <?= selected('no', $user_is_importer, true) ?> value="no"> 
+                            <?= __('No', 'jmts') ?>
+                        </option>
+                        <option <?= selected('yes', $user_is_importer, true) ?> value="yes">
+                            <?= __('Yes', 'jmts') ?>
+                        </option>                        
+                    </select>
                 </td>            
             </tr>
             <tr>
@@ -121,7 +131,7 @@ function jmts_user_data($atts, $content) {
                            class="regular-text ltr"
                            id="trn"
                            name="trn"
-                           value="<?= esc_attr(get_user_meta(wp_get_current_user()->ID, 'trn', true)) ?>" >
+                           value=<?= $trn ?> >
                 </td>
             </tr>
             <tr>            
