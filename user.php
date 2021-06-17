@@ -88,6 +88,42 @@ function jmts_user_data($atts, $content) {
                            value="isimporter" >
                 </td>            
             </tr>
+            <tr>
+                <th style="border: 0;">
+                    <label for="ismanufacturer">Are you an manufacturer?</label>
+                </th>
+                <td style="border: 0;">
+                    <input type="checkbox"
+                           class="regular-text ltr"
+                           id="ismanufacturer"
+                           name="ismanufacturer"
+                           value="ismanufacturer" >
+                </td>            
+            </tr>
+            <tr>
+                <th style="border: 0;">
+                    <label for="isfirstregister">Are you registering for first time?</label>
+                </th>
+                <td style="border: 0;">
+                    <input type="checkbox"
+                           class="regular-text ltr"
+                           id="isfirstregister"
+                           name="isfirstregister"
+                           value="isfirstregister" >
+                </td>            
+            </tr>
+            <tr>            
+                <th style="border: 0;">
+                    <label for="trn">Tax Registration Number (TRN)</label>
+                </th>
+                <td style="border: 0;">
+                    <input type="text"
+                           class="regular-text ltr"
+                           id="trn"
+                           name="trn"
+                           value="<?= esc_attr(get_user_meta(wp_get_current_user()->ID, 'trn', true)) ?>" >
+                </td>
+            </tr>
             <tr>            
                 <th style="border: 0;">
                     <label for="birthday">Birthday</label>
