@@ -73,7 +73,7 @@ function jmts_user_meta_data() {
                     <label for="jmts_user_is_importer">Are you an importer?</label>
                 </th>
                 <td style="border: 0;">
-                    <select id="jmts_user_is_importer">
+                    <select id="jmts_user_is_importer" name="jmts_user_is_importer">
                         <option <?= selected('no', $jmts_user_is_importer, true) ?> value="no"> 
                             <?= __('No', 'jmts') ?>
                         </option>
