@@ -30,7 +30,7 @@ function jmts_user_meta_data() {
         $jmts_user = wp_get_current_user();
     } else {
         ?>
-        <h5 style="text-align:center;">
+        <h5 style="text-align:center;color: darkblue;">
             PLEASE LOG IN OR REGISTER TO SUBMIT OR UPDATE THE IMPORTER REGISTRATION FORM
         </h5>
         <?php
@@ -38,20 +38,37 @@ function jmts_user_meta_data() {
     }
 
     // Retrieve stored user meta data
-    $jmts_user_trn = get_user_meta($jmts_user->ID, 'jmts_user_trn', true);
     $jmts_user_is_importer = get_user_meta($jmts_user->ID, 'jmts_user_is_importer', true);
+    $jmts_user_is_manufacturer = get_user_meta($jmts_user->ID, 'jmts_user_is_manufacturer', true);
+    $jmts_user_is_first_time = get_user_meta($jmts_user->ID, 'jmts_user_is_first_time', true);
+    $jmts_user_trn = get_user_meta($jmts_user->ID, 'jmts_user_trn', true);    
+    $jmts_user_is_tcc_valid = get_user_meta($jmts_user->ID, 'jmts_user_is_tcc_valid', true);
+    $jmts_user_tcc_expiration_date = get_user_meta($jmts_user->ID, '$jmts_user_tcc_expiration_date', true);   
 
     if (!empty($_POST['form_submitted'])) {
         
-        // Get and save user meta data
-        $jmts_user_trn = isset($_POST['jmts_user_trn']) ?
-                sanitize_text_field($_POST['jmts_user_trn']) : '';
+        // Get and save user meta data        
         $jmts_user_is_importer = isset($_POST['jmts_user_is_importer']) ?
                 sanitize_text_field($_POST['jmts_user_is_importer']) : '';
+        $jmts_user_is_manufacturer = isset($_POST['jmts_user_is_manufacturer']) ?
+                sanitize_text_field($_POST['jmts_user_is_manufacturer']) : '';
+        $jmts_user_is_first_time = isset($_POST['jmts_user_is_first_time']) ?
+                sanitize_text_field($_POST['jmts_user_is_first_time']) : '';
+        $jmts_user_trn = isset($_POST['jmts_user_trn']) ?
+                sanitize_text_field($_POST['jmts_user_trn']) : '';
+        $jmts_user_is_tcc_valid = isset($_POST['jmts_user_is_tcc_valid']) ?
+                sanitize_text_field($_POST['jmts_user_is_tcc_valid']) : '';
+        $jmts_user_tcc_expiration_date = isset($_POST['jmts_user_tcc_expiration_date']) ?
+                sanitize_text_field($_POST['jmts_user_tcc_expiration_date']) : '';
 
-        update_user_meta($jmts_user->ID, 'jmts_user_trn', $jmts_user_trn);
+        // Save user meta data
         update_user_meta($jmts_user->ID, 'jmts_user_is_importer', $jmts_user_is_importer);
-        
+        update_user_meta($jmts_user->ID, 'jmts_user_is_manufacturer', $jmts_user_is_manufacturer);
+        update_user_meta($jmts_user->ID, 'jmts_user_is_first_time', $jmts_user_is_first_time);
+        update_user_meta($jmts_user->ID, 'jmts_user_trn', $jmts_user_trn);
+        update_user_meta($jmts_user->ID, 'jmts_user_is_tcc_valid', $jmts_user_is_tcc_valid);
+        update_user_meta($jmts_user->ID, 'jmts_user_tcc_expiration_date', $jmts_user_tcc_expiration_date);
+                
         ?>
         <h6 style="text-align:center;color: darkblue;">
             YOUR FORM WAS SUCCESSFULLY UPDATED
@@ -60,7 +77,7 @@ function jmts_user_meta_data() {
     } 
     ?>
     <h5 style="text-align:center;">IMPORTERS/MANUFACTURERS REGISTRATION FORM</h5>
-    <h6 style="text-align:center;">Standards Regulations, 1983 </h6>
+    <h6 style="text-align:center;">Standards Regulations, 1983.</h6>
     <p style="color: red;">
         This form must be completed in full to register as an importer and or 
         manufacturer in accordance with regulation 8B of the Standards Regulations, 1983
@@ -85,26 +102,32 @@ function jmts_user_meta_data() {
             </tr>
             <tr>
                 <th style="border: 0;">
-                    <label for="ismanufacturer">Are you an manufacturer?</label>
+                    <label for="jmts_user_is_manufacturer">Are you a manufacturer?</label>
                 </th>
                 <td style="border: 0;">
-                    <input type="checkbox"
-                           class="regular-text ltr"
-                           id="ismanufacturer"
-                           name="ismanufacturer"
-                           value="ismanufacturer" >
+                    <select id="jmts_user_is_manufacturer" name="jmts_user_is_manufacturer">
+                        <option <?= selected('no', $jmts_user_is_manufacturer, true) ?> value="no"> 
+                            <?= __('No', 'jmts') ?>
+                        </option>
+                        <option <?= selected('yes', $jmts_user_is_manufacturer, true) ?> value="yes">
+                            <?= __('Yes', 'jmts') ?>
+                        </option>                        
+                    </select>
                 </td>            
             </tr>
             <tr>
                 <th style="border: 0;">
-                    <label for="isfirstregister">Are you registering for first time?</label>
+                    <label for="jmts_user_is_first_time">Are you registering for first time?</label>
                 </th>
                 <td style="border: 0;">
-                    <input type="checkbox"
-                           class="regular-text ltr"
-                           id="isfirstregister"
-                           name="isfirstregister"
-                           value="isfirstregister" >
+                    <select id="jmts_user_is_first_time" name="jmts_user_is_first_time">
+                        <option <?= selected('no', $jmts_user_is_first_time, true) ?> value="no"> 
+                            <?= __('No', 'jmts') ?>
+                        </option>
+                        <option <?= selected('yes', $jmts_user_is_first_time, true) ?> value="yes">
+                            <?= __('Yes', 'jmts') ?>
+                        </option>                        
+                    </select>
                 </td>            
             </tr>
             <tr>            
@@ -119,21 +142,32 @@ function jmts_user_meta_data() {
                            value=<?= $jmts_user_trn ?> >
                 </td>
             </tr>
+            <tr>
+                <th style="border: 0;">
+                    <label for="jmts_user_is_tcc_valid">Tax Compliance Certificate (TCC) valid?</label>
+                </th>
+                <td style="border: 0;">
+                    <select id="jmts_user_is_tcc_valid" name="jmts_user_is_tcc_valid">
+                        <option <?= selected('no', $jmts_user_is_tcc_valid, true) ?> value="no"> 
+                            <?= __('No', 'jmts') ?>
+                        </option>
+                        <option <?= selected('yes', $jmts_user_is_tcc_valid, true) ?> value="yes">
+                            <?= __('Yes', 'jmts') ?>
+                        </option>                        
+                    </select>
+                </td>            
+            </tr>
             <tr>            
                 <th style="border: 0;">
-                    <label for="birthday">Birthday</label>
+                    <label for="jmts_user_tcc_expiration_date">Birthday</label>
                 </th>
                 <td style="border: 0;">
                     <input type="date"
                            class="regular-text ltr"
-                           id="birthday"
-                           name="birthday"
-                           value="<?= esc_attr(get_user_meta($user->ID, 'birthday', true)) ?>"
-                           title="Please use YYYY-MM-DD as the date format."
-                           pattern="(19[0-9][0-9]|20[0-9][0-9])-(1[0-2]|0[1-9])-(3[01]|[21][0-9]|0[1-9])" >
-                    <p class="description">
-                        Please enter your birthday date.
-                    </p>
+                           id="jmts_user_tcc_expiration_date"
+                           name="jmts_user_tcc_expiration_date"
+                           value=<?= $jmts_user_tcc_expiration_date ?> >
+                   
                 </td>
             </tr>
             <tr>
