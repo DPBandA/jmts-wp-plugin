@@ -1,5 +1,4 @@
 <?php
-
 // Remove admin toolbar for non-admin users
 add_action('after_setup_theme', 'jmts_remove_admin_bar');
 
@@ -19,42 +18,46 @@ function jmts_remove_backend_access() {
     }
 }
 
-function jmts_get_user_meta_data($jmts_user_id) {
-    global $jmts_user_trn;
-    
-    $jmts_user_trn = get_user_meta($jmts_user_id, 'jmts_user_trn', true);
-
-}
-
-function save_jmts_user_extra_fields($jmts_user_id) {
-    //if ($_POST && current_user_can('edit_user', $user_id)) {
-    $job_title = isset($_POST['jmts_profile_job_title']) ?
-            sanitize_text_field($_POST['jmts_profile_job_title']) : '';
-    
-
-    update_user_meta($jmts_user_id, 'jmts_profile_job_title', $job_title);
-    
-    //}
-}
-
-// A short code to display a user data for editing and viewing
+// A short code to display a user's data for editing and viewing
 add_shortcode('jmts_user', 'jmts_user_meta_data');
 
 function jmts_user_meta_data() {
     ?>
     <?php
-    // tk - $user will be provided as a parameter
-    $user = wp_get_current_user();
-    // Retrieve stored user meta data
-    $trn = get_user_meta($user->ID, 'jmts_user_trn', true);
-    $user_is_importer = "no"; //get_user_meta($user->ID, 'jmts_user_is_importer', true);
-
-
-    if (!empty($_POST['form_submitted'])) { //tk
-        echo get_user_meta($user->ID, 'first_name', true) . " your data was successfully updated!";
+    global $jmts_user, $jmts_user_trn, $jmts_user_is_importer;
+    // tk - $jmts_user will be provided as a parameter??
+    if (is_user_logged_in()) {
+        $jmts_user = wp_get_current_user();
     } else {
-        echo 'Your registration data is not yet updated.';
+        ?>
+        <h5 style="text-align:center;">
+            PLEASE LOG IN OR REGISTER TO SUBMIT OR UPDATE THE IMPORTER REGISTRATION FORM
+        </h5>
+        <?php
+        exit();
     }
+
+    // Retrieve stored user meta data
+    $jmts_user_trn = get_user_meta($jmts_user->ID, 'jmts_user_trn', true);
+    $jmts_user_is_importer = get_user_meta($jmts_user->ID, 'jmts_user_is_importer', true);
+
+    if (!empty($_POST['form_submitted'])) {
+        
+        // Get and save user meta data
+        $jmts_user_trn = isset($_POST['jmts_user_trn']) ?
+                sanitize_text_field($_POST['jmts_user_trn']) : '';
+        $jmts_user_is_importer = isset($_POST['jmts_user_is_importer']) ?
+                sanitize_text_field($_POST['jmts_user_is_importer']) : '';
+
+        update_user_meta($jmts_user->ID, 'jmts_user_trn', $jmts_user_trn);
+        update_user_meta($jmts_user->ID, 'jmts_user_is_importer', $jmts_user_is_importer);
+        
+        ?>
+        <h6 style="text-align:center;color: darkblue;">
+            YOUR FORM WAS SUCCESSFULLY UPDATED
+        </h6>
+        <?php
+    } 
     ?>
     <h5 style="text-align:center;">IMPORTERS/MANUFACTURERS REGISTRATION FORM</h5>
     <h6 style="text-align:center;">Standards Regulations, 1983 </h6>
@@ -67,14 +70,14 @@ function jmts_user_meta_data() {
         <table class="form-table" style="border: 0;">    
             <tr>
                 <th style="border: 0;">
-                    <label for="isimporter">Are you an importer?</label>
+                    <label for="jmts_user_is_importer">Are you an importer?</label>
                 </th>
                 <td style="border: 0;">
-                    <select id="isimporter">
-                        <option <?= selected('no', $user_is_importer, true) ?> value="no"> 
+                    <select id="jmts_user_is_importer">
+                        <option <?= selected('no', $jmts_user_is_importer, true) ?> value="no"> 
                             <?= __('No', 'jmts') ?>
                         </option>
-                        <option <?= selected('yes', $user_is_importer, true) ?> value="yes">
+                        <option <?= selected('yes', $jmts_user_is_importer, true) ?> value="yes">
                             <?= __('Yes', 'jmts') ?>
                         </option>                        
                     </select>
@@ -106,14 +109,14 @@ function jmts_user_meta_data() {
             </tr>
             <tr>            
                 <th style="border: 0;">
-                    <label for="trn">Tax Registration Number (TRN)</label>
+                    <label for="jmts_user_trn">Tax Registration Number (TRN)</label>
                 </th>
                 <td style="border: 0;">
                     <input type="text"
                            class="regular-text ltr"
-                           id="trn"
-                           name="trn"
-                           value=<?= $trn ?> >
+                           id="jmts_user_trn"
+                           name="jmts_user_trn"
+                           value=<?= $jmts_user_trn ?> >
                 </td>
             </tr>
             <tr>            
