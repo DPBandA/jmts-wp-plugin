@@ -1,4 +1,5 @@
 <?php
+
 // Remove admin toolbar for non-admin users
 add_action('after_setup_theme', 'jmts_remove_admin_bar');
 
@@ -18,47 +19,28 @@ function jmts_remove_backend_access() {
     }
 }
 
-function jmts_user_extra_fields($user) {
-    //if (current_user_can('edit_user', $user->ID)) {
-    $job_title = get_user_meta($user->ID, 'jmts_profile_job_title', true);
-    $job_staff_status = get_user_meta($user->ID, 'jmts_user_staff_status', true);
-    $job_desc = get_user_meta($user->ID, 'jmts_profile_job_desc', true);
+function jmts_get_user_meta_data($jmts_user_id) {
+    global $jmts_user_trn;
+    
+    $jmts_user_trn = get_user_meta($jmts_user_id, 'jmts_user_trn', true);
 
-    $display = "<table class='form-table'>";
-    $display .= "<tr><th>" . __('Job Title', 'jmts') . "</th>
-				<td><input type='text' name='jmts_profile_job_title' value='" . $job_title . "' /></td>						</tr>";
-    $display .= "<tr><th>" . __('Job Description', 'jmts') . "</th>
-				<td><textarea name='jmts_profile_job_desc'>" . wp_kses_post($job_desc) . "</textarea>				</td></tr>";
-    $display .= "<tr><th>" . __('Staff Member', 'jmts') . "</th>
-					<td><select name='jmts_profile_job_staff_status' >
-					<option " . selected('no', $job_staff_status, true) . "value='no'>" . __('No', 'jmts') . "						</option>
-				<option " . selected('yes', $job_staff_status, true) . "value='yes'>" . __('Yes', 'jmts') . "					</option>
-					</select></td></tr>";
-    $display .= "</table>";
-
-    echo $display;
-    //}
 }
 
-function save_jmts_user_extra_fields($user_id) {
+function save_jmts_user_extra_fields($jmts_user_id) {
     //if ($_POST && current_user_can('edit_user', $user_id)) {
     $job_title = isset($_POST['jmts_profile_job_title']) ?
             sanitize_text_field($_POST['jmts_profile_job_title']) : '';
-    $job_staff_status = isset($_POST['jmts_profile_job_staff_status']) ?
-            sanitize_text_field($_POST['jmts_profile_job_staff_status']) : '';
-    $job_desc = isset($_POST['jmts_profile_job_desc']) ?
-            wp_kses_post($_POST['jmts_profile_job_desc']) : '';
+    
 
-    update_user_meta($user_id, 'jmts_profile_job_title', $job_title);
-    update_user_meta($user_id, 'jmts_user_staff_status', $job_staff_status);
-    update_user_meta($user_id, 'jmts_profile_job_desc', $job_desc);
+    update_user_meta($jmts_user_id, 'jmts_profile_job_title', $job_title);
+    
     //}
 }
 
 // A short code to display a user data for editing and viewing
-add_shortcode('jmts_user', 'jmts_user_data');
+add_shortcode('jmts_user', 'jmts_user_meta_data');
 
-function jmts_user_data() {
+function jmts_user_meta_data() {
     ?>
     <?php
     // tk - $user will be provided as a parameter
