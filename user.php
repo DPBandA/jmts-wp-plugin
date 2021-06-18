@@ -43,7 +43,7 @@ function jmts_user_meta_data() {
     $jmts_user_is_first_time = get_user_meta($jmts_user->ID, 'jmts_user_is_first_time', true);
     $jmts_user_trn = get_user_meta($jmts_user->ID, 'jmts_user_trn', true);    
     $jmts_user_is_tcc_valid = get_user_meta($jmts_user->ID, 'jmts_user_is_tcc_valid', true);
-    $jmts_user_tcc_expiration_date = get_user_meta($jmts_user->ID, '$jmts_user_tcc_expiration_date', true);   
+    $jmts_user_tcc_expiration_date = get_user_meta($jmts_user->ID, 'jmts_user_tcc_expiration_date', true);   
 
     if (!empty($_POST['form_submitted'])) {
         
@@ -159,7 +159,9 @@ function jmts_user_meta_data() {
             </tr>
             <tr>            
                 <th style="border: 0;">
-                    <label for="jmts_user_tcc_expiration_date">Birthday</label>
+                    <label for="jmts_user_tcc_expiration_date">
+                        If yes please state date of expiration
+                    </label>
                 </th>
                 <td style="border: 0;">
                     <input type="date"
@@ -171,13 +173,48 @@ function jmts_user_meta_data() {
                 </td>
             </tr>
             <tr>
+                <td style="border: 0;" colspan="2">
+                    <strong>Applicant details</strong>
+                </td>            
+            </tr>
+            <tr>
+                <td style="border: 0;text-align: center;" colspan="2">
+                    <span style="color: red;">
+                        (Either Individual or Incorporated Business / Partnership/ Associated or Trust)
+                    </span>
+                </td>            
+            </tr>
+            <tr>
+                <td style="border: 0;text-align: left;" colspan="2">
+                    <span style="color: black;">
+                       Applicant (s) Name (s):
+                    </span>
+                </td>            
+            </tr>
+            <tr>            
                 <td style="border: 0;">
-
-                </td>  
+                    <input type="text"
+                           class="regular-text ltr"
+                           id="jmts_user_applicant_firstname1"
+                           name="jmts_user_applicant_firstname1"
+                           placeholder="First Name"                           
+                           value=<?= $jmts_user_trn ?> >
+                </td>
                 <td style="border: 0;">
+                    <input type="text"
+                           class="regular-text ltr"
+                           id="jmts_user_applicant_lastname1"
+                           name="jmts_user_applicant_lastname1"
+                           placeholder="Last Name"                           
+                           value=<?= $jmts_user_trn ?> >
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 0;text-align: center;" colspan="2">
                     <input type="submit" value="Submit">
                 </td>            
             </tr>
+           
         </table>
     </form>
     <?php
