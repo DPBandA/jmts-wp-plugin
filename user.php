@@ -43,7 +43,11 @@ function jmts_user_meta_data() {
     $jmts_user_is_first_time = get_user_meta($jmts_user->ID, 'jmts_user_is_first_time', true);
     $jmts_user_trn = get_user_meta($jmts_user->ID, 'jmts_user_trn', true);    
     $jmts_user_is_tcc_valid = get_user_meta($jmts_user->ID, 'jmts_user_is_tcc_valid', true);
-    $jmts_user_tcc_expiration_date = get_user_meta($jmts_user->ID, 'jmts_user_tcc_expiration_date', true);   
+    $jmts_user_tcc_expiration_date = get_user_meta($jmts_user->ID, 'jmts_user_tcc_expiration_date', true); 
+    $jmts_user_applicant_firstname1 = get_user_meta($jmts_user->ID, 'jmts_user_applicant_firstname1', true); 
+    $jmts_user_applicant_lastname1 = get_user_meta($jmts_user->ID, 'jmts_user_applicant_lastname1', true);
+    $jmts_user_applicant_firstname2 = get_user_meta($jmts_user->ID, 'jmts_user_applicant_firstname2', true); 
+    $jmts_user_applicant_lastname2 = get_user_meta($jmts_user->ID, 'jmts_user_applicant_lastname2', true);
 
     if (!empty($_POST['form_submitted'])) {
         
@@ -60,6 +64,14 @@ function jmts_user_meta_data() {
                 sanitize_text_field($_POST['jmts_user_is_tcc_valid']) : '';
         $jmts_user_tcc_expiration_date = isset($_POST['jmts_user_tcc_expiration_date']) ?
                 sanitize_text_field($_POST['jmts_user_tcc_expiration_date']) : '';
+        $jmts_user_applicant_firstname1 = isset($_POST['jmts_user_applicant_firstname1']) ?
+                sanitize_text_field($_POST['jmts_user_applicant_firstname1']) : '';
+        $jmts_user_applicant_lastname1 = isset($_POST['jmts_user_applicant_lastname1']) ?
+                sanitize_text_field($_POST['jmts_user_applicant_lastname1']) : '';
+        $jmts_user_applicant_firstname2 = isset($_POST['jmts_user_applicant_firstname2']) ?
+                sanitize_text_field($_POST['jmts_user_applicant_firstname2']) : '';
+        $jmts_user_applicant_lastname2 = isset($_POST['jmts_user_applicant_lastname2']) ?
+                sanitize_text_field($_POST['jmts_user_applicant_lastname2']) : '';
 
         // Save user meta data
         update_user_meta($jmts_user->ID, 'jmts_user_is_importer', $jmts_user_is_importer);
@@ -68,6 +80,10 @@ function jmts_user_meta_data() {
         update_user_meta($jmts_user->ID, 'jmts_user_trn', $jmts_user_trn);
         update_user_meta($jmts_user->ID, 'jmts_user_is_tcc_valid', $jmts_user_is_tcc_valid);
         update_user_meta($jmts_user->ID, 'jmts_user_tcc_expiration_date', $jmts_user_tcc_expiration_date);
+        update_user_meta($jmts_user->ID, 'jmts_user_applicant_firstname1', $jmts_user_applicant_firstname1);
+        update_user_meta($jmts_user->ID, 'jmts_user_applicant_lastname1', $jmts_user_applicant_lastname1);
+        update_user_meta($jmts_user->ID, 'jmts_user_applicant_firstname2', $jmts_user_applicant_firstname2);
+        update_user_meta($jmts_user->ID, 'jmts_user_applicant_lastname2', $jmts_user_applicant_lastname2);
                 
         ?>
         <h6 style="text-align:center;color: darkblue;">
@@ -77,10 +93,10 @@ function jmts_user_meta_data() {
     } 
     ?>
     <h5 style="text-align:center;">IMPORTERS/MANUFACTURERS REGISTRATION FORM</h5>
-    <h6 style="text-align:center;">Standards Regulations, 1983.</h6>
+    <h6 style="text-align:center;">Standards Regulations, 1983</h6>
     <p style="color: red;">
         This form must be completed in full to register as an importer and or 
-        manufacturer in accordance with regulation 8B of the Standards Regulations, 1983
+        manufacturer in accordance with regulation 8B of the Standards Regulations, 1983.
     </p>
     <form method="post" action="" >
         <input type="hidden" name="form_submitted" value="true" />
@@ -191,23 +207,43 @@ function jmts_user_meta_data() {
                     </span>
                 </td>            
             </tr>
-            <tr>            
-                <td style="border: 0;">
-                    <input type="text"
-                           class="regular-text ltr"
-                           id="jmts_user_applicant_firstname1"
-                           name="jmts_user_applicant_firstname1"
-                           placeholder="First Name"                           
-                           value=<?= $jmts_user_trn ?> >
-                </td>
+            <tr>   
                 <td style="border: 0;">
                     <input type="text"
                            class="regular-text ltr"
                            id="jmts_user_applicant_lastname1"
                            name="jmts_user_applicant_lastname1"
-                           placeholder="Last Name"                           
-                           value=<?= $jmts_user_trn ?> >
+                           placeholder="Last Name" 
+                           required
+                           value=<?= $jmts_user_applicant_lastname1 ?> >
                 </td>
+                <td style="border: 0;">
+                    <input type="text"
+                           class="regular-text ltr"
+                           id="jmts_user_applicant_firstname1"
+                           name="jmts_user_applicant_firstname1"
+                           placeholder="First Name" 
+                           required
+                           value=<?= $jmts_user_applicant_firstname1 ?> >
+                </td>                
+            </tr>
+            <tr>   
+                <td style="border: 0;">
+                    <input type="text"
+                           class="regular-text ltr"
+                           id="jmts_user_applicant_lastname2"
+                           name="jmts_user_applicant_lastname2"
+                           placeholder="Last Name (optional)" 
+                           value=<?= $jmts_user_applicant_lastname2 ?> >
+                </td>
+                <td style="border: 0;">
+                    <input type="text"
+                           class="regular-text ltr"
+                           id="jmts_user_applicant_firstname2"
+                           name="jmts_user_applicant_firstname2"
+                           placeholder="First Name (optional)"                            
+                           value=<?= $jmts_user_applicant_firstname2 ?> >
+                </td>                
             </tr>
             <tr>
                 <td style="border: 0;text-align: center;" colspan="2">
