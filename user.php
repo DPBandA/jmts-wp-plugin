@@ -62,6 +62,9 @@ function jmts_save_user_meta_data() {
             sanitize_text_field($_POST['jmts_user_partner_firstname3']) : '';
     $jmts_user_partner_lastname3 = isset($_POST['jmts_user_partner_lastname3']) ?
             sanitize_text_field($_POST['jmts_user_partner_lastname3']) : '';
+    // Trading Name (s)
+    $jmts_user_trading_name = isset($_POST['jmts_user_trading_name']) ?
+            sanitize_text_field($_POST['jmts_user_trading_name']) : '';
 
     // Save user meta data
     update_user_meta($jmts_user->ID, 'jmts_user_is_importer', $jmts_user_is_importer);
@@ -86,6 +89,8 @@ function jmts_save_user_meta_data() {
     update_user_meta($jmts_user->ID, 'jmts_user_partner_lastname2', $jmts_user_partner_lastname2);
     update_user_meta($jmts_user->ID, 'jmts_user_partner_firstname3', $jmts_user_partner_firstname3);
     update_user_meta($jmts_user->ID, 'jmts_user_partner_lastname3', $jmts_user_partner_lastname3);
+    // Trading Name (s)
+    update_user_meta($jmts_user->ID, 'jmts_user_trading_name', $jmts_user_trading_name);
 }
 
 // A short code to display a user's data for editing and viewing
@@ -238,7 +243,7 @@ function jmts_user_meta_data_form() {
             <tr>
                 <td style="border: 0;text-align: left;" colspan="2">
                     <span style="color: black;">
-                        Applicant (s) Name (s):
+                        Applicant(s) Name(s):
                     </span>
                 </td>            
             </tr>
@@ -313,7 +318,7 @@ function jmts_user_meta_data_form() {
             <tr>
                 <td style="border: 0;text-align: left;" colspan="2">
                     <span style="color: black;">
-                        Partner (s) Name (s):
+                        Partner(s) Name(s):
                     </span>
                 </td>            
             </tr>
@@ -370,6 +375,18 @@ function jmts_user_meta_data_form() {
                            placeholder="First Name (optional)" 
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_partner_firstname3', true) ?>" >
                 </td>                
+            </tr>
+            <tr>            
+                <td style="border: 0;">
+                    <label for="jmts_user_trading_name">Trading Name(s)</label>
+                </td>
+                <td style="border: 0;">
+                    <input type="text"
+                           class="regular-text ltr"
+                           id="jmts_user_trading_name"
+                           name="jmts_user_trading_name"
+                           value="<?= get_user_meta($jmts_user->ID, 'jmts_user_trading_name', true) ?>" >
+                </td>
             </tr>
             <tr>
                 <td style="border: 0;text-align: center;" colspan="2">
