@@ -41,6 +41,12 @@ function jmts_save_user_meta_data() {
             sanitize_text_field($_POST['jmts_user_applicant_firstname2']) : '';
     $jmts_user_applicant_lastname2 = isset($_POST['jmts_user_applicant_lastname2']) ?
             sanitize_text_field($_POST['jmts_user_applicant_lastname2']) : '';
+    $jmts_user_applicant_firstname3 = isset($_POST['jmts_user_applicant_firstname3']) ?
+            sanitize_text_field($_POST['jmts_user_applicant_firstname3']) : '';
+    $jmts_user_applicant_lastname3 = isset($_POST['jmts_user_applicant_lastname3']) ?
+            sanitize_text_field($_POST['jmts_user_applicant_lastname3']) : '';
+    $jmts_user_applicant_business_name = isset($_POST['jmts_user_applicant_business_name']) ?
+            sanitize_text_field($_POST['jmts_user_applicant_business_name']) : '';
 
     // Save user meta data
     update_user_meta($jmts_user->ID, 'jmts_user_is_importer', $jmts_user_is_importer);
@@ -53,6 +59,9 @@ function jmts_save_user_meta_data() {
     update_user_meta($jmts_user->ID, 'jmts_user_applicant_lastname1', $jmts_user_applicant_lastname1);
     update_user_meta($jmts_user->ID, 'jmts_user_applicant_firstname2', $jmts_user_applicant_firstname2);
     update_user_meta($jmts_user->ID, 'jmts_user_applicant_lastname2', $jmts_user_applicant_lastname2);
+    update_user_meta($jmts_user->ID, 'jmts_user_applicant_firstname3', $jmts_user_applicant_firstname3);
+    update_user_meta($jmts_user->ID, 'jmts_user_applicant_lastname3', $jmts_user_applicant_lastname3);
+    update_user_meta($jmts_user->ID, 'jmts_user_applicant_business_name', $jmts_user_applicant_business_name);
 }
 
 // A short code to display a user's data for editing and viewing
@@ -237,6 +246,36 @@ function jmts_user_meta_data_form() {
                            placeholder="First Name (optional)"                            
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_applicant_firstname2', true) ?>" >
                 </td>                
+            </tr>
+            <tr>   
+                <td style="border: 0;">
+                    <input type="text"
+                           class="regular-text ltr"
+                           id="jmts_user_applicant_lastname3"
+                           name="jmts_user_applicant_lastname3"
+                           placeholder="Last Name (optional)" 
+                           value="<?= get_user_meta($jmts_user->ID, 'jmts_user_applicant_lastname3', true) ?>" >
+                </td>
+                <td style="border: 0;">
+                    <input type="text"
+                           class="regular-text ltr"
+                           id="jmts_user_applicant_firstname3"
+                           name="jmts_user_applicant_firstname3"
+                           placeholder="First Name (optional)"                            
+                           value="<?= get_user_meta($jmts_user->ID, 'jmts_user_applicant_firstname3', true) ?>" >
+                </td>                
+            </tr>
+            <tr>            
+                <th style="border: 0;">
+                    <label for="jmts_user_applicant_business_name">Or Business Name</label>
+                </th>
+                <td style="border: 0;">
+                    <input type="text"
+                           class="regular-text ltr"
+                           id="jmts_user_applicant_business_name"
+                           name="jmts_user_applicant_business_name"
+                           value="<?= get_user_meta($jmts_user->ID, 'jmts_user_applicant_business_name', true) ?>" >
+                </td>
             </tr>
             <tr>
                 <td style="border: 0;text-align: center;" colspan="2">
