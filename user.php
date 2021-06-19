@@ -18,10 +18,47 @@ function jmts_remove_backend_access() {
     }
 }
 
-// A short code to display a user's data for editing and viewing
-add_shortcode('jmts_user', 'jmts_user_meta_data');
+function jmts_save_user_meta_data() {
+    $jmts_user = wp_get_current_user();
 
-function jmts_user_meta_data() {
+    $jmts_user_is_importer = isset($_POST['jmts_user_is_importer']) ?
+            sanitize_text_field($_POST['jmts_user_is_importer']) : '';
+    $jmts_user_is_manufacturer = isset($_POST['jmts_user_is_manufacturer']) ?
+            sanitize_text_field($_POST['jmts_user_is_manufacturer']) : '';
+    $jmts_user_is_first_time = isset($_POST['jmts_user_is_first_time']) ?
+            sanitize_text_field($_POST['jmts_user_is_first_time']) : '';
+    $jmts_user_trn = isset($_POST['jmts_user_trn']) ?
+            sanitize_text_field($_POST['jmts_user_trn']) : '';
+    $jmts_user_is_tcc_valid = isset($_POST['jmts_user_is_tcc_valid']) ?
+            sanitize_text_field($_POST['jmts_user_is_tcc_valid']) : '';
+    $jmts_user_tcc_expiration_date = isset($_POST['jmts_user_tcc_expiration_date']) ?
+            sanitize_text_field($_POST['jmts_user_tcc_expiration_date']) : '';
+    $jmts_user_applicant_firstname1 = isset($_POST['jmts_user_applicant_firstname1']) ?
+            sanitize_text_field($_POST['jmts_user_applicant_firstname1']) : '';
+    $jmts_user_applicant_lastname1 = isset($_POST['jmts_user_applicant_lastname1']) ?
+            sanitize_text_field($_POST['jmts_user_applicant_lastname1']) : '';
+    $jmts_user_applicant_firstname2 = isset($_POST['jmts_user_applicant_firstname2']) ?
+            sanitize_text_field($_POST['jmts_user_applicant_firstname2']) : '';
+    $jmts_user_applicant_lastname2 = isset($_POST['jmts_user_applicant_lastname2']) ?
+            sanitize_text_field($_POST['jmts_user_applicant_lastname2']) : '';
+
+    // Save user meta data
+    update_user_meta($jmts_user->ID, 'jmts_user_is_importer', $jmts_user_is_importer);
+    update_user_meta($jmts_user->ID, 'jmts_user_is_manufacturer', $jmts_user_is_manufacturer);
+    update_user_meta($jmts_user->ID, 'jmts_user_is_first_time', $jmts_user_is_first_time);
+    update_user_meta($jmts_user->ID, 'jmts_user_trn', $jmts_user_trn);
+    update_user_meta($jmts_user->ID, 'jmts_user_is_tcc_valid', $jmts_user_is_tcc_valid);
+    update_user_meta($jmts_user->ID, 'jmts_user_tcc_expiration_date', $jmts_user_tcc_expiration_date);
+    update_user_meta($jmts_user->ID, 'jmts_user_applicant_firstname1', $jmts_user_applicant_firstname1);
+    update_user_meta($jmts_user->ID, 'jmts_user_applicant_lastname1', $jmts_user_applicant_lastname1);
+    update_user_meta($jmts_user->ID, 'jmts_user_applicant_firstname2', $jmts_user_applicant_firstname2);
+    update_user_meta($jmts_user->ID, 'jmts_user_applicant_lastname2', $jmts_user_applicant_lastname2);
+}
+
+// A short code to display a user's data for editing and viewing
+add_shortcode('jmts_user', 'jmts_user_meta_data_form');
+
+function jmts_user_meta_data_form() {
     ?>
     <?php
     global $jmts_user, $jmts_user_trn, $jmts_user_is_importer;
@@ -37,60 +74,15 @@ function jmts_user_meta_data() {
         exit();
     }
 
-    // Retrieve stored user meta data
-    $jmts_user_is_importer = get_user_meta($jmts_user->ID, 'jmts_user_is_importer', true);
-    $jmts_user_is_manufacturer = get_user_meta($jmts_user->ID, 'jmts_user_is_manufacturer', true);
-    $jmts_user_is_first_time = get_user_meta($jmts_user->ID, 'jmts_user_is_first_time', true);
-    $jmts_user_trn = get_user_meta($jmts_user->ID, 'jmts_user_trn', true);    
-    $jmts_user_is_tcc_valid = get_user_meta($jmts_user->ID, 'jmts_user_is_tcc_valid', true);
-    $jmts_user_tcc_expiration_date = get_user_meta($jmts_user->ID, 'jmts_user_tcc_expiration_date', true); 
-    $jmts_user_applicant_firstname1 = get_user_meta($jmts_user->ID, 'jmts_user_applicant_firstname1', true); 
-    $jmts_user_applicant_lastname1 = get_user_meta($jmts_user->ID, 'jmts_user_applicant_lastname1', true);
-    $jmts_user_applicant_firstname2 = get_user_meta($jmts_user->ID, 'jmts_user_applicant_firstname2', true); 
-    $jmts_user_applicant_lastname2 = get_user_meta($jmts_user->ID, 'jmts_user_applicant_lastname2', true);
-
     if (!empty($_POST['form_submitted'])) {
-        
-        // Get and save user meta data        
-        $jmts_user_is_importer = isset($_POST['jmts_user_is_importer']) ?
-                sanitize_text_field($_POST['jmts_user_is_importer']) : '';
-        $jmts_user_is_manufacturer = isset($_POST['jmts_user_is_manufacturer']) ?
-                sanitize_text_field($_POST['jmts_user_is_manufacturer']) : '';
-        $jmts_user_is_first_time = isset($_POST['jmts_user_is_first_time']) ?
-                sanitize_text_field($_POST['jmts_user_is_first_time']) : '';
-        $jmts_user_trn = isset($_POST['jmts_user_trn']) ?
-                sanitize_text_field($_POST['jmts_user_trn']) : '';
-        $jmts_user_is_tcc_valid = isset($_POST['jmts_user_is_tcc_valid']) ?
-                sanitize_text_field($_POST['jmts_user_is_tcc_valid']) : '';
-        $jmts_user_tcc_expiration_date = isset($_POST['jmts_user_tcc_expiration_date']) ?
-                sanitize_text_field($_POST['jmts_user_tcc_expiration_date']) : '';
-        $jmts_user_applicant_firstname1 = isset($_POST['jmts_user_applicant_firstname1']) ?
-                sanitize_text_field($_POST['jmts_user_applicant_firstname1']) : '';
-        $jmts_user_applicant_lastname1 = isset($_POST['jmts_user_applicant_lastname1']) ?
-                sanitize_text_field($_POST['jmts_user_applicant_lastname1']) : '';
-        $jmts_user_applicant_firstname2 = isset($_POST['jmts_user_applicant_firstname2']) ?
-                sanitize_text_field($_POST['jmts_user_applicant_firstname2']) : '';
-        $jmts_user_applicant_lastname2 = isset($_POST['jmts_user_applicant_lastname2']) ?
-                sanitize_text_field($_POST['jmts_user_applicant_lastname2']) : '';
 
-        // Save user meta data
-        update_user_meta($jmts_user->ID, 'jmts_user_is_importer', $jmts_user_is_importer);
-        update_user_meta($jmts_user->ID, 'jmts_user_is_manufacturer', $jmts_user_is_manufacturer);
-        update_user_meta($jmts_user->ID, 'jmts_user_is_first_time', $jmts_user_is_first_time);
-        update_user_meta($jmts_user->ID, 'jmts_user_trn', $jmts_user_trn);
-        update_user_meta($jmts_user->ID, 'jmts_user_is_tcc_valid', $jmts_user_is_tcc_valid);
-        update_user_meta($jmts_user->ID, 'jmts_user_tcc_expiration_date', $jmts_user_tcc_expiration_date);
-        update_user_meta($jmts_user->ID, 'jmts_user_applicant_firstname1', $jmts_user_applicant_firstname1);
-        update_user_meta($jmts_user->ID, 'jmts_user_applicant_lastname1', $jmts_user_applicant_lastname1);
-        update_user_meta($jmts_user->ID, 'jmts_user_applicant_firstname2', $jmts_user_applicant_firstname2);
-        update_user_meta($jmts_user->ID, 'jmts_user_applicant_lastname2', $jmts_user_applicant_lastname2);
-                
+        jmts_save_user_meta_data();
         ?>
         <h6 style="text-align:center;color: darkblue;">
             YOUR FORM WAS SUCCESSFULLY UPDATED
         </h6>
         <?php
-    } 
+    }
     ?>
     <h5 style="text-align:center;">IMPORTERS/MANUFACTURERS REGISTRATION FORM</h5>
     <h6 style="text-align:center;">Standards Regulations, 1983</h6>
@@ -107,10 +99,11 @@ function jmts_user_meta_data() {
                 </th>
                 <td style="border: 0;">
                     <select id="jmts_user_is_importer" name="jmts_user_is_importer">
-                        <option <?= selected('no', $jmts_user_is_importer, true) ?> value="no"> 
+                        <option 
+                            <?= selected('no', get_user_meta($jmts_user->ID, 'jmts_user_is_importer', true), true) ?> value="no"> 
                             <?= __('No', 'jmts') ?>
                         </option>
-                        <option <?= selected('yes', $jmts_user_is_importer, true) ?> value="yes">
+                        <option <?= selected('yes', get_user_meta($jmts_user->ID, 'jmts_user_is_importer', true), true) ?> value="yes">
                             <?= __('Yes', 'jmts') ?>
                         </option>                        
                     </select>
@@ -122,10 +115,10 @@ function jmts_user_meta_data() {
                 </th>
                 <td style="border: 0;">
                     <select id="jmts_user_is_manufacturer" name="jmts_user_is_manufacturer">
-                        <option <?= selected('no', $jmts_user_is_manufacturer, true) ?> value="no"> 
+                        <option <?= selected('no', get_user_meta($jmts_user->ID, 'jmts_user_is_manufacturer', true), true) ?> value="no"> 
                             <?= __('No', 'jmts') ?>
                         </option>
-                        <option <?= selected('yes', $jmts_user_is_manufacturer, true) ?> value="yes">
+                        <option <?= selected('yes', get_user_meta($jmts_user->ID, 'jmts_user_is_manufacturer', true), true) ?> value="yes">
                             <?= __('Yes', 'jmts') ?>
                         </option>                        
                     </select>
@@ -137,10 +130,10 @@ function jmts_user_meta_data() {
                 </th>
                 <td style="border: 0;">
                     <select id="jmts_user_is_first_time" name="jmts_user_is_first_time">
-                        <option <?= selected('no', $jmts_user_is_first_time, true) ?> value="no"> 
+                        <option <?= selected('no', get_user_meta($jmts_user->ID, 'jmts_user_is_first_time', true), true) ?> value="no"> 
                             <?= __('No', 'jmts') ?>
                         </option>
-                        <option <?= selected('yes', $jmts_user_is_first_time, true) ?> value="yes">
+                        <option <?= selected('yes', get_user_meta($jmts_user->ID, 'jmts_user_is_first_time', true), true) ?> value="yes">
                             <?= __('Yes', 'jmts') ?>
                         </option>                        
                     </select>
@@ -155,7 +148,7 @@ function jmts_user_meta_data() {
                            class="regular-text ltr"
                            id="jmts_user_trn"
                            name="jmts_user_trn"
-                           value=<?= $jmts_user_trn ?> >
+                           value="<?= get_user_meta($jmts_user->ID, 'jmts_user_trn', true) ?>" >
                 </td>
             </tr>
             <tr>
@@ -164,10 +157,10 @@ function jmts_user_meta_data() {
                 </th>
                 <td style="border: 0;">
                     <select id="jmts_user_is_tcc_valid" name="jmts_user_is_tcc_valid">
-                        <option <?= selected('no', $jmts_user_is_tcc_valid, true) ?> value="no"> 
+                        <option <?= selected('no', get_user_meta($jmts_user->ID, 'jmts_user_is_tcc_valid', true), true) ?> value="no"> 
                             <?= __('No', 'jmts') ?>
                         </option>
-                        <option <?= selected('yes', $jmts_user_is_tcc_valid, true) ?> value="yes">
+                        <option <?= selected('yes', get_user_meta($jmts_user->ID, 'jmts_user_is_tcc_valid', true), true) ?> value="yes">
                             <?= __('Yes', 'jmts') ?>
                         </option>                        
                     </select>
@@ -184,8 +177,8 @@ function jmts_user_meta_data() {
                            class="regular-text ltr"
                            id="jmts_user_tcc_expiration_date"
                            name="jmts_user_tcc_expiration_date"
-                           value=<?= $jmts_user_tcc_expiration_date ?> >
-                   
+                           value="<?= get_user_meta($jmts_user->ID, 'jmts_user_tcc_expiration_date', true) ?>" >
+
                 </td>
             </tr>
             <tr>
@@ -203,7 +196,7 @@ function jmts_user_meta_data() {
             <tr>
                 <td style="border: 0;text-align: left;" colspan="2">
                     <span style="color: black;">
-                       Applicant (s) Name (s):
+                        Applicant (s) Name (s):
                     </span>
                 </td>            
             </tr>
@@ -215,7 +208,7 @@ function jmts_user_meta_data() {
                            name="jmts_user_applicant_lastname1"
                            placeholder="Last Name" 
                            required
-                           value=<?= $jmts_user_applicant_lastname1 ?> >
+                           value="<?= get_user_meta($jmts_user->ID, 'jmts_user_applicant_lastname1', true) ?>" >
                 </td>
                 <td style="border: 0;">
                     <input type="text"
@@ -224,7 +217,7 @@ function jmts_user_meta_data() {
                            name="jmts_user_applicant_firstname1"
                            placeholder="First Name" 
                            required
-                           value=<?= $jmts_user_applicant_firstname1 ?> >
+                           value="<?= get_user_meta($jmts_user->ID, 'jmts_user_applicant_firstname1', true) ?>" >
                 </td>                
             </tr>
             <tr>   
@@ -234,7 +227,7 @@ function jmts_user_meta_data() {
                            id="jmts_user_applicant_lastname2"
                            name="jmts_user_applicant_lastname2"
                            placeholder="Last Name (optional)" 
-                           value=<?= $jmts_user_applicant_lastname2 ?> >
+                           value="<?= get_user_meta($jmts_user->ID, 'jmts_user_applicant_lastname2', true) ?>" >
                 </td>
                 <td style="border: 0;">
                     <input type="text"
@@ -242,7 +235,7 @@ function jmts_user_meta_data() {
                            id="jmts_user_applicant_firstname2"
                            name="jmts_user_applicant_firstname2"
                            placeholder="First Name (optional)"                            
-                           value=<?= $jmts_user_applicant_firstname2 ?> >
+                           value="<?= get_user_meta($jmts_user->ID, 'jmts_user_applicant_firstname2', true) ?>" >
                 </td>                
             </tr>
             <tr>
@@ -250,7 +243,7 @@ function jmts_user_meta_data() {
                     <input type="submit" value="Submit">
                 </td>            
             </tr>
-           
+
         </table>
     </form>
     <?php
