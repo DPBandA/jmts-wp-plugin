@@ -94,7 +94,11 @@ function jmts_user_meta_data_form() {
         ?>
         <h5 style="text-align:center;color: darkblue;">
             PLEASE LOG IN OR REGISTER TO SUBMIT OR UPDATE THE IMPORTER REGISTRATION FORM!
-        </h5>       
+        </h5>     
+        <div style="text-align:center;">            
+            <a href="<?= site_url() ?>/wp-login.php"><input type="button" value="Log In" ></a>
+            <a href="<?= site_url() ?>/wp-login.php?action=register"><input type="button" value="Register" ></a>         
+        </div>
         <?php
         exit();
     }
