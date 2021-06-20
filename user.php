@@ -142,7 +142,9 @@ function jmts_user_meta_data_form() {
         <table class="form-table" style="border: 0;">    
             <tr>
                 <td style="border: 0;">
-                    <label for="jmts_user_is_importer">Are you an importer?</label>
+                    <label for="jmts_user_is_importer">
+                        <strong>Are you an importer?</strong>
+                    </label>
                 </td>
                 <td style="border: 0;">
                     <select id="jmts_user_is_importer" name="jmts_user_is_importer">
@@ -158,7 +160,9 @@ function jmts_user_meta_data_form() {
             </tr>
             <tr>
                 <td style="border: 0;">
-                    <label for="jmts_user_is_manufacturer">Are you a manufacturer?</label>
+                    <label for="jmts_user_is_manufacturer">
+                        <strong>Are you a manufacturer?</strong>
+                    </label>
                 </td>
                 <td style="border: 0;">
                     <select id="jmts_user_is_manufacturer" name="jmts_user_is_manufacturer">
@@ -173,7 +177,9 @@ function jmts_user_meta_data_form() {
             </tr>
             <tr>
                 <td style="border: 0;">
-                    <label for="jmts_user_is_first_time">Are you registering for first time?</label>
+                    <label for="jmts_user_is_first_time">
+                        <strong>Are you registering for first time?</strong>
+                    </label>
                 </td>
                 <td style="border: 0;">
                     <select id="jmts_user_is_first_time" name="jmts_user_is_first_time">
@@ -188,7 +194,9 @@ function jmts_user_meta_data_form() {
             </tr>
             <tr>            
                 <td style="border: 0;">
-                    <label for="jmts_user_trn">Tax Registration Number (TRN)</label>
+                    <label for="jmts_user_trn">
+                        <strong>Tax Registration Number (TRN</strong>
+                    </label>
                 </td>
                 <td style="border: 0;">
                     <input type="text"
@@ -200,7 +208,9 @@ function jmts_user_meta_data_form() {
             </tr>
             <tr>
                 <td style="border: 0;">
-                    <label for="jmts_user_is_tcc_valid">Tax Compliance Certificate (TCC) valid?</label>
+                    <label for="jmts_user_is_tcc_valid">
+                        <strong>Tax Compliance Certificate (TCC) valid?</strong>
+                    </label>
                 </td>
                 <td style="border: 0;">
                     <select id="jmts_user_is_tcc_valid" name="jmts_user_is_tcc_valid">
@@ -216,7 +226,7 @@ function jmts_user_meta_data_form() {
             <tr>            
                 <td style="border: 0;">
                     <label for="jmts_user_tcc_expiration_date">
-                        If yes please state date of expiration
+                        <strong>If yes please state date of expiration</strong>
                     </label>
                 </td>
                 <td style="border: 0;">
@@ -230,7 +240,7 @@ function jmts_user_meta_data_form() {
             </tr>
             <tr>
                 <td style="border: 0;" colspan="2">
-                    <strong>Applicant details</strong>
+                    <strong>Applicant details:</strong>
                 </td>            
             </tr>
             <tr>
@@ -242,9 +252,7 @@ function jmts_user_meta_data_form() {
             </tr>
             <tr>
                 <td style="border: 0;text-align: left;" colspan="2">
-                    <span style="color: black;">
-                        Applicant(s) Name(s):
-                    </span>
+                    <strong>Applicant(s) Name(s):</strong>
                 </td>            
             </tr>
             <tr>   
@@ -305,7 +313,9 @@ function jmts_user_meta_data_form() {
             </tr>
             <tr>            
                 <td style="border: 0;">
-                    <label for="jmts_user_applicant_business_name">Business Name</label>
+                    <label for="jmts_user_applicant_business_name">
+                        <strong>Business Name</strong>
+                    </label>
                 </td>
                 <td style="border: 0;">
                     <input type="text"
@@ -317,9 +327,7 @@ function jmts_user_meta_data_form() {
             </tr>
             <tr>
                 <td style="border: 0;text-align: left;" colspan="2">
-                    <span style="color: black;">
-                        Partner(s) Name(s):
-                    </span>
+                    <strong>Partner(s) Name(s):</strong>
                 </td>            
             </tr>
             <tr>   
@@ -378,7 +386,9 @@ function jmts_user_meta_data_form() {
             </tr>
             <tr>            
                 <td style="border: 0;">
-                    <label for="jmts_user_trading_name">Trading Name(s)</label>
+                    <label for="jmts_user_trading_name">
+                        <strong>Trading Name(s)</strong>
+                    </label>
                 </td>
                 <td style="border: 0;">
                     <input type="text"
