@@ -65,6 +65,32 @@ function jmts_save_user_meta_data() {
     // Trading Name (s)
     $jmts_user_trading_name = isset($_POST['jmts_user_trading_name']) ?
             sanitize_text_field($_POST['jmts_user_trading_name']) : '';
+    // Business Type
+    $jmts_user_business_type = isset($_POST['jmts_user_business_type']) ?
+            sanitize_text_field($_POST['jmts_user_business_type']) : '';
+    // Principal Details
+    $jmts_user_principal_address_line1 = isset($_POST['jmts_user_principal_address_line1']) ?
+            sanitize_text_field($_POST['jmts_user_principal_address_line1']) : '';
+    $jmts_user_principal_address_line2 = isset($_POST['jmts_user_principal_address_line2']) ?
+            sanitize_text_field($_POST['jmts_user_principal_address_line2']) : '';
+    $jmts_user_principal_postal_address = isset($_POST['jmts_user_principal_postal_address']) ?
+            sanitize_text_field($_POST['jmts_user_principal_postal_address']) : '';
+    // Principal Contact
+    $jmts_user_principal_firstname1 = isset($_POST['jmts_user_principal_firstname1']) ?
+            sanitize_text_field($_POST['jmts_user_principal_firstname1']) : '';
+    $jmts_user_principal_lastname1 = isset($_POST['jmts_user_principal_lastname1']) ?
+            sanitize_text_field($_POST['jmts_user_principal_lastname1']) : '';
+    $jmts_user_principal_position = isset($_POST['jmts_user_principal_position']) ?
+            sanitize_text_field($_POST['jmts_user_principal_position']) : '';
+    $jmts_user_principal_phone = isset($_POST['jmts_user_principal_phone']) ?
+            sanitize_text_field($_POST['jmts_user_principal_phone']) : '';
+    $jmts_user_principal_mobile = isset($_POST['jmts_user_principal_mobile']) ?
+            sanitize_text_field($_POST['jmts_user_principal_mobile']) : '';
+    $jmts_user_principal_fax = isset($_POST['jmts_user_principal_fax']) ?
+            sanitize_text_field($_POST['jmts_user_principal_fax']) : '';
+    $jmts_user_principal_email = isset($_POST['jmts_user_principal_email']) ?
+            sanitize_text_field($_POST['jmts_user_principal_email']) : '';
+    
 
     // Save user meta data
     update_user_meta($jmts_user->ID, 'jmts_user_is_importer', $jmts_user_is_importer);
@@ -91,6 +117,20 @@ function jmts_save_user_meta_data() {
     update_user_meta($jmts_user->ID, 'jmts_user_partner_lastname3', $jmts_user_partner_lastname3);
     // Trading Name (s)
     update_user_meta($jmts_user->ID, 'jmts_user_trading_name', $jmts_user_trading_name);
+    // Business Type
+    update_user_meta($jmts_user->ID, 'jmts_user_business_type', $jmts_user_business_type);
+    // Principal Details
+    update_user_meta($jmts_user->ID, 'jmts_user_principal_address_line1', $jmts_user_principal_address_line1);
+    update_user_meta($jmts_user->ID, 'jmts_user_principal_address_line2', $jmts_user_principal_address_line2);
+    update_user_meta($jmts_user->ID, 'jmts_user_principal_postal_address', $jmts_user_principal_postal_address);
+    // Principal
+    update_user_meta($jmts_user->ID, 'jmts_user_principal_firstname1', $jmts_user_principal_firstname1);
+    update_user_meta($jmts_user->ID, 'jmts_user_principal_lastname1', $jmts_user_principal_lastname1);
+    update_user_meta($jmts_user->ID, 'jmts_user_principal_position', $jmts_user_principal_position);
+    update_user_meta($jmts_user->ID, 'jmts_user_principal_phone', $jmts_user_principal_phone);
+    update_user_meta($jmts_user->ID, 'jmts_user_principal_mobile', $jmts_user_principal_mobile);
+    update_user_meta($jmts_user->ID, 'jmts_user_principal_fax', $jmts_user_principal_fax);
+    update_user_meta($jmts_user->ID, 'jmts_user_principal_email', $jmts_user_principal_email);
 }
 
 // A short code to display a user's data for editing and viewing
@@ -195,7 +235,7 @@ function jmts_user_meta_data_form() {
             <tr>            
                 <td style="border: 0;">
                     <label for="jmts_user_trn">
-                        <strong>Tax Registration Number (TRN</strong>
+                        <strong>Tax Registration Number (TRN)</strong>
                     </label>
                 </td>
                 <td style="border: 0;">
@@ -239,9 +279,9 @@ function jmts_user_meta_data_form() {
                 </td>
             </tr>
             <tr>
-                <td style="border: 0;" colspan="2">
+                <th style="border: 0;" colspan="2">
                     <strong>Applicant details:</strong>
-                </td>            
+                </th>            
             </tr>
             <tr>
                 <td style="border: 0;text-align: center;" colspan="2">
@@ -251,9 +291,9 @@ function jmts_user_meta_data_form() {
                 </td>            
             </tr>
             <tr>
-                <td style="border: 0;text-align: left;" colspan="2">
+                <th style="border: 0;text-align: left;" colspan="2">
                     <strong>Applicant(s) Name(s):</strong>
-                </td>            
+                </th>            
             </tr>
             <tr>   
                 <td style="border: 0;">
@@ -326,9 +366,9 @@ function jmts_user_meta_data_form() {
                 </td>
             </tr>
             <tr>
-                <td style="border: 0;text-align: left;" colspan="2">
+                <th style="border: 0;text-align: left;" colspan="2">
                     <strong>Partner(s) Name(s):</strong>
-                </td>            
+                </th>            
             </tr>
             <tr>   
                 <td style="border: 0;">
@@ -396,6 +436,104 @@ function jmts_user_meta_data_form() {
                            id="jmts_user_trading_name"
                            name="jmts_user_trading_name"
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_trading_name', true) ?>" >
+                </td>
+            </tr>
+            <tr>            
+                <td style="border: 0;">
+                    <label for="jmts_user_business_type">
+                        <strong>Business Type</strong>
+                    </label>
+                </td>
+                <td style="border: 0;">
+                    <input type="text"
+                           class="regular-text ltr"
+                           id="jmts_user_business_type"
+                           name="jmts_user_business_type"
+                           value="<?= get_user_meta($jmts_user->ID, 'jmts_user_business_type', true) ?>" >
+                </td>
+            </tr>
+            <tr>
+                <th style="border: 0;text-align: left;" colspan="2">
+                    <strong>Principal Address:</strong>
+                </th>            
+            </tr>
+            <tr>            
+                <td style="border: 0;">
+                    <label for="jmts_user_principal_address_line1">
+                        <strong>Address Line 1</strong>
+                    </label>
+                </td>
+                <td style="border: 0;">
+                    <input type="text"
+                           class="regular-text ltr"
+                           id="jmts_user_principal_address_line1"
+                           name="jmts_user_principal_address_line1"
+                           value="<?= get_user_meta($jmts_user->ID, 'jmts_user_principal_address_line1', true) ?>" >
+                </td>
+            </tr>
+            <tr>            
+                <td style="border: 0;">
+                    <label for="jmts_user_principal_address_line2">
+                        <strong>Address Line 2</strong>
+                    </label>
+                </td>
+                <td style="border: 0;">
+                    <input type="text"
+                           class="regular-text ltr"
+                           id="jmts_user_principal_address_line2"
+                           name="jmts_user_principal_address_line2"
+                           value="<?= get_user_meta($jmts_user->ID, 'jmts_user_principal_address_line2', true) ?>" >
+                </td>
+            </tr>
+            <tr>            
+                <td style="border: 0;">
+                    <label for="jmts_user_principal_postal_address">
+                        <strong>Postal Address</strong>
+                    </label>
+                </td>
+                <td style="border: 0;">
+                    <input type="text"
+                           class="regular-text ltr"
+                           id="jmts_user_principal_postal_address"
+                           name="jmts_user_principal_postal_address"
+                           value="<?= get_user_meta($jmts_user->ID, 'jmts_user_principal_postal_address', true) ?>" >
+                </td>
+            </tr>
+            <tr>
+                <th style="border: 0;text-align: left;" colspan="2">
+                    <strong>Principal Contact:</strong>
+                </th>            
+            </tr>
+            <tr>   
+                <td style="border: 0;">
+                    <input type="text"
+                           class="regular-text ltr"
+                           id="jmts_user_principal_lastname1"
+                           name="jmts_user_principal_lastname1"
+                           placeholder="Last Name" 
+                           value="<?= get_user_meta($jmts_user->ID, 'jmts_user_principal_lastname1', true) ?>" >
+                </td>
+                <td style="border: 0;">
+                    <input type="text"
+                           class="regular-text ltr"
+                           id="jmts_user_principal_firstname1"
+                           name="jmts_user_principal_firstname1"
+                           placeholder="First Name" 
+                           value="<?= get_user_meta($jmts_user->ID, 'jmts_user_principal_firstname1', true) ?>" >
+                </td>                
+            </tr>
+            <tr>            
+                <td style="border: 0;">
+                    <label for="jmts_user_principal_position">
+                        <strong>Position</strong>
+                    </label>
+                </td>
+                <td style="border: 0;">
+                    <input type="text"
+                           class="regular-text ltr"
+                           id="jmts_user_principal_position"
+                           name="jmts_user_principal_position"
+                           value="<?= get_user_meta($jmts_user->ID, 'jmts_user_principal_position', true) ?>" >
                 </td>
             </tr>
             <tr>
