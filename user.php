@@ -109,7 +109,6 @@ function jmts_save_user_meta_data() {
     $jmts_user_receival1_email = isset($_POST['jmts_user_receival1_email']) ?
             sanitize_text_field($_POST['jmts_user_receival1_email']) : '';
     
-
     // SAVE META DATA
     update_user_meta($jmts_user->ID, 'jmts_user_is_importer', $jmts_user_is_importer);
     update_user_meta($jmts_user->ID, 'jmts_user_is_manufacturer', $jmts_user_is_manufacturer);
