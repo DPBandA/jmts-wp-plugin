@@ -90,11 +90,24 @@ function jmts_save_user_meta_data() {
             sanitize_text_field($_POST['jmts_user_principal_fax']) : '';
     $jmts_user_principal_email = isset($_POST['jmts_user_principal_email']) ?
             sanitize_text_field($_POST['jmts_user_principal_email']) : '';
-    // Receival Location(s)
+    // Receival Location 1
     $jmts_user_receival1_address_line1 = isset($_POST['jmts_user_receival1_address_line1']) ?
             sanitize_text_field($_POST['jmts_user_receival1_address_line1']) : '';
     $jmts_user_receival1_address_line2 = isset($_POST['jmts_user_receival1_address_line2']) ?
             sanitize_text_field($_POST['jmts_user_receival1_address_line2']) : '';
+    // Receival Location 1 Contact
+    $jmts_user_principal_firstname1 = isset($_POST['jmts_user_principal_firstname1']) ?
+            sanitize_text_field($_POST['jmts_user_principal_firstname1']) : '';
+    $jmts_user_principal_lastname1 = isset($_POST['jmts_user_principal_lastname1']) ?
+            sanitize_text_field($_POST['jmts_user_principal_lastname1']) : '';    
+    $jmts_user_principal_phone = isset($_POST['jmts_user_principal_phone']) ?
+            sanitize_text_field($_POST['jmts_user_principal_phone']) : '';
+    $jmts_user_principal_mobile = isset($_POST['jmts_user_principal_mobile']) ?
+            sanitize_text_field($_POST['jmts_user_principal_mobile']) : '';
+    $jmts_user_principal_fax = isset($_POST['jmts_user_principal_fax']) ?
+            sanitize_text_field($_POST['jmts_user_principal_fax']) : '';
+    $jmts_user_principal_email = isset($_POST['jmts_user_principal_email']) ?
+            sanitize_text_field($_POST['jmts_user_principal_email']) : '';
     
 
     // SAVE META DATA
@@ -136,7 +149,7 @@ function jmts_save_user_meta_data() {
     update_user_meta($jmts_user->ID, 'jmts_user_principal_mobile', $jmts_user_principal_mobile);
     update_user_meta($jmts_user->ID, 'jmts_user_principal_fax', $jmts_user_principal_fax);
     update_user_meta($jmts_user->ID, 'jmts_user_principal_email', $jmts_user_principal_email);
-    // Receival Location(s)
+    // Receival Location 1
     update_user_meta($jmts_user->ID, 'jmts_user_receival1_address_line1', $jmts_user_receival1_address_line1);
     update_user_meta($jmts_user->ID, 'jmts_user_receival1_address_line2', $jmts_user_receival1_address_line2);
 }
@@ -605,7 +618,7 @@ function jmts_user_meta_data_form() {
             </tr>
             <tr>
                 <th style="border: 0;text-align: left;" colspan="2">
-                    <strong>Receival Location(s):</strong>
+                    <strong>Receival Location 1:</strong>
                 </th>            
             </tr>
             <tr>            
