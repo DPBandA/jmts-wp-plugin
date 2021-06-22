@@ -133,6 +133,17 @@ function jmts_save_user_meta_data() {
             sanitize_text_field($_POST['jmts_user_receival2_fax']) : '';
     $jmts_user_receival2_email = isset($_POST['jmts_user_receival2_email']) ?
             sanitize_text_field($_POST['jmts_user_receival2_email']) : '';
+    // Types of Import
+    $jmts_user_import_type_appliance = isset($_POST['jmts_user_import_type_appliance']) ?
+            sanitize_text_field($_POST['jmts_user_import_type_appliance']) : '';
+    $jmts_user_import_type_construct_mat = isset($_POST['jmts_user_import_type_construct_mat']) ?
+            sanitize_text_field($_POST['jmts_user_import_type_construct_mat']) : '';
+    $jmts_user_import_type_pre_pack_goods = isset($_POST['jmts_user_import_type_pre_pack_goods']) ?
+            sanitize_text_field($_POST['jmts_user_import_type_pre_pack_goods']) : '';
+    $jmts_user_import_type_non_met_mat = isset($_POST['jmts_user_import_type_non_met_mat']) ?
+            sanitize_text_field($_POST['jmts_user_import_type_non_met_mat']) : '';
+    $jmts_user_import_type_gen_merchandise = isset($_POST['jmts_user_import_type_gen_merchandise']) ?
+            sanitize_text_field($_POST['jmts_user_import_type_gen_merchandise']) : '';
 
 
     // SAVE USER META DATA
@@ -198,7 +209,12 @@ function jmts_save_user_meta_data() {
     update_user_meta($jmts_user->ID, 'jmts_user_receival2_mobile', $jmts_user_receival2_mobile);
     update_user_meta($jmts_user->ID, 'jmts_user_receival2_fax', $jmts_user_receival2_fax);
     update_user_meta($jmts_user->ID, 'jmts_user_receival2_email', $jmts_user_receival2_email);
-    
+    // Types of Import
+    update_user_meta($jmts_user->ID, 'jmts_user_import_type_appliance', $jmts_user_import_type_appliance);
+    update_user_meta($jmts_user->ID, 'jmts_user_import_type_construct_mat', $jmts_user_import_type_construct_mat);
+    update_user_meta($jmts_user->ID, 'jmts_user_import_type_pre_pack_goods', $jmts_user_import_type_pre_pack_goods);
+    update_user_meta($jmts_user->ID, 'jmts_user_import_type_non_met_mat', $jmts_user_import_type_non_met_mat);
+    update_user_meta($jmts_user->ID, 'jmts_user_import_type_gen_merchandise', $jmts_user_import_type_gen_merchandise);
 }
 
 // A short code to display a user's data for editing and viewing
@@ -258,7 +274,7 @@ function jmts_user_meta_data_form() {
                     <select id="jmts_user_is_importer" name="jmts_user_is_importer">
                         <option 
                             <?= selected('no', get_user_meta($jmts_user->ID, 'jmts_user_is_importer', true), true) ?> value="no"> 
-                                <?= __('No', 'jmts') ?>
+                            <?= __('No', 'jmts') ?>
                         </option>
                         <option <?= selected('yes', get_user_meta($jmts_user->ID, 'jmts_user_is_importer', true), true) ?> value="yes">
                             <?= __('Yes', 'jmts') ?>
@@ -944,7 +960,126 @@ function jmts_user_meta_data_form() {
                            name="jmts_user_receival2_email"
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_receival2_email', true) ?>" >
                 </td>
+            </tr>  
+            <tr>
+                <th style="border: 0;text-align: left;" colspan="2">
+                    <strong>Import Details:</strong>
+                </th>            
+            </tr>
+            <tr>
+                <td style="border: 0;" colspan="2">
+                    <strong>Type of Import</strong>
+                </td>            
+            </tr>
+            <tr>
+                <td style="border: 0;text-align: center;" colspan="2">
+                    <span style="color: red;">
+                        (tick each type that applies) 
+                    </span>
+                </td>            
+            </tr>
+            <tr>            
+                <td style="border: 0;">
+                    <label for="jmts_user_import_type_appliance">
+                        <strong>Appliances</strong>
+                    </label>
+                </td>
+                <td style="border: 0;">
+                    <input type="checkbox"
+                           id="jmts_user_import_type_appliance"
+                           name="jmts_user_import_type_appliance"
+                           <?=
+                           checked('jmts_user_import_type_appliance',
+                                   get_user_meta($jmts_user->ID, 'jmts_user_import_type_appliance', true), true)
+                           ?>
+                           value="jmts_user_import_type_appliance" >
+                </td>
             </tr>            
+            <tr>            
+                <td style="border: 0;">
+                    <label for="jmts_user_import_type_construct_mat">
+                        <strong>Construction Material</strong>
+                    </label>
+                </td>
+                <td style="border: 0;">
+                    <input type="checkbox"
+                           id="jmts_user_import_type_construct_mat"
+                           name="jmts_user_import_type_construct_mat"
+                           <?=
+                           checked('jmts_user_import_type_construct_mat',
+                                   get_user_meta($jmts_user->ID, 'jmts_user_import_type_construct_mat', true), true)
+                           ?>
+                           value="jmts_user_import_type_construct_mat" >
+                </td>
+            </tr>
+            <tr>            
+                <td style="border: 0;">
+                    <label for="jmts_user_import_type_pre_pack_goods">
+                        <strong>Pre-packaged Goods</strong>
+                    </label>
+                </td>
+                <td style="border: 0;">
+                    <input type="checkbox"
+                           id="jmts_user_import_type_pre_pack_goods"
+                           name="jmts_user_import_type_pre_pack_goods"
+                           <?=
+                           checked('jmts_user_import_type_pre_pack_goods',
+                                   get_user_meta($jmts_user->ID, 'jmts_user_import_type_pre_pack_goods', true), true)
+                           ?>
+                           value="jmts_user_import_type_pre_pack_goods" >
+                </td>
+            </tr>
+            <tr>            
+                <td style="border: 0;">
+                    <label for="jmts_user_import_type_non_met_mat">
+                        <strong>Non-metallic Material</strong>
+                    </label>
+                </td>
+                <td style="border: 0;">
+                    <input type="checkbox"
+                           id="jmts_user_import_type_non_met_mat"
+                           name="jmts_user_import_type_non_met_mat"
+                           <?=
+                           checked('jmts_user_import_type_non_met_mat',
+                                   get_user_meta($jmts_user->ID, 'jmts_user_import_type_non_met_mat', true), true)
+                           ?>
+                           value="jmts_user_import_type_non_met_mat" >
+                </td>
+            </tr>
+            <tr>            
+                <td style="border: 0;">
+                    <label for="jmts_user_import_type_gen_merchandise">
+                        <strong>General Merchandise</strong>
+                    </label>
+                </td>
+                <td style="border: 0;">
+                    <input type="checkbox"
+                           id="jmts_user_import_type_gen_merchandise"
+                           name="jmts_user_import_type_gen_merchandise"
+                           <?=
+                           checked('jmts_user_import_type_gen_merchandise',
+                                   get_user_meta($jmts_user->ID, 'jmts_user_import_type_gen_merchandise', true), true)
+                           ?>
+                           value="jmts_user_import_type_gen_merchandise" >
+                </td>
+            </tr>
+            <tr>
+                <th style="border: 0;text-align: left;" colspan="2">
+                    <strong>Manufacturer Details:</strong>
+                </th>            
+            </tr>
+            <tr>
+                <td style="border: 0;" colspan="2">
+                    <strong>Type of Manufacturing</strong>
+                </td>            
+            </tr>
+            <tr>
+                <td style="border: 0;text-align: center;" colspan="2">
+                    <span style="color: red;">
+                        (tick each type that applies) 
+                    </span>
+                </td>            
+            </tr>
             <tr>
                 <td style="border: 0;text-align: center;" colspan="2">
                     <input type="submit" value="Submit">
