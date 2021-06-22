@@ -108,6 +108,8 @@ function jmts_save_user_meta_data() {
             sanitize_text_field($_POST['jmts_user_receival1_fax']) : '';
     $jmts_user_receival1_email = isset($_POST['jmts_user_receival1_email']) ?
             sanitize_text_field($_POST['jmts_user_receival1_email']) : '';
+    // Receival Location 1 Clearance Methods
+    
     
     // SAVE META DATA
     update_user_meta($jmts_user->ID, 'jmts_user_is_importer', $jmts_user_is_importer);
@@ -734,6 +736,11 @@ function jmts_user_meta_data_form() {
                            name="jmts_user_receival1_email"
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_receival1_email', true) ?>" >
                 </td>
+            </tr>
+            <tr>
+                <th style="border: 0;text-align: left;" colspan="2">
+                    <strong>Receival Location Clearance Method:</strong>
+                </th>            
             </tr>
             <tr>
                 <td style="border: 0;text-align: center;" colspan="2">
