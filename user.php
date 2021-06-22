@@ -654,6 +654,88 @@ function jmts_user_meta_data_form() {
                 </td>
             </tr>
             <tr>
+                <th style="border: 0;text-align: left;" colspan="2">
+                    <strong>Receival Location 1 Contact:</strong>
+                </th>            
+            </tr>
+            <tr>   
+                <td style="border: 0;">
+                    <input type="text"
+                           class="regular-text ltr"
+                           id="jmts_user_receival1_lastname1"
+                           name="jmts_user_receival1_lastname1"
+                           placeholder="Last Name" 
+                           value="<?= get_user_meta($jmts_user->ID, 'jmts_user_receival1_lastname1', true) ?>" >
+                </td>
+                <td style="border: 0;">
+                    <input type="text"
+                           class="regular-text ltr"
+                           id="jmts_user_receival1_firstname1"
+                           name="jmts_user_receival1_firstname1"
+                           placeholder="First Name" 
+                           value="<?= get_user_meta($jmts_user->ID, 'jmts_user_receival1_firstname1', true) ?>" >
+                </td>                
+            </tr>
+            <tr>            
+                <td style="border: 0;">
+                    <label for="jmts_user_receival1_phone">
+                        <strong>Phone</strong>
+                    </label>
+                </td>
+                <td style="border: 0;">
+                    <input type="tel"
+                           pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                           placeholder="123-456-0789"
+                           id="jmts_user_receival1_phone"
+                           name="jmts_user_receival1_phone"
+                           value="<?= get_user_meta($jmts_user->ID, 'jmts_user_receival1_phone', true) ?>" >
+                </td>
+            </tr>
+            <tr>            
+                <td style="border: 0;">
+                    <label for="jmts_user_principal_mobile">
+                        <strong>Mobile</strong>
+                    </label>
+                </td>
+                <td style="border: 0;">
+                    <input type="tel"
+                           pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                           placeholder="123-456-0789"
+                           id="jmts_user_principal_mobile"
+                           name="jmts_user_principal_mobile"
+                           value="<?= get_user_meta($jmts_user->ID, 'jmts_user_principal_mobile', true) ?>" >
+                </td>
+            </tr>
+            <tr>            
+                <td style="border: 0;">
+                    <label for="jmts_user_principal_fax">
+                        <strong>Fax</strong>
+                    </label>
+                </td>
+                <td style="border: 0;">
+                    <input type="tel"
+                           pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                           placeholder="123-456-0789"
+                           id="jmts_user_principal_fax"
+                           name="jmts_user_principal_fax"
+                           value="<?= get_user_meta($jmts_user->ID, 'jmts_user_principal_fax', true) ?>" >
+                </td>
+            </tr>
+            <tr>            
+                <td style="border: 0;">
+                    <label for="jmts_user_principal_email">
+                        <strong>Email</strong>
+                    </label>
+                </td>
+                <td style="border: 0;">
+                    <input type="email"
+                           placeholder="email@example.com"
+                           id="jmts_user_principal_email"
+                           name="jmts_user_principal_email"
+                           value="<?= get_user_meta($jmts_user->ID, 'jmts_user_principal_email', true) ?>" >
+                </td>
+            </tr>
+            <tr>
                 <td style="border: 0;text-align: center;" colspan="2">
                     <input type="submit" value="Submit">
                 </td>            
