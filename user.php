@@ -99,7 +99,7 @@ function jmts_save_user_meta_data() {
     $jmts_user_receival1_firstname1 = isset($_POST['jmts_user_receival1_firstname1']) ?
             sanitize_text_field($_POST['jmts_user_receival1_firstname1']) : '';
     $jmts_user_receival1_lastname1 = isset($_POST['jmts_user_receival1_lastname1']) ?
-            sanitize_text_field($_POST['jmts_user_receival1_lastname1']) : '';    
+            sanitize_text_field($_POST['jmts_user_receival1_lastname1']) : '';
     $jmts_user_receival1_phone = isset($_POST['jmts_user_receival1_phone']) ?
             sanitize_text_field($_POST['jmts_user_receival1_phone']) : '';
     $jmts_user_receival1_mobile = isset($_POST['jmts_user_receival1_mobile']) ?
@@ -109,9 +109,15 @@ function jmts_save_user_meta_data() {
     $jmts_user_receival1_email = isset($_POST['jmts_user_receival1_email']) ?
             sanitize_text_field($_POST['jmts_user_receival1_email']) : '';
     // Receival Location 1 Clearance Methods
-    
-    
-    // SAVE META DATA
+    $jmts_user_receival1_aeo = isset($_POST['jmts_user_receival1_aeo']) ?
+            sanitize_text_field($_POST['jmts_user_receival1_aeo']) : '';
+    $jmts_user_receival1_port_clearance = isset($_POST['jmts_user_receival1_port_clearance']) ?
+            sanitize_text_field($_POST['jmts_user_receival1_port_clearance']) : '';
+    $jmts_user_receival1_site = isset($_POST['jmts_user_receival1_site']) ?
+            sanitize_text_field($_POST['jmts_user_receival1_site']) : '';
+
+
+    // SAVE USER META DATA
     update_user_meta($jmts_user->ID, 'jmts_user_is_importer', $jmts_user_is_importer);
     update_user_meta($jmts_user->ID, 'jmts_user_is_manufacturer', $jmts_user_is_manufacturer);
     update_user_meta($jmts_user->ID, 'jmts_user_is_first_time', $jmts_user_is_first_time);
@@ -160,6 +166,10 @@ function jmts_save_user_meta_data() {
     update_user_meta($jmts_user->ID, 'jmts_user_receival1_mobile', $jmts_user_receival1_mobile);
     update_user_meta($jmts_user->ID, 'jmts_user_receival1_fax', $jmts_user_receival1_fax);
     update_user_meta($jmts_user->ID, 'jmts_user_receival1_email', $jmts_user_receival1_email);
+    // Receival Location 1 Clearance Methods
+    update_user_meta($jmts_user->ID, 'jmts_user_receival1_aeo', $jmts_user_receival1_aeo);
+    update_user_meta($jmts_user->ID, 'jmts_user_receival1_port_clearance', $jmts_user_receival1_port_clearance);
+    update_user_meta($jmts_user->ID, 'jmts_user_receival1_site', $jmts_user_receival1_site);
 }
 
 // A short code to display a user's data for editing and viewing
@@ -736,11 +746,28 @@ function jmts_user_meta_data_form() {
                            name="jmts_user_receival1_email"
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_receival1_email', true) ?>" >
                 </td>
-            </tr>
+            </tr>            
             <tr>
                 <th style="border: 0;text-align: left;" colspan="2">
-                    <strong>Receival Location Clearance Method:</strong>
+                    <strong>Receival Location Clearance Method(s):</strong>
                 </th>            
+            </tr>
+            <tr>            
+                <td style="border: 0;">
+                    <label for="jmts_user_receival1_aeo">
+                        <strong>AEO</strong>
+                    </label>
+                </td>
+                <td style="border: 0;">
+                    <input type="checkbox"
+                           id="jmts_user_receival1_aeo"
+                           name="jmts_user_receival1_aeo"
+                           <?=
+                           checked('jmts_user_receival1_aeo',
+                                   get_user_meta($jmts_user->ID, 'jmts_user_receival1_aeo', true), true)
+                           ?>
+                           value="jmts_user_receival1_aeo" >
+                </td>
             </tr>
             <tr>
                 <td style="border: 0;text-align: center;" colspan="2">
