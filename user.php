@@ -693,7 +693,7 @@ function jmts_user_meta_data_form() {
             </tr>
             <tr>            
                 <td style="border: 0;">
-                    <label for="jmts_user_principal_mobile">
+                    <label for="jmts_user_receival1_mobile">
                         <strong>Mobile</strong>
                     </label>
                 </td>
@@ -701,14 +701,14 @@ function jmts_user_meta_data_form() {
                     <input type="tel"
                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                            placeholder="123-456-0789"
-                           id="jmts_user_principal_mobile"
-                           name="jmts_user_principal_mobile"
-                           value="<?= get_user_meta($jmts_user->ID, 'jmts_user_principal_mobile', true) ?>" >
+                           id="jmts_user_receival1_mobile"
+                           name="jmts_user_receival1_mobile"
+                           value="<?= get_user_meta($jmts_user->ID, 'jmts_user_receival1_mobile', true) ?>" >
                 </td>
             </tr>
             <tr>            
                 <td style="border: 0;">
-                    <label for="jmts_user_principal_fax">
+                    <label for="jmts_user_receival1_fax">
                         <strong>Fax</strong>
                     </label>
                 </td>
@@ -716,23 +716,23 @@ function jmts_user_meta_data_form() {
                     <input type="tel"
                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                            placeholder="123-456-0789"
-                           id="jmts_user_principal_fax"
-                           name="jmts_user_principal_fax"
-                           value="<?= get_user_meta($jmts_user->ID, 'jmts_user_principal_fax', true) ?>" >
+                           id="jmts_user_receival1_fax"
+                           name="jmts_user_receival1_fax"
+                           value="<?= get_user_meta($jmts_user->ID, 'jmts_user_receival1_fax', true) ?>" >
                 </td>
             </tr>
             <tr>            
                 <td style="border: 0;">
-                    <label for="jmts_user_principal_email">
+                    <label for="jmts_user_receival1_email">
                         <strong>Email</strong>
                     </label>
                 </td>
                 <td style="border: 0;">
                     <input type="email"
                            placeholder="email@example.com"
-                           id="jmts_user_principal_email"
-                           name="jmts_user_principal_email"
-                           value="<?= get_user_meta($jmts_user->ID, 'jmts_user_principal_email', true) ?>" >
+                           id="jmts_user_receival1_email"
+                           name="jmts_user_receival1_email"
+                           value="<?= get_user_meta($jmts_user->ID, 'jmts_user_receival1_email', true) ?>" >
                 </td>
             </tr>
             <tr>
