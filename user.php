@@ -144,6 +144,15 @@ function jmts_save_user_meta_data() {
             sanitize_text_field($_POST['jmts_user_import_type_non_met_mat']) : '';
     $jmts_user_import_type_gen_merchandise = isset($_POST['jmts_user_import_type_gen_merchandise']) ?
             sanitize_text_field($_POST['jmts_user_import_type_gen_merchandise']) : '';
+    // Types of Manufacture
+    $jmts_user_manufacture_type_appliance = isset($_POST['jmts_user_manufacture_type_appliance']) ?
+            sanitize_text_field($_POST['jmts_user_manufacture_type_appliance']) : '';
+    $jmts_user_manufacture_type_construct_mat = isset($_POST['jmts_user_manufacture_type_construct_mat']) ?
+            sanitize_text_field($_POST['jmts_user_manufacture_type_construct_mat']) : '';
+    $jmts_user_manufacture_type_pre_pack_goods = isset($_POST['jmts_user_manufacture_type_pre_pack_goods']) ?
+            sanitize_text_field($_POST['jmts_user_manufacture_type_pre_pack_goods']) : '';
+    $jmts_user_manufacture_type_non_met_mat = isset($_POST['jmts_user_manufacture_type_non_met_mat']) ?
+            sanitize_text_field($_POST['jmts_user_manufacture_type_non_met_mat']) : '';
 
 
     // SAVE USER META DATA
