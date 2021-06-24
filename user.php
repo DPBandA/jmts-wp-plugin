@@ -156,6 +156,12 @@ function jmts_save_user_meta_data() {
     //  Origin of Imports
     $jmts_user_imports_origin = isset($_POST['jmts_user_imports_origin']) ?
             sanitize_text_field($_POST['jmts_user_imports_origin']) : '';
+    // Total Consignments or Production / Annum 
+    $jmts_user_total_consignment_production = isset($_POST['jmts_user_total_consignment_production']) ?
+            sanitize_text_field($_POST['jmts_user_total_consignment_production']) : '';
+    // Seasonal Importer /Manufacturer
+    $jmts_user_seasonal_importer_manufacturer = isset($_POST['jmts_user_seasonal_importer_manufacturer']) ?
+            sanitize_text_field($_POST['jmts_user_seasonal_importer_manufacturer']) : '';
 
 
     // SAVE USER META DATA
@@ -234,6 +240,11 @@ function jmts_save_user_meta_data() {
     update_user_meta($jmts_user->ID, 'jmts_user_manufacture_type_non_met_mat', $jmts_user_manufacture_type_non_met_mat);
     // Origin of Imports
     update_user_meta($jmts_user->ID, 'jmts_user_imports_origin', $jmts_user_imports_origin);
+    // Total Consignments or Production / Annum
+    update_user_meta($jmts_user->ID, 'jmts_user_total_consignment_production', $jmts_user_total_consignment_production);
+    // Seasonal Importer /Manufacturer
+    update_user_meta($jmts_user->ID, 'jmts_user_seasonal_importer_manufacturer', $jmts_user_seasonal_importer_manufacturer);
+    
 }
 
 // A short code to display a user's data for editing and viewing
@@ -1082,6 +1093,20 @@ function jmts_user_meta_data_form() {
                            value="jmts_user_import_type_gen_merchandise" >
                 </td>
             </tr>
+            <tr>            
+                <td style="border: 0;">
+                    <label for="jmts_user_imports_origin">
+                        <strong>Origin of Imports</strong>
+                    </label>
+                </td>
+                <td style="border: 0;">
+                    <input type="text"
+                           placeholder="enter countries separated by comma"
+                           id="jmts_user_imports_origin"
+                           name="jmts_user_imports_origin"
+                           value="<?= get_user_meta($jmts_user->ID, 'jmts_user_imports_origin', true) ?>" >
+                </td>
+            </tr> 
             <tr>
                 <th style="border: 0;text-align: left;" colspan="2">
                     <strong>Manufacturer Details:</strong>
@@ -1166,6 +1191,50 @@ function jmts_user_meta_data_form() {
                            ?>
                            value="jmts_user_manufacture_type_non_met_mat" >
                 </td>
+            </tr>   
+            <tr>            
+                <td style="border: 0;">
+                    <label for="jmts_user_total_consignment_production">
+                        <strong>Total Consignments or Production / Annum</strong>
+                    </label>
+                </td>
+                <td style="border: 0;">
+                    <input type="text"
+                           pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$"
+                           placeholder="eg $1,000,000.00"
+                           id="jmts_user_total_consignment_production"
+                           name="jmts_user_total_consignment_production"
+                           value="<?= get_user_meta($jmts_user->ID, 'jmts_user_total_consignment_production', true) ?>" >
+                </td>
+            </tr> 
+            <tr>
+                <td style="border: 0;">
+                    <label for="jmts_user_seasonal_importer_manufacturer">
+                        <strong>Seasonal Importer/Manufacturer?</strong>
+                    </label>
+                </td>
+                <td style="border: 0;">
+                    <select id="jmts_user_seasonal_importer_manufacturer" name="jmts_user_seasonal_importer_manufacturer">
+                        <option 
+                            <?= selected('no', get_user_meta($jmts_user->ID, 'jmts_user_seasonal_importer_manufacturer', true), true) ?> value="no"> 
+                                <?= __('No', 'jmts') ?>
+                        </option>
+                        <option <?= selected('yes', get_user_meta($jmts_user->ID, 'jmts_user_seasonal_importer_manufacturer', true), true) ?> value="yes">
+                            <?= __('Yes', 'jmts') ?>
+                        </option>                        
+                    </select>
+                </td>            
+            </tr>
+            <tr>
+                <td style="border: 0;text-align: left;" colspan="2">
+                    <span style="color: black;">
+                        I/we the above-named applicant(s) do hereby declare that 
+                        the information provided herein is accurate to the best 
+                        of my/our knowledge and belief and make this application 
+                        on my behalf, or on behalf of the above-mentioned business 
+                        as a representative appointed or authorized to do so.
+                    </span>
+                </td>            
             </tr>
             <tr>
                 <td style="border: 0;text-align: center;" colspan="2">
