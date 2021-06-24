@@ -153,6 +153,9 @@ function jmts_save_user_meta_data() {
             sanitize_text_field($_POST['jmts_user_manufacture_type_pre_pack_goods']) : '';
     $jmts_user_manufacture_type_non_met_mat = isset($_POST['jmts_user_manufacture_type_non_met_mat']) ?
             sanitize_text_field($_POST['jmts_user_manufacture_type_non_met_mat']) : '';
+    //  Origin of Imports
+    $jmts_user_imports_origin = isset($_POST['jmts_user_imports_origin']) ?
+            sanitize_text_field($_POST['jmts_user_imports_origin']) : '';
 
 
     // SAVE USER META DATA
@@ -225,11 +228,12 @@ function jmts_save_user_meta_data() {
     update_user_meta($jmts_user->ID, 'jmts_user_import_type_non_met_mat', $jmts_user_import_type_non_met_mat);
     update_user_meta($jmts_user->ID, 'jmts_user_import_type_gen_merchandise', $jmts_user_import_type_gen_merchandise);
     // Types of Manufacture
-    update_user_meta($jmts_user->ID, 'jmts_user_import_type_appliance', $jmts_user_import_type_appliance);
-    update_user_meta($jmts_user->ID, 'jmts_user_import_type_construct_mat', $jmts_user_import_type_construct_mat);
-    update_user_meta($jmts_user->ID, 'jmts_user_import_type_pre_pack_goods', $jmts_user_import_type_pre_pack_goods);
-    update_user_meta($jmts_user->ID, 'jmts_user_import_type_non_met_mat', $jmts_user_import_type_non_met_mat);
-    update_user_meta($jmts_user->ID, 'jmts_user_import_type_gen_merchandise', $jmts_user_import_type_gen_merchandise);
+    update_user_meta($jmts_user->ID, 'jmts_user_manufacture_type_appliance', $jmts_user_manufacture_type_appliance);
+    update_user_meta($jmts_user->ID, 'jmts_user_manufacture_type_construct_mat', $jmts_user_manufacture_type_construct_mat);
+    update_user_meta($jmts_user->ID, 'jmts_user_manufacture_type_pre_pack_goods', $jmts_user_manufacture_type_pre_pack_goods);
+    update_user_meta($jmts_user->ID, 'jmts_user_manufacture_type_non_met_mat', $jmts_user_manufacture_type_non_met_mat);
+    // Origin of Imports
+    update_user_meta($jmts_user->ID, 'jmts_user_imports_origin', $jmts_user_imports_origin);
 }
 
 // A short code to display a user's data for editing and viewing
@@ -289,7 +293,7 @@ function jmts_user_meta_data_form() {
                     <select id="jmts_user_is_importer" name="jmts_user_is_importer">
                         <option 
                             <?= selected('no', get_user_meta($jmts_user->ID, 'jmts_user_is_importer', true), true) ?> value="no"> 
-                            <?= __('No', 'jmts') ?>
+                                <?= __('No', 'jmts') ?>
                         </option>
                         <option <?= selected('yes', get_user_meta($jmts_user->ID, 'jmts_user_is_importer', true), true) ?> value="yes">
                             <?= __('Yes', 'jmts') ?>
@@ -1094,6 +1098,74 @@ function jmts_user_meta_data_form() {
                         (tick each type that applies) 
                     </span>
                 </td>            
+            </tr>
+            <tr>            
+                <td style="border: 0;">
+                    <label for="jmts_user_manufacture_type_appliance">
+                        <strong>Appliances</strong>
+                    </label>
+                </td>
+                <td style="border: 0;">
+                    <input type="checkbox"
+                           id="jmts_user_manufacture_type_appliance"
+                           name="jmts_user_manufacture_type_appliance"
+                           <?=
+                           checked('jmts_user_manufacture_type_appliance',
+                                   get_user_meta($jmts_user->ID, 'jmts_user_manufacture_type_appliance', true), true)
+                           ?>
+                           value="jmts_user_manufacture_type_appliance" >
+                </td>
+            </tr>            
+            <tr>            
+                <td style="border: 0;">
+                    <label for="jmts_user_manufacture_type_construct_mat">
+                        <strong>Construction Material</strong>
+                    </label>
+                </td>
+                <td style="border: 0;">
+                    <input type="checkbox"
+                           id="jmts_user_manufacture_type_construct_mat"
+                           name="jmts_user_manufacture_type_construct_mat"
+                           <?=
+                           checked('jmts_user_manufacture_type_construct_mat',
+                                   get_user_meta($jmts_user->ID, 'jmts_user_manufacture_type_construct_mat', true), true)
+                           ?>
+                           value="jmts_user_manufacture_type_construct_mat" >
+                </td>
+            </tr>
+            <tr>            
+                <td style="border: 0;">
+                    <label for="jmts_user_manufacture_type_pre_pack_goods">
+                        <strong>Pre-packaged Goods</strong>
+                    </label>
+                </td>
+                <td style="border: 0;">
+                    <input type="checkbox"
+                           id="jmts_user_manufacture_type_pre_pack_goods"
+                           name="jmts_user_manufacture_type_pre_pack_goods"
+                           <?=
+                           checked('jmts_user_manufacture_type_pre_pack_goods',
+                                   get_user_meta($jmts_user->ID, 'jmts_user_manufacture_type_pre_pack_goods', true), true)
+                           ?>
+                           value="jmts_user_manufacture_type_pre_pack_goods" >
+                </td>
+            </tr>
+            <tr>            
+                <td style="border: 0;">
+                    <label for="jmts_user_manufacture_type_non_met_mat">
+                        <strong>Non-metallic Material</strong>
+                    </label>
+                </td>
+                <td style="border: 0;">
+                    <input type="checkbox"
+                           id="jmts_user_manufacture_type_non_met_mat"
+                           name="jmts_user_manufacture_type_non_met_mat"
+                           <?=
+                           checked('jmts_user_manufacture_type_non_met_mat',
+                                   get_user_meta($jmts_user->ID, 'jmts_user_manufacture_type_non_met_mat', true), true)
+                           ?>
+                           value="jmts_user_manufacture_type_non_met_mat" >
+                </td>
             </tr>
             <tr>
                 <td style="border: 0;text-align: center;" colspan="2">
