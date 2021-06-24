@@ -224,6 +224,12 @@ function jmts_save_user_meta_data() {
     update_user_meta($jmts_user->ID, 'jmts_user_import_type_pre_pack_goods', $jmts_user_import_type_pre_pack_goods);
     update_user_meta($jmts_user->ID, 'jmts_user_import_type_non_met_mat', $jmts_user_import_type_non_met_mat);
     update_user_meta($jmts_user->ID, 'jmts_user_import_type_gen_merchandise', $jmts_user_import_type_gen_merchandise);
+    // Types of Manufacture
+    update_user_meta($jmts_user->ID, 'jmts_user_import_type_appliance', $jmts_user_import_type_appliance);
+    update_user_meta($jmts_user->ID, 'jmts_user_import_type_construct_mat', $jmts_user_import_type_construct_mat);
+    update_user_meta($jmts_user->ID, 'jmts_user_import_type_pre_pack_goods', $jmts_user_import_type_pre_pack_goods);
+    update_user_meta($jmts_user->ID, 'jmts_user_import_type_non_met_mat', $jmts_user_import_type_non_met_mat);
+    update_user_meta($jmts_user->ID, 'jmts_user_import_type_gen_merchandise', $jmts_user_import_type_gen_merchandise);
 }
 
 // A short code to display a user's data for editing and viewing
