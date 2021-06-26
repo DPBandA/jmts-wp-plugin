@@ -162,6 +162,21 @@ function jmts_save_user_meta_data() {
     // Seasonal Importer /Manufacturer
     $jmts_user_seasonal_importer_manufacturer = isset($_POST['jmts_user_seasonal_importer_manufacturer']) ?
             sanitize_text_field($_POST['jmts_user_seasonal_importer_manufacturer']) : '';
+    // Product Details
+    $jmts_user_product_id = isset($_POST['jmts_user_product_id']) ?
+            sanitize_text_field($_POST['jmts_user_product_id']) : '';
+    $jmts_user_product_name = isset($_POST['jmts_user_product_name']) ?
+            sanitize_text_field($_POST['jmts_user_product_name']) : '';
+    $jmts_user_product_supplier = isset($_POST['jmts_user_product_supplier']) ?
+            sanitize_text_field($_POST['jmts_user_product_supplier']) : '';
+    $jmts_user_product_distributor = isset($_POST['jmts_user_product_distributor']) ?
+            sanitize_text_field($_POST['jmts_user_product_distributor']) : '';
+    $jmts_user_product_brand = isset($_POST['jmts_user_product_brand']) ?
+            sanitize_text_field($_POST['jmts_user_product_brand']) : '';
+    $jmts_user_product_model = isset($_POST['jmts_user_product_model']) ?
+            sanitize_text_field($_POST['jmts_user_product_model']) : '';
+    $jmts_user_product_country = isset($_POST['jmts_user_product_country']) ?
+            sanitize_text_field($_POST['jmts_user_product_country']) : '';
 
 
     // SAVE USER META DATA
@@ -244,7 +259,15 @@ function jmts_save_user_meta_data() {
     update_user_meta($jmts_user->ID, 'jmts_user_total_consignment_production', $jmts_user_total_consignment_production);
     // Seasonal Importer /Manufacturer
     update_user_meta($jmts_user->ID, 'jmts_user_seasonal_importer_manufacturer', $jmts_user_seasonal_importer_manufacturer);
-    
+    // Product Details
+    update_user_meta($jmts_user->ID, 'jmts_user_product_id', $jmts_user_product_id);
+    update_user_meta($jmts_user->ID, 'jmts_user_product_name', $jmts_user_product_name);
+    update_user_meta($jmts_user->ID, 'jmts_user_product_supplier', $jmts_user_product_supplier);
+    update_user_meta($jmts_user->ID, 'jmts_user_product_distributor', $jmts_user_product_distributor);
+    update_user_meta($jmts_user->ID, 'jmts_user_product_brand', $jmts_user_product_brand);
+    update_user_meta($jmts_user->ID, 'jmts_user_product_model', $jmts_user_product_model);
+    update_user_meta($jmts_user->ID, 'jmts_user_product_country', $jmts_user_product_country);
+       
 }
 
 // A short code to display a user's data for editing and viewing
@@ -1235,6 +1258,11 @@ function jmts_user_meta_data_form() {
                         as a representative appointed or authorized to do so.
                     </span>
                 </td>            
+            </tr>
+            <tr>
+                <th style="border: 0;text-align: left;" colspan="2">
+                    <strong>Product(s) Details:</strong>
+                </th>            
             </tr>
             <tr>
                 <td style="border: 0;text-align: center;" colspan="2">
