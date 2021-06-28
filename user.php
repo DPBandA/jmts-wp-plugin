@@ -1,22 +1,4 @@
 <?php
-// Remove admin toolbar for non-admin users
-add_action('after_setup_theme', 'jmts_remove_admin_bar');
-
-function jmts_remove_admin_bar() {
-    if (!current_user_can('administrator')) {
-        show_admin_bar(false);
-    }
-}
-
-// Remove backend access for non-admin users
-add_action('admin_init', 'jmts_remove_backend_access');
-
-function jmts_remove_backend_access() {
-    if (!current_user_can('administrator')) {
-        wp_redirect(site_url());
-        exit;
-    }
-}
 
 function jmts_save_user_meta_data() {
     $jmts_user = wp_get_current_user();
