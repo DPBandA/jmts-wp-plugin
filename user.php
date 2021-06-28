@@ -1,4 +1,12 @@
 <?php
+// Remove admin toolbar for non-admin users
+add_action('after_setup_theme', 'jmts_remove_admin_bar');
+
+function jmts_remove_admin_bar() {
+    if (!current_user_can('administrator')) {
+        show_admin_bar(false);
+    }
+}
 
 function jmts_save_user_meta_data() {
     $jmts_user = wp_get_current_user();
