@@ -154,19 +154,19 @@ function jmts_save_user_meta_data() {
             sanitize_text_field($_POST['jmts_user_seasonal_importer_manufacturer']) : '';
     // Product Details
     $jmts_user_product_id = isset($_POST['jmts_user_product_id']) ?
-            sanitize_text_field($_POST['jmts_user_product_id']) : '';
+            wp_kses_post($_POST['jmts_user_product_id']) : '';
     $jmts_user_product_name = isset($_POST['jmts_user_product_name']) ?
-            sanitize_text_field($_POST['jmts_user_product_name']) : '';
+            wp_kses_post($_POST['jmts_user_product_name']) : '';
     $jmts_user_product_supplier = isset($_POST['jmts_user_product_supplier']) ?
-            sanitize_text_field($_POST['jmts_user_product_supplier']) : '';
+            wp_kses_post($_POST['jmts_user_product_supplier']) : '';
     $jmts_user_product_distributor = isset($_POST['jmts_user_product_distributor']) ?
-            sanitize_text_field($_POST['jmts_user_product_distributor']) : '';
+            wp_kses_post($_POST['jmts_user_product_distributor']) : '';
     $jmts_user_product_brand = isset($_POST['jmts_user_product_brand']) ?
-            sanitize_text_field($_POST['jmts_user_product_brand']) : '';
+            wp_kses_post($_POST['jmts_user_product_brand']) : '';
     $jmts_user_product_model = isset($_POST['jmts_user_product_model']) ?
-            sanitize_text_field($_POST['jmts_user_product_model']) : '';
+            wp_kses_post($_POST['jmts_user_product_model']) : '';
     $jmts_user_product_country = isset($_POST['jmts_user_product_country']) ?
-            sanitize_text_field($_POST['jmts_user_product_country']) : '';
+            wp_kses_post($_POST['jmts_user_product_country']) : '';
 
 
     // SAVE USER META DATA
@@ -1237,6 +1237,59 @@ function jmts_user_meta_data_form() {
                         </option>                        
                     </select>
                 </td>            
+            </tr>            
+            <tr>
+                <th style="border: 0;text-align: left;" colspan="2">
+                    <strong>Product(s) Details:</strong>
+                </th>            
+            </tr>
+            <tr>            
+                <td style="border: 0;">
+                    <label for="jmts_user_product_id" >
+                        <strong>Product Id(s)</strong>
+                    </label>
+                </td>
+                <td style="border: 0;">
+                    <textarea name="jmts_user_product_id" 
+                              placeholder="separate items with a comma"
+                              style="text-align:left"><?= get_user_meta($jmts_user->ID, 'jmts_user_product_id', true) ?></textarea>
+                </td>
+            </tr> 
+            <tr>            
+                <td style="border: 0;">
+                    <label for="jmts_user_product_name">
+                        <strong>Product Name(s)</strong>
+                    </label>
+                </td>
+                <td style="border: 0;">
+                    <textarea name="jmts_user_product_name" 
+                              placeholder="separate items with a comma"
+                              style="text-align:left"><?= get_user_meta($jmts_user->ID, 'jmts_user_product_name', true) ?></textarea>
+                </td>
+            </tr>
+            <tr>            
+                <td style="border: 0;">
+                    <label for="jmts_user_product_supplier">
+                        <strong>Product Supplier(s)</strong>
+                    </label>
+                </td>
+                <td style="border: 0;">
+                    <textarea name="jmts_user_product_supplier" 
+                              placeholder="separate items with a comma"
+                              style="text-align:left"><?= get_user_meta($jmts_user->ID, 'jmts_user_product_supplier', true) ?></textarea>
+                </td>
+            </tr>
+            <tr>            
+                <td style="border: 0;">
+                    <label for="jmts_user_product_distributor">
+                        <strong>Distributor(s)</strong>
+                    </label>
+                </td>
+                <td style="border: 0;">
+                    <textarea name="jmts_user_product_distributor" 
+                              placeholder="separate items with a comma"
+                              style="text-align:left"><?= get_user_meta($jmts_user->ID, 'jmts_user_product_distributor', true) ?></textarea>
+                </td>
             </tr>
             <tr>
                 <td style="border: 0;text-align: left;" colspan="2">
@@ -1250,13 +1303,8 @@ function jmts_user_meta_data_form() {
                 </td>            
             </tr>
             <tr>
-                <th style="border: 0;text-align: left;" colspan="2">
-                    <strong>Product(s) Details:</strong>
-                </th>            
-            </tr>
-            <tr>
                 <td style="border: 0;text-align: center;" colspan="2">
-                    <input type="submit" value="Submit">
+                    <input type="submit" value="Update">
                 </td>            
             </tr>            
 
