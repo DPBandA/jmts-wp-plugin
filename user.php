@@ -167,6 +167,12 @@ function jmts_save_user_meta_data() {
             wp_kses_post($_POST['jmts_user_product_model']) : '';
     $jmts_user_product_country = isset($_POST['jmts_user_product_country']) ?
             wp_kses_post($_POST['jmts_user_product_country']) : '';
+    // Type of Label
+    $jmts_user_label_type_neck = isset($_POST['jmts_user_label_type_neck']) ?
+            sanitize_text_field($_POST['jmts_user_label_type_neck']) : '';
+    $jmts_user_label_type_front = isset($_POST['jmts_user_label_type_front']) ?
+            sanitize_text_field($_POST['jmts_user_label_type_front']) : '';
+    
 
 
     // SAVE USER META DATA
@@ -1258,7 +1264,7 @@ function jmts_user_meta_data_form() {
             <tr>            
                 <td style="border: 0;">
                     <label for="jmts_user_product_name">
-                        <strong>Product Name(s)</strong>
+                        <strong>Common Name(s)</strong>
                     </label>
                 </td>
                 <td style="border: 0;">
@@ -1270,7 +1276,7 @@ function jmts_user_meta_data_form() {
             <tr>            
                 <td style="border: 0;">
                     <label for="jmts_user_product_supplier">
-                        <strong>Product Supplier(s)</strong>
+                        <strong>Supplier(s)</strong>
                     </label>
                 </td>
                 <td style="border: 0;">
@@ -1291,6 +1297,42 @@ function jmts_user_meta_data_form() {
                               style="text-align:left"><?= get_user_meta($jmts_user->ID, 'jmts_user_product_distributor', true) ?></textarea>
                 </td>
             </tr>
+            <tr>            
+                <td style="border: 0;">
+                    <label for="jmts_user_product_brand">
+                        <strong>Brand(s)</strong>
+                    </label>
+                </td>
+                <td style="border: 0;">
+                    <textarea name="jmts_user_product_brand" 
+                              placeholder="separate items with a comma"
+                              style="text-align:left"><?= get_user_meta($jmts_user->ID, 'jmts_user_product_brand', true) ?></textarea>
+                </td>
+            </tr>
+            <tr>            
+                <td style="border: 0;">
+                    <label for="jmts_user_product_model">
+                        <strong>Model(s)</strong>
+                    </label>
+                </td>
+                <td style="border: 0;">
+                    <textarea name="jmts_user_product_model" 
+                              placeholder="separate items with a comma"
+                              style="text-align:left"><?= get_user_meta($jmts_user->ID, 'jmts_user_product_model', true) ?></textarea>
+                </td>
+            </tr>
+            <tr>            
+                <td style="border: 0;">
+                    <label for="jmts_user_product_country">
+                        <strong>Country(ies)</strong>
+                    </label>
+                </td>
+                <td style="border: 0;">
+                    <textarea name="jmts_user_product_country" 
+                              placeholder="separate items with a comma"
+                              style="text-align:left"><?= get_user_meta($jmts_user->ID, 'jmts_user_product_country', true) ?></textarea>
+                </td>
+            </tr>
             <tr>
                 <td style="border: 0;text-align: left;" colspan="2">
                     <span style="color: black;">
@@ -1299,6 +1341,18 @@ function jmts_user_meta_data_form() {
                         of my/our knowledge and belief and make this application 
                         on my behalf, or on behalf of the above-mentioned business 
                         as a representative appointed or authorized to do so.
+                    </span>
+                </td>            
+            </tr>
+            <tr>
+                <th style="border: 0;text-align: left;" colspan="2">
+                    <strong>Type of Label:</strong>
+                </th>            
+            </tr>
+            <tr>
+                <td style="border: 0;text-align: center;" colspan="2">
+                    <span style="color: red;">
+                        Tick the applicable boxes
                     </span>
                 </td>            
             </tr>
