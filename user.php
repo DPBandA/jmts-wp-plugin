@@ -172,6 +172,10 @@ function jmts_save_user_meta_data() {
             sanitize_text_field($_POST['jmts_user_label_type_neck']) : '';
     $jmts_user_label_type_front = isset($_POST['jmts_user_label_type_front']) ?
             sanitize_text_field($_POST['jmts_user_label_type_front']) : '';
+    $jmts_user_label_type_back = isset($_POST['jmts_user_label_type_back']) ?
+            sanitize_text_field($_POST['jmts_user_label_type_back']) : '';
+    $jmts_user_label_type_resubmission = isset($_POST['jmts_user_label_type_resubmission']) ?
+            sanitize_text_field($_POST['jmts_user_label_type_resubmission']) : '';
     
 
 
@@ -263,7 +267,11 @@ function jmts_save_user_meta_data() {
     update_user_meta($jmts_user->ID, 'jmts_user_product_brand', $jmts_user_product_brand);
     update_user_meta($jmts_user->ID, 'jmts_user_product_model', $jmts_user_product_model);
     update_user_meta($jmts_user->ID, 'jmts_user_product_country', $jmts_user_product_country);
-       
+    // Type of Label
+    update_user_meta($jmts_user->ID, 'jmts_user_label_type_neck', $jmts_user_label_type_neck);
+    update_user_meta($jmts_user->ID, 'jmts_user_label_type_front', $jmts_user_label_type_front);
+    update_user_meta($jmts_user->ID, 'jmts_user_label_type_back', $jmts_user_label_type_back);
+    update_user_meta($jmts_user->ID, 'jmts_user_label_type_resubmission', $jmts_user_label_type_resubmission);
 }
 
 // A short code to display a user's data for editing and viewing
