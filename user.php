@@ -176,8 +176,6 @@ function jmts_save_user_meta_data() {
             sanitize_text_field($_POST['jmts_user_label_type_back']) : '';
     $jmts_user_label_type_resubmission = isset($_POST['jmts_user_label_type_resubmission']) ?
             sanitize_text_field($_POST['jmts_user_label_type_resubmission']) : '';
-    
-
 
     // SAVE USER META DATA
     update_user_meta($jmts_user->ID, 'jmts_user_is_importer', $jmts_user_is_importer);
@@ -1251,7 +1249,18 @@ function jmts_user_meta_data_form() {
                         </option>                        
                     </select>
                 </td>            
-            </tr>            
+            </tr>         
+            <tr>
+                <td style="border: 0;text-align: left;" colspan="2">
+                    <span style="color: black;">
+                        I/we the above-named applicant(s) do hereby declare that 
+                        the information provided herein is accurate to the best 
+                        of my/our knowledge and belief and make this application 
+                        on my behalf, or on behalf of the above-mentioned business 
+                        as a representative appointed or authorized to do so.
+                    </span>
+                </td>            
+            </tr>
             <tr>
                 <th style="border: 0;text-align: left;" colspan="2">
                     <strong>Product(s) Details:</strong>
@@ -1340,18 +1349,7 @@ function jmts_user_meta_data_form() {
                               placeholder="separate items with a comma"
                               style="text-align:left"><?= get_user_meta($jmts_user->ID, 'jmts_user_product_country', true) ?></textarea>
                 </td>
-            </tr>
-            <tr>
-                <td style="border: 0;text-align: left;" colspan="2">
-                    <span style="color: black;">
-                        I/we the above-named applicant(s) do hereby declare that 
-                        the information provided herein is accurate to the best 
-                        of my/our knowledge and belief and make this application 
-                        on my behalf, or on behalf of the above-mentioned business 
-                        as a representative appointed or authorized to do so.
-                    </span>
-                </td>            
-            </tr>
+            </tr>            
             <tr>
                 <th style="border: 0;text-align: left;" colspan="2">
                     <strong>Type of Label:</strong>
@@ -1364,6 +1362,100 @@ function jmts_user_meta_data_form() {
                     </span>
                 </td>            
             </tr>
+            <tr>            
+                <td style="border: 0;">
+                    <label for="jmts_user_label_type_neck">
+                        <strong>Neck Label</strong>
+                    </label>
+                </td>
+                <td style="border: 0;">
+                    <input type="checkbox"
+                           id="jmts_user_label_type_neck"
+                           name="jmts_user_label_type_neck"
+                           <?=
+                           checked('jmts_user_label_type_neck',
+                                   get_user_meta($jmts_user->ID, 'jmts_user_label_type_neck', true), true)
+                           ?>
+                           value="jmts_user_label_type_neck" >
+                </td>
+            </tr>            
+            <tr>            
+                <td style="border: 0;">
+                    <label for="jmts_user_label_type_front">
+                        <strong>Front Label</strong>
+                    </label>
+                </td>
+                <td style="border: 0;">
+                    <input type="checkbox"
+                           id="jmts_user_label_type_front"
+                           name="jmts_user_label_type_front"
+                           <?=
+                           checked('jmts_user_label_type_front',
+                                   get_user_meta($jmts_user->ID, 'jmts_user_label_type_front', true), true)
+                           ?>
+                           value="jmts_user_label_type_front" >
+                </td>
+            </tr>
+            <tr>            
+                <td style="border: 0;">
+                    <label for="jmts_user_label_type_back">
+                        <strong>Back Label</strong>
+                    </label>
+                </td>
+                <td style="border: 0;">
+                    <input type="checkbox"
+                           id="jmts_user_label_type_back"
+                           name="jmts_user_label_type_back"
+                           <?=
+                           checked('jmts_user_label_type_back',
+                                   get_user_meta($jmts_user->ID, 'jmts_user_label_type_back', true), true)
+                           ?>
+                           value="jmts_user_label_type_back" >
+                </td>
+            </tr>
+            <tr>            
+                <td style="border: 0;">
+                    <label for="jmts_user_label_type_resubmission">
+                        <strong>Resubmission After Rejection</strong>
+                    </label>
+                </td>
+                <td style="border: 0;">
+                    <input type="checkbox"
+                           id="jmts_user_label_type_resubmission"
+                           name="jmts_user_label_type_resubmission"
+                           <?=
+                           checked('jmts_user_label_type_resubmission',
+                                   get_user_meta($jmts_user->ID, 'jmts_user_label_type_resubmission', true), true)
+                           ?>
+                           value="jmts_user_label_type_resubmission" >
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 0;" colspan="2">
+                    <hr/>
+                </td>
+            </tr>
+            <tr>
+                <th style="border: 0;text-align: center;" colspan="2">
+                    <strong>Applicant's Declaration</strong>
+                </th>            
+            </tr>
+            <tr>
+                <td style="border: 0;text-align: left;" colspan="2">
+                    <span style="color: black;">
+                        I declare that all statements appearing on this application 
+                        are true and correct to the best of my knowledge and belief; 
+                        and, that the representation attached to this form, including 
+                        supplemental documents, truly and correctly represents the 
+                        content of the container to which these labels will be applied. 
+                        I also certify that I have read, understood and complied 
+                        with the conditions and instructions which are attached 
+                        to the Labelling Standards, JS CRS 5, JS 349, JS 350, JS 1: Parts 2 to 30 
+                        and any other relevant product standard and the procedures 
+                        and requirements for this certificate.
+                    </span>
+                </td>            
+            </tr>            
             <tr>
                 <td style="border: 0;text-align: center;" colspan="2">
                     <input type="submit" value="Update">
