@@ -279,7 +279,7 @@ function jmts_user_meta_data_form() {
     ?>
     <?php
     if (is_user_logged_in()) {
-        $jmts_user = wp_get_current_user();
+        $jmts_user = wp_get_current_user();        
     } else {
         ?>
         <h5 style="text-align:center;color: darkblue;">
