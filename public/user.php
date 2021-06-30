@@ -441,7 +441,7 @@ function jmts_user_meta_data_form() {
                            class="regular-text ltr"
                            id="jmts_user_applicant_lastname1"
                            name="jmts_user_applicant_lastname1"
-                           placeholder="Last Name" 
+                           placeholder="Last Name (required)" 
                            required
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_applicant_lastname1', true) ?>" >
                 </td>
@@ -450,7 +450,7 @@ function jmts_user_meta_data_form() {
                            class="regular-text ltr"
                            id="jmts_user_applicant_firstname1"
                            name="jmts_user_applicant_firstname1"
-                           placeholder="First Name" 
+                           placeholder="First Name (required)" 
                            required
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_applicant_firstname1', true) ?>" >
                 </td>                
@@ -500,7 +500,7 @@ function jmts_user_meta_data_form() {
                 <td style="border: 0;">
                     <input type="text"
                            class="regular-text ltr"
-                           placeholder="(optional)"
+                           placeholder="Business Name (optional)"
                            id="jmts_user_applicant_business_name"
                            name="jmts_user_applicant_business_name"
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_applicant_business_name', true) ?>" >
@@ -576,6 +576,7 @@ function jmts_user_meta_data_form() {
                            class="regular-text ltr"
                            id="jmts_user_trading_name"
                            name="jmts_user_trading_name"
+                           placeholder="Trading Name(s) (optional)"
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_trading_name', true) ?>" >
                 </td>
             </tr>
@@ -590,6 +591,8 @@ function jmts_user_meta_data_form() {
                            class="regular-text ltr"
                            id="jmts_user_business_type"
                            name="jmts_user_business_type"
+                           placeholder="Business Type (required)"
+                           required
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_business_type', true) ?>" >
                 </td>
             </tr>
@@ -609,6 +612,8 @@ function jmts_user_meta_data_form() {
                            class="regular-text ltr"
                            id="jmts_user_principal_address_line1"
                            name="jmts_user_principal_address_line1"
+                           placeholder="Address Line 1 (required)"
+                           required
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_principal_address_line1', true) ?>" >
                 </td>
             </tr>
@@ -623,6 +628,7 @@ function jmts_user_meta_data_form() {
                            class="regular-text ltr"
                            id="jmts_user_principal_address_line2"
                            name="jmts_user_principal_address_line2"
+                           placeholder="Address Line 2 (optional)"
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_principal_address_line2', true) ?>" >
                 </td>
             </tr>
