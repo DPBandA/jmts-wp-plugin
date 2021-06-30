@@ -382,6 +382,7 @@ function jmts_user_meta_data_form() {
                            class="regular-text ltr"
                            id="jmts_user_trn"
                            name="jmts_user_trn"
+                           required
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_trn', true) ?>" >
                 </td>
             </tr>
@@ -499,6 +500,7 @@ function jmts_user_meta_data_form() {
                 <td style="border: 0;">
                     <input type="text"
                            class="regular-text ltr"
+                           placeholder="(optional)"
                            id="jmts_user_applicant_business_name"
                            name="jmts_user_applicant_business_name"
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_applicant_business_name', true) ?>" >
