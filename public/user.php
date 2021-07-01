@@ -165,6 +165,8 @@ function jmts_save_user_meta_data() {
             wp_kses_post($_POST['jmts_user_product_brand']) : '';
     $jmts_user_product_model = isset($_POST['jmts_user_product_model']) ?
             wp_kses_post($_POST['jmts_user_product_model']) : '';
+    $jmts_user_product_serial = isset($_POST['jmts_user_product_serial']) ?
+            wp_kses_post($_POST['jmts_user_product_serial']) : '';
     $jmts_user_product_country = isset($_POST['jmts_user_product_country']) ?
             wp_kses_post($_POST['jmts_user_product_country']) : '';
     // Type of Label
@@ -264,6 +266,7 @@ function jmts_save_user_meta_data() {
     update_user_meta($jmts_user->ID, 'jmts_user_product_distributor', $jmts_user_product_distributor);
     update_user_meta($jmts_user->ID, 'jmts_user_product_brand', $jmts_user_product_brand);
     update_user_meta($jmts_user->ID, 'jmts_user_product_model', $jmts_user_product_model);
+    update_user_meta($jmts_user->ID, 'jmts_user_product_serial', $jmts_user_product_serial);
     update_user_meta($jmts_user->ID, 'jmts_user_product_country', $jmts_user_product_country);
     // Type of Label
     update_user_meta($jmts_user->ID, 'jmts_user_label_type_neck', $jmts_user_label_type_neck);
@@ -1309,19 +1312,7 @@ function jmts_user_meta_data_form() {
                               placeholder="separate items with a comma"
                               style="text-align:left"><?= get_user_meta($jmts_user->ID, 'jmts_user_product_supplier', true) ?></textarea>
                 </td>
-            </tr>
-            <tr>            
-                <td style="border: 0;">
-                    <label for="jmts_user_product_distributor">
-                        <strong>Distributor(s)</strong>
-                    </label>
-                </td>
-                <td style="border: 0;">
-                    <textarea name="jmts_user_product_distributor" 
-                              placeholder="separate items with a comma"
-                              style="text-align:left"><?= get_user_meta($jmts_user->ID, 'jmts_user_product_distributor', true) ?></textarea>
-                </td>
-            </tr>
+            </tr>            
             <tr>            
                 <td style="border: 0;">
                     <label for="jmts_user_product_brand">
@@ -1344,6 +1335,18 @@ function jmts_user_meta_data_form() {
                     <textarea name="jmts_user_product_model" 
                               placeholder="separate items with a comma"
                               style="text-align:left"><?= get_user_meta($jmts_user->ID, 'jmts_user_product_model', true) ?></textarea>
+                </td>
+            </tr>
+            <tr>            
+                <td style="border: 0;">
+                    <label for="jmts_user_product_serial">
+                        <strong>Serial #(s)</strong>
+                    </label>
+                </td>
+                <td style="border: 0;">
+                    <textarea name="jmts_user_product_serial" 
+                              placeholder="separate items with a comma"
+                              style="text-align:left"><?= get_user_meta($jmts_user->ID, 'jmts_user_product_serial', true) ?></textarea>
                 </td>
             </tr>
             <tr>            
