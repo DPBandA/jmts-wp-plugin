@@ -753,7 +753,7 @@ function jmts_user_meta_data_form() {
             <tr>            
                 <td style="border: 0;">
                     <label for="jmts_user_receival1_address_line1">
-                        <strong>Location 1 Address Line 1</strong>
+                        <strong>Address Line 1</strong>
                     </label>
                 </td>
                 <td style="border: 0;">
@@ -766,7 +766,7 @@ function jmts_user_meta_data_form() {
             <tr>            
                 <td style="border: 0;">
                     <label for="jmts_user_receival1_address_line2">
-                        <strong>Location 1 Address Line 2</strong>
+                        <strong>Address Line 2</strong>
                     </label>
                 </td>
                 <td style="border: 0;">
@@ -922,7 +922,7 @@ function jmts_user_meta_data_form() {
             <tr>            
                 <td style="border: 0;">
                     <label for="jmts_user_receival2_address_line1">
-                        <strong>Location 2 Address Line 1</strong>
+                        <strong>Address Line 1</strong>
                     </label>
                 </td>
                 <td style="border: 0;">
@@ -935,7 +935,7 @@ function jmts_user_meta_data_form() {
             <tr>            
                 <td style="border: 0;">
                     <label for="jmts_user_receival2_address_line2">
-                        <strong>Location 2 Address Line 2</strong>
+                        <strong>Address Line 2</strong>
                     </label>
                 </td>
                 <td style="border: 0;">
