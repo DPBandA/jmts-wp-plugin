@@ -382,7 +382,6 @@ function jmts_user_meta_data_form() {
                 </td>
                 <td style="border: 0;">
                     <input type="text"
-                           class="regular-text ltr"
                            id="jmts_user_trn"
                            name="jmts_user_trn"
                            required
@@ -414,7 +413,6 @@ function jmts_user_meta_data_form() {
                 </td>
                 <td style="border: 0;">
                     <input type="date"
-                           class="regular-text ltr"
                            id="jmts_user_tcc_expiration_date"
                            name="jmts_user_tcc_expiration_date"
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_tcc_expiration_date', true) ?>" >
@@ -441,7 +439,6 @@ function jmts_user_meta_data_form() {
             <tr>   
                 <td style="border: 0;">
                     <input type="text"
-                           class="regular-text ltr"
                            id="jmts_user_applicant_lastname1"
                            name="jmts_user_applicant_lastname1"
                            placeholder="Last Name (required)" 
@@ -450,7 +447,6 @@ function jmts_user_meta_data_form() {
                 </td>
                 <td style="border: 0;">
                     <input type="text"
-                           class="regular-text ltr"
                            id="jmts_user_applicant_firstname1"
                            name="jmts_user_applicant_firstname1"
                            placeholder="First Name (required)" 
@@ -461,7 +457,6 @@ function jmts_user_meta_data_form() {
             <tr>   
                 <td style="border: 0;">
                     <input type="text"
-                           class="regular-text ltr"
                            id="jmts_user_applicant_lastname2"
                            name="jmts_user_applicant_lastname2"
                            placeholder="Last Name (optional)" 
@@ -469,7 +464,6 @@ function jmts_user_meta_data_form() {
                 </td>
                 <td style="border: 0;">
                     <input type="text"
-                           class="regular-text ltr"
                            id="jmts_user_applicant_firstname2"
                            name="jmts_user_applicant_firstname2"
                            placeholder="First Name (optional)"                            
@@ -479,7 +473,6 @@ function jmts_user_meta_data_form() {
             <tr>   
                 <td style="border: 0;">
                     <input type="text"
-                           class="regular-text ltr"
                            id="jmts_user_applicant_lastname3"
                            name="jmts_user_applicant_lastname3"
                            placeholder="Last Name (optional)" 
@@ -487,7 +480,6 @@ function jmts_user_meta_data_form() {
                 </td>
                 <td style="border: 0;">
                     <input type="text"
-                           class="regular-text ltr"
                            id="jmts_user_applicant_firstname3"
                            name="jmts_user_applicant_firstname3"
                            placeholder="First Name (optional)"                            
@@ -502,7 +494,6 @@ function jmts_user_meta_data_form() {
                 </td>
                 <td style="border: 0;">
                     <input type="text"
-                           class="regular-text ltr"
                            placeholder="Business Name (optional)"
                            id="jmts_user_applicant_business_name"
                            name="jmts_user_applicant_business_name"
@@ -517,7 +508,6 @@ function jmts_user_meta_data_form() {
             <tr>   
                 <td style="border: 0;">
                     <input type="text"
-                           class="regular-text ltr"
                            id="jmts_user_partner_lastname1"
                            name="jmts_user_partner_lastname1"
                            placeholder="Last Name (optional)" 
@@ -525,7 +515,6 @@ function jmts_user_meta_data_form() {
                 </td>
                 <td style="border: 0;">
                     <input type="text"
-                           class="regular-text ltr"
                            id="jmts_user_partner_firstname1"
                            name="jmts_user_partner_firstname1"
                            placeholder="First Name (optional)" 
@@ -535,7 +524,6 @@ function jmts_user_meta_data_form() {
             <tr>   
                 <td style="border: 0;">
                     <input type="text"
-                           class="regular-text ltr"
                            id="jmts_user_partner_lastname2"
                            name="jmts_user_partner_lastname2"
                            placeholder="Last Name (optional)" 
@@ -543,7 +531,6 @@ function jmts_user_meta_data_form() {
                 </td>
                 <td style="border: 0;">
                     <input type="text"
-                           class="regular-text ltr"
                            id="jmts_user_partner_firstname2"
                            name="jmts_user_partner_firstname2"
                            placeholder="First Name (optional)" 
@@ -553,7 +540,6 @@ function jmts_user_meta_data_form() {
             <tr>   
                 <td style="border: 0;">
                     <input type="text"
-                           class="regular-text ltr"
                            id="jmts_user_partner_lastname3"
                            name="jmts_user_partner_lastname3"
                            placeholder="Last Name (optional)" 
@@ -561,7 +547,6 @@ function jmts_user_meta_data_form() {
                 </td>
                 <td style="border: 0;">
                     <input type="text"
-                           class="regular-text ltr"
                            id="jmts_user_partner_firstname3"
                            name="jmts_user_partner_firstname3"
                            placeholder="First Name (optional)" 
@@ -576,7 +561,6 @@ function jmts_user_meta_data_form() {
                 </td>
                 <td style="border: 0;">
                     <input type="text"
-                           class="regular-text ltr"
                            id="jmts_user_trading_name"
                            name="jmts_user_trading_name"
                            placeholder="Trading Name(s) (optional)"
@@ -591,7 +575,6 @@ function jmts_user_meta_data_form() {
                 </td>
                 <td style="border: 0;">
                     <input type="text"
-                           class="regular-text ltr"
                            id="jmts_user_business_type"
                            name="jmts_user_business_type"
                            placeholder="Business Type (required)"
@@ -612,7 +595,6 @@ function jmts_user_meta_data_form() {
                 </td>
                 <td style="border: 0;">
                     <input type="text"
-                           class="regular-text ltr"
                            id="jmts_user_principal_address_line1"
                            name="jmts_user_principal_address_line1"
                            placeholder="Address Line 1 (required)"
@@ -628,7 +610,6 @@ function jmts_user_meta_data_form() {
                 </td>
                 <td style="border: 0;">
                     <input type="text"
-                           class="regular-text ltr"
                            id="jmts_user_principal_address_line2"
                            name="jmts_user_principal_address_line2"
                            placeholder="Address Line 2 (optional)"
@@ -643,7 +624,7 @@ function jmts_user_meta_data_form() {
                 </td>
                 <td style="border: 0;">
                     <input type="text"
-                           class="regular-text ltr"
+                           placeholder="Postal Address (optional)"
                            id="jmts_user_principal_postal_address"
                            name="jmts_user_principal_postal_address"
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_principal_postal_address', true) ?>" >
@@ -657,18 +638,18 @@ function jmts_user_meta_data_form() {
             <tr>   
                 <td style="border: 0;">
                     <input type="text"
-                           class="regular-text ltr"
                            id="jmts_user_principal_lastname1"
                            name="jmts_user_principal_lastname1"
-                           placeholder="Last Name" 
+                           placeholder="Last Name (required)" 
+                           required
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_principal_lastname1', true) ?>" >
                 </td>
                 <td style="border: 0;">
                     <input type="text"
-                           class="regular-text ltr"
                            id="jmts_user_principal_firstname1"
                            name="jmts_user_principal_firstname1"
-                           placeholder="First Name" 
+                           placeholder="First Name (required)" 
+                           required
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_principal_firstname1', true) ?>" >
                 </td>                
             </tr>
@@ -680,8 +661,8 @@ function jmts_user_meta_data_form() {
                 </td>
                 <td style="border: 0;">
                     <input type="text"
-                           class="regular-text ltr"
                            id="jmts_user_principal_position"
+                           placeholder="e.g. Managing Director (optional)"
                            name="jmts_user_principal_position"
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_principal_position', true) ?>" >
                 </td>
@@ -695,7 +676,8 @@ function jmts_user_meta_data_form() {
                 <td style="border: 0;">
                     <input type="tel"
                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                           placeholder="123-456-0789"
+                           placeholder="e.g. 123-456-0789 (required)"
+                           required
                            id="jmts_user_principal_phone"
                            name="jmts_user_principal_phone"
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_principal_phone', true) ?>" >
@@ -710,7 +692,8 @@ function jmts_user_meta_data_form() {
                 <td style="border: 0;">
                     <input type="tel"
                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                           placeholder="123-456-0789"
+                           placeholder="e.g. 123-456-0789 (required)"
+                           required
                            id="jmts_user_principal_mobile"
                            name="jmts_user_principal_mobile"
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_principal_mobile', true) ?>" >
@@ -725,7 +708,7 @@ function jmts_user_meta_data_form() {
                 <td style="border: 0;">
                     <input type="tel"
                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                           placeholder="123-456-0789"
+                           placeholder="e.g. 123-456-0789 (optional)"
                            id="jmts_user_principal_fax"
                            name="jmts_user_principal_fax"
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_principal_fax', true) ?>" >
@@ -739,13 +722,14 @@ function jmts_user_meta_data_form() {
                 </td>
                 <td style="border: 0;">
                     <input type="email"
-                           placeholder="email@example.com"
+                           placeholder="e.g. email@example.com (required)"
+                           required
                            id="jmts_user_principal_email"
                            name="jmts_user_principal_email"
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_principal_email', true) ?>" >
                 </td>
             </tr>
-            <tr>
+            <tr> 
                 <th style="border: 0;text-align: left;" colspan="2">
                     <strong>Receival Location 1:</strong>
                 </th>            
@@ -760,6 +744,8 @@ function jmts_user_meta_data_form() {
                     <input type="text"
                            id="jmts_user_receival1_address_line1"
                            name="jmts_user_receival1_address_line1"
+                           placeholder="Address Line 1 (required)"
+                           required
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_receival1_address_line1', true) ?>" >
                 </td>
             </tr>
@@ -784,7 +770,6 @@ function jmts_user_meta_data_form() {
             <tr>   
                 <td style="border: 0;">
                     <input type="text"
-                           class="regular-text ltr"
                            id="jmts_user_receival1_lastname1"
                            name="jmts_user_receival1_lastname1"
                            placeholder="Last Name" 
@@ -792,7 +777,6 @@ function jmts_user_meta_data_form() {
                 </td>
                 <td style="border: 0;">
                     <input type="text"
-                           class="regular-text ltr"
                            id="jmts_user_receival1_firstname1"
                            name="jmts_user_receival1_firstname1"
                            placeholder="First Name" 
@@ -953,7 +937,6 @@ function jmts_user_meta_data_form() {
             <tr>   
                 <td style="border: 0;">
                     <input type="text"
-                           class="regular-text ltr"
                            id="jmts_user_receival2_lastname1"
                            name="jmts_user_receival2_lastname1"
                            placeholder="Last Name" 
@@ -961,7 +944,6 @@ function jmts_user_meta_data_form() {
                 </td>
                 <td style="border: 0;">
                     <input type="text"
-                           class="regular-text ltr"
                            id="jmts_user_receival2_firstname1"
                            name="jmts_user_receival2_firstname1"
                            placeholder="First Name" 
@@ -1237,7 +1219,7 @@ function jmts_user_meta_data_form() {
                 <td style="border: 0;">
                     <input type="text"
                            pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$"
-                           placeholder="eg $1,000,000.00"
+                           placeholder="e.g. $1,000,000.00"
                            id="jmts_user_total_consignment_production"
                            name="jmts_user_total_consignment_production"
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_total_consignment_production', true) ?>" >
