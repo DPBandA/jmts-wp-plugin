@@ -759,6 +759,8 @@ function jmts_user_meta_data_form() {
                     <input type="text"
                            id="jmts_user_receival1_address_line2"
                            name="jmts_user_receival1_address_line2"
+                           placeholder="Address Line 2 (required)"
+                           required
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_receival1_address_line2', true) ?>" >
                 </td>
             </tr>
@@ -772,14 +774,16 @@ function jmts_user_meta_data_form() {
                     <input type="text"
                            id="jmts_user_receival1_lastname1"
                            name="jmts_user_receival1_lastname1"
-                           placeholder="Last Name" 
+                           placeholder="Last Name (required)"
+                           required
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_receival1_lastname1', true) ?>" >
                 </td>
                 <td style="border: 0;">
                     <input type="text"
                            id="jmts_user_receival1_firstname1"
                            name="jmts_user_receival1_firstname1"
-                           placeholder="First Name" 
+                           placeholder="First Name (required)"
+                           required
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_receival1_firstname1', true) ?>" >
                 </td>                
             </tr>
@@ -792,7 +796,8 @@ function jmts_user_meta_data_form() {
                 <td style="border: 0;">
                     <input type="tel"
                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                           placeholder="123-456-0789"
+                           placeholder="e.g. 123-456-0789 (required)"
+                           required
                            id="jmts_user_receival1_phone"
                            name="jmts_user_receival1_phone"
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_receival1_phone', true) ?>" >
@@ -807,7 +812,8 @@ function jmts_user_meta_data_form() {
                 <td style="border: 0;">
                     <input type="tel"
                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                           placeholder="123-456-0789"
+                           placeholder="e.g. 123-456-0789 (required)"
+                           required
                            id="jmts_user_receival1_mobile"
                            name="jmts_user_receival1_mobile"
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_receival1_mobile', true) ?>" >
@@ -822,7 +828,7 @@ function jmts_user_meta_data_form() {
                 <td style="border: 0;">
                     <input type="tel"
                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                           placeholder="123-456-0789"
+                           placeholder="e.g. 123-456-0789 (optional)"
                            id="jmts_user_receival1_fax"
                            name="jmts_user_receival1_fax"
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_receival1_fax', true) ?>" >
@@ -836,9 +842,10 @@ function jmts_user_meta_data_form() {
                 </td>
                 <td style="border: 0;">
                     <input type="email"
-                           placeholder="email@example.com"
+                           placeholder="e.g. email@example.com (required)"
                            id="jmts_user_receival1_email"
                            name="jmts_user_receival1_email"
+                           required
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_receival1_email', true) ?>" >
                 </td>
             </tr>            
