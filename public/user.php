@@ -920,6 +920,7 @@ function jmts_user_meta_data_form() {
                     <input type="text"
                            id="jmts_user_receival2_address_line1"
                            name="jmts_user_receival2_address_line1"
+                           placeholder="Address Line 1 (optional)"
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_receival2_address_line1', true) ?>" >
                 </td>
             </tr>
@@ -933,6 +934,7 @@ function jmts_user_meta_data_form() {
                     <input type="text"
                            id="jmts_user_receival2_address_line2"
                            name="jmts_user_receival2_address_line2"
+                           placeholder="Address Line 2 (optional)"
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_receival2_address_line2', true) ?>" >
                 </td>
             </tr>
@@ -946,14 +948,14 @@ function jmts_user_meta_data_form() {
                     <input type="text"
                            id="jmts_user_receival2_lastname1"
                            name="jmts_user_receival2_lastname1"
-                           placeholder="Last Name" 
+                           placeholder="Last Name (optional)" 
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_receival2_lastname1', true) ?>" >
                 </td>
                 <td style="border: 0;">
                     <input type="text"
                            id="jmts_user_receival2_firstname1"
                            name="jmts_user_receival2_firstname1"
-                           placeholder="First Name" 
+                           placeholder="First Name (optional)" 
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_receival2_firstname1', true) ?>" >
                 </td>                
             </tr>
@@ -966,7 +968,7 @@ function jmts_user_meta_data_form() {
                 <td style="border: 0;">
                     <input type="tel"
                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                           placeholder="123-456-0789"
+                           placeholder="e.g. 123-456-0789 (optional)"
                            id="jmts_user_receival2_phone"
                            name="jmts_user_receival2_phone"
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_receival2_phone', true) ?>" >
@@ -981,7 +983,7 @@ function jmts_user_meta_data_form() {
                 <td style="border: 0;">
                     <input type="tel"
                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                           placeholder="123-456-0789"
+                           placeholder="e.g. 123-456-0789 (optional)"
                            id="jmts_user_receival2_mobile"
                            name="jmts_user_receival2_mobile"
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_receival2_mobile', true) ?>" >
@@ -996,7 +998,7 @@ function jmts_user_meta_data_form() {
                 <td style="border: 0;">
                     <input type="tel"
                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                           placeholder="123-456-0789"
+                           placeholder="e.g. 123-456-0789 (optional)"
                            id="jmts_user_receival2_fax"
                            name="jmts_user_receival2_fax"
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_receival2_fax', true) ?>" >
@@ -1010,7 +1012,7 @@ function jmts_user_meta_data_form() {
                 </td>
                 <td style="border: 0;">
                     <input type="email"
-                           placeholder="email@example.com"
+                           placeholder="e.g. email@example.com (optional)"
                            id="jmts_user_receival2_email"
                            name="jmts_user_receival2_email"
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_receival2_email', true) ?>" >
@@ -1344,10 +1346,11 @@ function jmts_user_meta_data_form() {
                         <strong>Country(ies)</strong>
                     </label>
                 </td>
-                <td style="border: 0;">
+                <td style="border: 0;">                   
                     <textarea name="jmts_user_product_country" 
                               placeholder="separate items with a comma"
-                              style="text-align:left"><?= get_user_meta($jmts_user->ID, 'jmts_user_product_country', true) ?></textarea>
+                              style="text-align:left"><?= get_user_meta($jmts_user->ID, 'jmts_user_product_country', true) ?>
+                    </textarea>                    
                 </td>
             </tr>            
             <tr>
