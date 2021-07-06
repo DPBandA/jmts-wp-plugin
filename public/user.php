@@ -207,6 +207,34 @@ function jmts_save_user_meta_data() {
             $jmts_user_label_image_front = 'Error uploading file!';
         }
     }
+    // Back
+    $jmts_user_label_image_back = '';
+    if (isset($_FILES['jmts_user_label_image_file_back']) &&
+            $_FILES['jmts_user_label_image_file_back']['tmp_name'] !== '') {
+        $file = wp_upload_bits($_FILES['jmts_user_label_image_file_back']['name'],
+                null,
+                file_get_contents($_FILES['jmts_user_label_image_file_back']['tmp_name']));
+
+        if (FALSE === $file['error']) {
+            $jmts_user_label_image_back = $file['url'];
+        } else {
+            $jmts_user_label_image_back = 'Error uploading file!';
+        }
+    }
+    // Resubmission
+    $jmts_user_label_image_resubmission = '';
+    if (isset($_FILES['jmts_user_label_image_file_resubmission']) &&
+            $_FILES['jmts_user_label_image_file_resubmission']['tmp_name'] !== '') {
+        $file = wp_upload_bits($_FILES['jmts_user_label_image_file_resubmission']['name'],
+                null,
+                file_get_contents($_FILES['jmts_user_label_image_file_resubmission']['tmp_name']));
+
+        if (FALSE === $file['error']) {
+            $jmts_user_label_image_resubmission = $file['url'];
+        } else {
+            $jmts_user_label_image_resubmission = 'Error uploading file!';
+        }
+    }
 
     // SAVE USER META DATA
     update_user_meta($jmts_user->ID, 'jmts_user_is_importer', $jmts_user_is_importer);
@@ -308,6 +336,12 @@ function jmts_save_user_meta_data() {
     }
     if ($jmts_user_label_image_front !== '') {
         update_user_meta($jmts_user->ID, 'jmts_user_label_image_front', $jmts_user_label_image_front);
+    }
+    if ($jmts_user_label_image_back !== '') {
+        update_user_meta($jmts_user->ID, 'jmts_user_label_image_back', $jmts_user_label_image_back);
+    }
+    if ($jmts_user_label_image_resubmission !== '') {
+        update_user_meta($jmts_user->ID, 'jmts_user_label_image_resubmission', $jmts_user_label_image_resubmission);
     }
 }
 
@@ -1516,6 +1550,44 @@ function jmts_user_meta_data_form() {
                            id="jmts_user_label_image_file_front" 
                            title="Choose image file (PNG, JPG or JPEG)"
                            name="jmts_user_label_image_file_front" 
+                           value="" />
+                </td>
+            </tr>
+            <tr>            
+                <td style="border: 0;">
+                    <label for="jmts_user_label_image_back">
+                        <strong>Back Label Image</strong>
+                    </label>
+                </td>
+                <td style="border: 0;">
+                    <img src="<?= get_user_meta($jmts_user->ID, 'jmts_user_label_image_back', true) ?>" 
+                         height="100" width="100"
+                         alt="Maximum upload file size: 256 MB"
+                         />
+                    <br>
+                    <input type="file" 
+                           id="jmts_user_label_image_file_back" 
+                           title="Choose image file (PNG, JPG or JPEG)"
+                           name="jmts_user_label_image_file_back" 
+                           value="" />
+                </td>
+            </tr>
+            <tr>            
+                <td style="border: 0;">
+                    <label for="jmts_user_label_image_resubmission">
+                        <strong>Resubmission Label Image</strong>
+                    </label>
+                </td>
+                <td style="border: 0;">
+                    <img src="<?= get_user_meta($jmts_user->ID, 'jmts_user_label_image_resubmission', true) ?>" 
+                         height="100" width="100"
+                         alt="Maximum upload file size: 256 MB"
+                         />
+                    <br>
+                    <input type="file" 
+                           id="jmts_user_label_image_file_resubmission" 
+                           title="Choose image file (PNG, JPG or JPEG)"
+                           name="jmts_user_label_image_file_resubmission" 
                            value="" />
                 </td>
             </tr>
