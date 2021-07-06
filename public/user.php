@@ -1128,7 +1128,7 @@ function jmts_user_meta_data_form() {
                 </td>
                 <td style="border: 0;">
                     <input type="text"
-                           placeholder="enter countries separated by comma"
+                           placeholder="Separate countries with a comma"
                            id="jmts_user_imports_origin"
                            name="jmts_user_imports_origin"
                            value="<?= get_user_meta($jmts_user->ID, 'jmts_user_imports_origin', true) ?>" >
@@ -1276,7 +1276,7 @@ function jmts_user_meta_data_form() {
                 </td>
                 <td style="border: 0;">
                     <textarea name="jmts_user_product_id" 
-                              placeholder="separate items with a comma"
+                              placeholder="Separate items with a comma"
                               style="text-align:left"><?= get_user_meta($jmts_user->ID, 'jmts_user_product_id', true) ?></textarea>
                 </td>
             </tr> 
@@ -1288,7 +1288,7 @@ function jmts_user_meta_data_form() {
                 </td>
                 <td style="border: 0;">
                     <textarea name="jmts_user_product_name" 
-                              placeholder="separate items with a comma"
+                              placeholder="Separate items with a comma"
                               style="text-align:left"><?= get_user_meta($jmts_user->ID, 'jmts_user_product_name', true) ?></textarea>
                 </td>
             </tr>
@@ -1300,7 +1300,7 @@ function jmts_user_meta_data_form() {
                 </td>
                 <td style="border: 0;">
                     <textarea name="jmts_user_product_supplier" 
-                              placeholder="separate items with a comma"
+                              placeholder="Separate items with a comma"
                               style="text-align:left"><?= get_user_meta($jmts_user->ID, 'jmts_user_product_supplier', true) ?></textarea>
                 </td>
             </tr>            
@@ -1312,7 +1312,7 @@ function jmts_user_meta_data_form() {
                 </td>
                 <td style="border: 0;">
                     <textarea name="jmts_user_product_brand" 
-                              placeholder="separate items with a comma"
+                              placeholder="Separate items with a comma"
                               style="text-align:left"><?= get_user_meta($jmts_user->ID, 'jmts_user_product_brand', true) ?></textarea>
                 </td>
             </tr>
@@ -1324,7 +1324,7 @@ function jmts_user_meta_data_form() {
                 </td>
                 <td style="border: 0;">
                     <textarea name="jmts_user_product_model" 
-                              placeholder="separate items with a comma"
+                              placeholder="Separate items with a comma"
                               style="text-align:left"><?= get_user_meta($jmts_user->ID, 'jmts_user_product_model', true) ?></textarea>
                 </td>
             </tr>
@@ -1336,7 +1336,7 @@ function jmts_user_meta_data_form() {
                 </td>
                 <td style="border: 0;">
                     <textarea name="jmts_user_product_serial" 
-                              placeholder="separate items with a comma"
+                              placeholder="Separate items with a comma"
                               style="text-align:left"><?= get_user_meta($jmts_user->ID, 'jmts_user_product_serial', true) ?></textarea>
                 </td>
             </tr>
@@ -1348,7 +1348,7 @@ function jmts_user_meta_data_form() {
                 </td>
                 <td style="border: 0;">                   
                     <textarea name="jmts_user_product_country" 
-                              placeholder="separate items with a comma"
+                              placeholder="Separate items with a comma"
                               style="text-align:left"><?= get_user_meta($jmts_user->ID, 'jmts_user_product_country', true) ?>
                     </textarea>                    
                 </td>
