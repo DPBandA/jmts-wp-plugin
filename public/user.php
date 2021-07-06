@@ -178,6 +178,35 @@ function jmts_save_user_meta_data() {
             sanitize_text_field($_POST['jmts_user_label_type_back']) : '';
     $jmts_user_label_type_resubmission = isset($_POST['jmts_user_label_type_resubmission']) ?
             sanitize_text_field($_POST['jmts_user_label_type_resubmission']) : '';
+    // Label Images    
+    // Neck
+    $jmts_user_label_image_neck = '';
+    if (isset($_FILES['jmts_user_label_image_file_neck']) &&
+            $_FILES['jmts_user_label_image_file_neck']['tmp_name'] !== '') {
+        $file = wp_upload_bits($_FILES['jmts_user_label_image_file_neck']['name'],
+                null,
+                file_get_contents($_FILES['jmts_user_label_image_file_neck']['tmp_name']));
+
+        if (FALSE === $file['error']) {
+            $jmts_user_label_image_neck = $file['url'];
+        } else {
+            $jmts_user_label_image_neck = 'Error uploading file!';
+        }
+    }
+    // Front
+    $jmts_user_label_image_front = '';
+    if (isset($_FILES['jmts_user_label_image_file_front']) &&
+            $_FILES['jmts_user_label_image_file_front']['tmp_name'] !== '') {
+        $file = wp_upload_bits($_FILES['jmts_user_label_image_file_front']['name'],
+                null,
+                file_get_contents($_FILES['jmts_user_label_image_file_front']['tmp_name']));
+
+        if (FALSE === $file['error']) {
+            $jmts_user_label_image_front = $file['url'];
+        } else {
+            $jmts_user_label_image_front = 'Error uploading file!';
+        }
+    }
 
     // SAVE USER META DATA
     update_user_meta($jmts_user->ID, 'jmts_user_is_importer', $jmts_user_is_importer);
@@ -273,6 +302,13 @@ function jmts_save_user_meta_data() {
     update_user_meta($jmts_user->ID, 'jmts_user_label_type_front', $jmts_user_label_type_front);
     update_user_meta($jmts_user->ID, 'jmts_user_label_type_back', $jmts_user_label_type_back);
     update_user_meta($jmts_user->ID, 'jmts_user_label_type_resubmission', $jmts_user_label_type_resubmission);
+    // Label Images
+    if ($jmts_user_label_image_neck !== '') {
+        update_user_meta($jmts_user->ID, 'jmts_user_label_image_neck', $jmts_user_label_image_neck);
+    }
+    if ($jmts_user_label_image_front !== '') {
+        update_user_meta($jmts_user->ID, 'jmts_user_label_image_front', $jmts_user_label_image_front);
+    }
 }
 
 // A short code to display a user's data for editing and viewing
@@ -319,7 +355,7 @@ function jmts_user_meta_data_form() {
         This form must be completed in full to register as an importer and or 
         manufacturer in accordance with regulation 8B of the Standards Regulations, 1983.
     </p>
-    <form method="post" action="" >
+    <form method="post" action="" enctype="multipart/form-data">
         <input type="hidden" name="form_submitted" value="true" />
         <table class="form-table" style="border: 0;">    
             <tr>
@@ -1343,7 +1379,7 @@ function jmts_user_meta_data_form() {
             <tr>            
                 <td style="border: 0;">
                     <label for="jmts_user_product_country">
-                        <strong>Country(ies)</strong>
+                        <strong>Country(ies) of Origin</strong>
                     </label>
                 </td>
                 <td style="border: 0;">                   
@@ -1431,6 +1467,56 @@ function jmts_user_meta_data_form() {
                                    get_user_meta($jmts_user->ID, 'jmts_user_label_type_resubmission', true), true)
                            ?>
                            value="jmts_user_label_type_resubmission" >
+                </td>
+            </tr>
+            <tr>
+                <th style="border: 0;text-align: left;" colspan="2">
+                    <strong>Label Images:</strong>
+                </th>            
+            </tr>
+            <tr>
+                <td style="border: 0;text-align: center;" colspan="2">
+                    <span style="color: red;">
+                        Upload label images based on type
+                    </span>
+                </td>            
+            </tr>
+            <tr>            
+                <td style="border: 0;">
+                    <label for="jmts_user_label_image_neck">
+                        <strong>Neck Label Image</strong>
+                    </label>
+                </td>
+                <td style="border: 0;">
+                    <img src="<?= get_user_meta($jmts_user->ID, 'jmts_user_label_image_neck', true) ?>" 
+                         height="100" width="100"
+                         alt="Maximum upload file size: 256 MB"
+                         />
+                    <br>
+                    <input type="file" 
+                           id="jmts_user_label_image_file_neck" 
+                           title="Choose image file (PNG, JPG or JPEG)"
+                           name="jmts_user_label_image_file_neck" 
+                           value="" />
+                </td>
+            </tr>
+            <tr>            
+                <td style="border: 0;">
+                    <label for="jmts_user_label_image_front">
+                        <strong>Front Label Image</strong>
+                    </label>
+                </td>
+                <td style="border: 0;">
+                    <img src="<?= get_user_meta($jmts_user->ID, 'jmts_user_label_image_front', true) ?>" 
+                         height="100" width="100"
+                         alt="Maximum upload file size: 256 MB"
+                         />
+                    <br>
+                    <input type="file" 
+                           id="jmts_user_label_image_file_front" 
+                           title="Choose image file (PNG, JPG or JPEG)"
+                           name="jmts_user_label_image_file_front" 
+                           value="" />
                 </td>
             </tr>
             <tr>
