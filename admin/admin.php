@@ -31,13 +31,13 @@ function jmts_admin_menu() {
     add_menu_page('JMTS Configuration',
             'JMTS', 'manage_options',
             'jmts-main-menu', 'jmts_main',
-            plugins_url('jmts.png', __FILE__));
+            plugins_url('images/jmts.png', __FILE__));
     // Create sub-menusunder the top-level menu
-    add_submenu_page('jmts-main-menu',
-            'Users',
-            'Users',
-            'manage_options', 'jmts-users-sub-menu',
-            'jmts_users_submenu');
+//    add_submenu_page('jmts-main-menu',
+//            'Users',
+//            'Users',
+//            'manage_options', 'jmts-users-sub-menu',
+//            'jmts_users_submenu');
     add_submenu_page('jmts-main-menu',
             'JMTS Settings',
             'Settings',
