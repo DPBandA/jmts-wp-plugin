@@ -15,7 +15,7 @@
 
 define( 'jmts', 1 );
 
-require plugin_dir_path( __FILE__ ).'/public/user.php';
+require plugin_dir_path( __FILE__ ).'/public/user/importer_manufacturer.php';
 
 if ( is_admin() ) {
 	require plugin_dir_path( __FILE__ ).'/admin/admin.php';	
