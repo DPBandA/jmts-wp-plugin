@@ -349,8 +349,7 @@ function jmts_save_user_meta_data() {
 add_shortcode('jmts_user', 'jmts_user_meta_data_form');
 
 function jmts_user_meta_data_form() {
-    ?>
-    <?php
+    
     if (is_user_logged_in()) {
         $jmts_user = wp_get_current_user();
     } else {
