@@ -1157,7 +1157,8 @@
         <tr>
             <td style="border: 0;text-align: center;" colspan="2">
                 <span style="color: red;">
-                    Upload label images based on type
+                    Upload label images based on type. Images will be uploaded 
+                    after you press the UPDATE button.
                 </span>
             </td>            
         </tr>
