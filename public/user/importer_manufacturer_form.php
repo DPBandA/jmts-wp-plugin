@@ -261,12 +261,41 @@
                 </label>
             </td>
             <td style="border: 0;">
+                <select id="jmts_user_business_type" name="jmts_user_business_type">
+                    <option 
+                        <?= selected('Individual', 
+                                get_user_meta($jmts_user->ID, 'jmts_user_business_type', true), true) ?> value="Individual"> 
+                            <?= __('Individual', 'jmts') ?>
+                    </option>
+                    <option <?= selected('Partnership', 
+                            get_user_meta($jmts_user->ID, 'jmts_user_business_type', true), true) ?> value="Partnership">
+                        <?= __('Partnership', 'jmts') ?>
+                    </option>  
+                    <option <?= selected('Incorporated Company', 
+                            get_user_meta($jmts_user->ID, 'jmts_user_business_type', true), true) ?> value="Incorporated Company">
+                        <?= __('Incorporated Company', 'jmts') ?>
+                    </option>
+                    <option <?= selected('Trust', 
+                            get_user_meta($jmts_user->ID, 'jmts_user_business_type', true), true) ?> value="Trust">
+                        <?= __('Trust', 'jmts') ?>
+                    </option>
+                    <option <?= selected('Co-operative Association', 
+                            get_user_meta($jmts_user->ID, 'jmts_user_business_type', true), true) ?> value="Co-operative Association">
+                        <?= __('Co-operative Association', 'jmts') ?>
+                    </option>
+                    <option <?= selected('Other', 
+                            get_user_meta($jmts_user->ID, 'jmts_user_business_type', true), true) ?> value="Other">
+                        <?= __('Other', 'jmts') ?>
+                    </option>
+                </select>
+                <!--
                 <input type="text"
                        id="jmts_user_business_type"
                        name="jmts_user_business_type"
                        placeholder="Business Type (required)"
                        required
                        value="<?= get_user_meta($jmts_user->ID, 'jmts_user_business_type', true) ?>" >
+                -->
             </td>
         </tr>
         <tr>
