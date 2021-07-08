@@ -1263,7 +1263,38 @@
                     and requirements for this certificate.
                 </span>
             </td>            
-        </tr>            
+        </tr>  
+        <tr>
+            <td style="border: 0;text-align: center;" colspan="2">
+                <span style="color: red;">
+                    Type your name below and upload an image in the PNG or JPEG 
+                    file format that contains your signature. The image will be uploaded 
+                    after you press the UPDATE button.
+                </span>
+            </td>            
+        </tr>
+        <tr>            
+            <td style="border: 0;">
+                <input type="text"
+                       id="jmts_user_applicant_name"
+                       name="jmts_user_applicant_name"
+                       placeholder="Applicant's Name (required)" 
+                       required
+                       value="<?= get_user_meta($jmts_user->ID, 'jmts_user_applicant_name', true) ?>" >
+            </td>  
+            <td style="border: 0;">
+                <img src="<?= get_user_meta($jmts_user->ID, 'jmts_user_applicant_signature', true) ?>" 
+                     height="100" width="100"
+                     alt="Maximum upload file size: 256 MB"
+                     />
+                <br>
+                <input type="file" 
+                       id="jmts_user_applicant_signature_image_file" 
+                       title="Choose image file (PNG, JPG or JPEG)"
+                       name="jmts_user_applicant_signature_image_file" 
+                       value="" />
+            </td>
+        </tr>
         <tr>
             <td style="border: 0;text-align: center;" colspan="2">
                 <input type="submit" value="Update">
