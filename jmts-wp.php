@@ -10,7 +10,6 @@
  * License: AGPLv3
  * License URI: https://www.gnu.org/licenses/agpl-3.0.txt
  * Text Domain: jmts-wp
- * Domain Path: /languages
  */
 
 define( 'jmts', 1 );

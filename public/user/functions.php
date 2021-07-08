@@ -6,13 +6,14 @@ function jmts_remove_admin_bar() {
     }
 }
 
-function jmts_user_get_meta_data ($jmts_user) {
-    $jmts_user_is_importer = get_user_meta($jmts_user->ID, 'jmts_user_is_importer', true);
-}
-
 function jmts_user_get_importer_manufacturer_form_table($jmts_user) {
     ?>
     <table class="form-table" style="border: 0;">    
+        <tr>
+            <td style="border: 0;" colspan="2">
+                <h2>Importer/Manufacturer Registration Information</h2>
+            </td>
+        </tr>
         <tr>
             <td style="border: 0;">
                 <label for="jmts_user_is_importer">
@@ -22,11 +23,11 @@ function jmts_user_get_importer_manufacturer_form_table($jmts_user) {
             <td style="border: 0;">
                 <select id="jmts_user_is_importer" name="jmts_user_is_importer">
                     <option 
-                            <?= selected('no', get_user_meta($jmts_user->ID, 'jmts_user_is_importer', true), true) ?> value="no"> 
-    <?= __('No', 'jmts') ?>
+                        <?= selected('no', get_user_meta($jmts_user->ID, 'jmts_user_is_importer', true), true) ?> value="no"> 
+                            <?= __('No', 'jmts') ?>
                     </option>
                     <option <?= selected('yes', get_user_meta($jmts_user->ID, 'jmts_user_is_importer', true), true) ?> value="yes">
-    <?= __('Yes', 'jmts') ?>
+                        <?= __('Yes', 'jmts') ?>
                     </option>                        
                 </select>
             </td>            
@@ -40,10 +41,10 @@ function jmts_user_get_importer_manufacturer_form_table($jmts_user) {
             <td style="border: 0;">
                 <select id="jmts_user_is_manufacturer" name="jmts_user_is_manufacturer">
                     <option <?= selected('no', get_user_meta($jmts_user->ID, 'jmts_user_is_manufacturer', true), true) ?> value="no"> 
-    <?= __('No', 'jmts') ?>
+                        <?= __('No', 'jmts') ?>
                     </option>
                     <option <?= selected('yes', get_user_meta($jmts_user->ID, 'jmts_user_is_manufacturer', true), true) ?> value="yes">
-    <?= __('Yes', 'jmts') ?>
+                        <?= __('Yes', 'jmts') ?>
                     </option>                        
                 </select>
             </td>            
@@ -57,10 +58,10 @@ function jmts_user_get_importer_manufacturer_form_table($jmts_user) {
             <td style="border: 0;">
                 <select id="jmts_user_is_first_time" name="jmts_user_is_first_time">
                     <option <?= selected('no', get_user_meta($jmts_user->ID, 'jmts_user_is_first_time', true), true) ?> value="no"> 
-    <?= __('No', 'jmts') ?>
+                        <?= __('No', 'jmts') ?>
                     </option>
                     <option <?= selected('yes', get_user_meta($jmts_user->ID, 'jmts_user_is_first_time', true), true) ?> value="yes">
-    <?= __('Yes', 'jmts') ?>
+                        <?= __('Yes', 'jmts') ?>
                     </option>                        
                 </select>
             </td>            
@@ -88,10 +89,10 @@ function jmts_user_get_importer_manufacturer_form_table($jmts_user) {
             <td style="border: 0;">
                 <select id="jmts_user_is_tcc_valid" name="jmts_user_is_tcc_valid">
                     <option <?= selected('no', get_user_meta($jmts_user->ID, 'jmts_user_is_tcc_valid', true), true) ?> value="no"> 
-    <?= __('No', 'jmts') ?>
+                        <?= __('No', 'jmts') ?>
                     </option>
                     <option <?= selected('yes', get_user_meta($jmts_user->ID, 'jmts_user_is_tcc_valid', true), true) ?> value="yes">
-    <?= __('Yes', 'jmts') ?>
+                        <?= __('Yes', 'jmts') ?>
                     </option>                        
                 </select>
             </td>            
@@ -271,37 +272,37 @@ function jmts_user_get_importer_manufacturer_form_table($jmts_user) {
                     selected('Individual',
                             get_user_meta($jmts_user->ID, 'jmts_user_business_type', true), true)
                     ?> value="Individual"> 
-    <?= __('Individual', 'jmts') ?>
+                            <?= __('Individual', 'jmts') ?>
                     </option>
                     <option <?=
                     selected('Partnership',
                             get_user_meta($jmts_user->ID, 'jmts_user_business_type', true), true)
                     ?> value="Partnership">
-    <?= __('Partnership', 'jmts') ?>
+                            <?= __('Partnership', 'jmts') ?>
                     </option>  
                     <option <?=
                     selected('Incorporated Company',
                             get_user_meta($jmts_user->ID, 'jmts_user_business_type', true), true)
                     ?> value="Incorporated Company">
-    <?= __('Incorporated Company', 'jmts') ?>
+                            <?= __('Incorporated Company', 'jmts') ?>
                     </option>
                     <option <?=
                     selected('Trust',
                             get_user_meta($jmts_user->ID, 'jmts_user_business_type', true), true)
                     ?> value="Trust">
-    <?= __('Trust', 'jmts') ?>
+                            <?= __('Trust', 'jmts') ?>
                     </option>
                     <option <?=
                     selected('Co-operative Association',
                             get_user_meta($jmts_user->ID, 'jmts_user_business_type', true), true)
                     ?> value="Co-operative Association">
-    <?= __('Co-operative Association', 'jmts') ?>
+                            <?= __('Co-operative Association', 'jmts') ?>
                     </option>
                     <option <?=
                     selected('Other',
                             get_user_meta($jmts_user->ID, 'jmts_user_business_type', true), true)
                     ?> value="Other">
-    <?= __('Other', 'jmts') ?>
+                            <?= __('Other', 'jmts') ?>
                     </option>
                 </select>
                 <!--
@@ -975,11 +976,11 @@ function jmts_user_get_importer_manufacturer_form_table($jmts_user) {
             <td style="border: 0;">
                 <select id="jmts_user_seasonal_importer_manufacturer" name="jmts_user_seasonal_importer_manufacturer">
                     <option 
-                            <?= selected('no', get_user_meta($jmts_user->ID, 'jmts_user_seasonal_importer_manufacturer', true), true) ?> value="no"> 
-    <?= __('No', 'jmts') ?>
+                        <?= selected('no', get_user_meta($jmts_user->ID, 'jmts_user_seasonal_importer_manufacturer', true), true) ?> value="no"> 
+                            <?= __('No', 'jmts') ?>
                     </option>
                     <option <?= selected('yes', get_user_meta($jmts_user->ID, 'jmts_user_seasonal_importer_manufacturer', true), true) ?> value="yes">
-    <?= __('Yes', 'jmts') ?>
+                        <?= __('Yes', 'jmts') ?>
                     </option>                        
                 </select>
             </td>            
@@ -1310,19 +1311,14 @@ function jmts_user_get_importer_manufacturer_form_table($jmts_user) {
                        name="jmts_user_applicant_signature_image_file" 
                        value="" />
             </td>
-        </tr>
-        <tr>
-            <td style="border: 0;text-align: center;" colspan="2">
-                <input type="submit" value="Update">
-            </td>            
-        </tr>            
+        </tr>                 
 
     </table>
     <?php
 }
 
 function jmts_user_save__meta_data($jmts_user) {
-    
+
     $jmts_user_is_importer = isset($_POST['jmts_user_is_importer']) ?
             sanitize_text_field($_POST['jmts_user_is_importer']) : '';
     $jmts_user_is_manufacturer = isset($_POST['jmts_user_is_manufacturer']) ?
@@ -1677,6 +1673,5 @@ function jmts_user_save__meta_data($jmts_user) {
     // Applicant's Signature
     if ($jmts_user_applicant_signature !== '') {
         update_user_meta($jmts_user->ID, 'jmts_user_applicant_signature', $jmts_user_applicant_signature);
-    }
+    }    
 }
-

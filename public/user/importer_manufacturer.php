@@ -5,9 +5,9 @@ require plugin_dir_path(__FILE__) . 'functions.php';
 add_action('after_setup_theme', 'jmts_remove_admin_bar');
 
 // A short code to display a user's data for editing and viewing
-add_shortcode('jmts_user', 'jmts_user_meta_data_form');
+add_shortcode('jmts_user', 'jmts_user_importer_manufacturer_form');
 
-function jmts_user_meta_data_form() {
+function jmts_user_importer_manufacturer_form() {
 
     if (is_user_logged_in()) {
         $jmts_user = wp_get_current_user();
@@ -37,6 +37,14 @@ function jmts_user_meta_data_form() {
             </form>
         </div>
         <?php
+        // tk send email
+        $to = 'desbenn@yahoo.com';
+        $subject = 'The subject: test email after saving reg. data';
+        $body = 'The email body content';
+        $headers = array('Content-Type: text/html; charset=UTF-8');
+
+        wp_mail($to, $subject, $body, $headers);
+
         exit();
     }
     ?>
@@ -50,6 +58,13 @@ function jmts_user_meta_data_form() {
     <form method="post" action="" enctype="multipart/form-data">
         <input type="hidden" name="form_submitted" value="true" />
         <?= jmts_user_get_importer_manufacturer_form_table($jmts_user); ?>
+        <table class="form-table" style="border: 0;">  
+            <tr>
+                <td style="border: 0;text-align: center;" colspan="2">
+                    <input type="submit" value="Update">
+                </td>            
+            </tr>  
+        </table>
     </form>
     <?php
 }
