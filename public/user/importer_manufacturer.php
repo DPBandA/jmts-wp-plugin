@@ -1,4 +1,7 @@
 <?php
+
+require  plugin_dir_path( __FILE__ ).'functions.php';
+
 // Remove admin toolbar for non-admin users
 add_action('after_setup_theme', 'jmts_remove_admin_bar');
 
