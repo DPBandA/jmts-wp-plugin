@@ -29,19 +29,17 @@ function jmts_admin_menu() {
 
     // Create top-level menu item
     add_menu_page('JMTS Configuration',
-            'JMTS', 'manage_options',
-            'jmts-main-menu', 'jmts_main',
+            'JMTS',
+            'manage_options',
+            'jmts-main-menu',
+            'jmts_main',
             plugins_url('images/jmts.png', __FILE__));
-    // Create sub-menusunder the top-level menu
-//    add_submenu_page('jmts-main-menu',
-//            'Users',
-//            'Users',
-//            'manage_options', 'jmts-users-sub-menu',
-//            'jmts_users_submenu');
+
     add_submenu_page('jmts-main-menu',
             'JMTS Settings',
             'Settings',
-            'manage_options', 'jmts-settings-sub-menu',
+            'manage_options',
+            'jmts-settings-sub-menu',
             'jmts_settings_submenu');
 
     global $submenu;
@@ -49,18 +47,9 @@ function jmts_admin_menu() {
     $submenu['jmts-main-menu'][] = array('Help & Support', 'manage_options', $url);
 }
 
-function jmts_users_submenu() {
-    ?>
-    <h2>Users</h2>
-
-    <h3>Coming soon!</h3>
-
-    <?php
-}
-
 function jmts_main() {
     ?>
-    <h2>Configuration</h2>
+    <h2>Overview</h2>
 
     <h3>Coming soon!</h3>
 
@@ -84,12 +73,12 @@ function jmts_settings_submenu() {
         <form method="post" action="admin-post.php">
             <input type="hidden" name="action" value="save_jmts_options" />
             <!-- Adding security through hidden referrer field -->
-    <?php wp_nonce_field('jmts'); ?>
-            Default user role: <input type="text" name="jmts_default_user_role" 
-                                      value="<?php echo esc_html($options['jmts_default_user_role']);
-    ?>"/>
-            <br /><br />
-
+            <?php wp_nonce_field('jmts'); ?>
+            Default user role: 
+            <input type="text" 
+                   name="jmts_user_default_role" 
+                   value="<?php echo esc_html($options['jmts_user_default_role']); ?>"/>
+            <br/><br/>
             <input type="submit" value="Submit" class="button-primary"/>
         </form>
     </div>
@@ -113,7 +102,7 @@ function jmts_process_options() {
     $options = jmts_get_options();
     // Cycle through all text form fields and store their values
     // in the options array
-    foreach (array('jmts_default_user_role') as $option_name) {
+    foreach ($options as $option_name) {
         if (isset($_POST[$option_name])) {
             $options[$option_name] = sanitize_text_field($_POST[$option_name]);
         }
