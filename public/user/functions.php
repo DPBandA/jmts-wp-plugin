@@ -7,6 +7,8 @@ function jmts_remove_admin_bar() {
 }
 
 function jmts_user_get_importer_manufacturer_form_table($jmts_user) {
+    $options = get_option('jmts_options', array());
+    
     ?>
     <table class="form-table" style="border: 0;">    
         <tr>
@@ -1188,7 +1190,7 @@ function jmts_user_get_importer_manufacturer_form_table($jmts_user) {
             <td style="border: 0;">
                 <img src="<?= get_user_meta($jmts_user->ID, 'jmts_user_label_image_neck', true) ?>" 
                      height="100" width="100"
-                     alt="Maximum upload file size: 256 MB"
+                     alt="Maximum upload file size: <?= $options['maximum_upload_file_size'] ?>"
                      />
                 <br>
                 <input type="file" 
@@ -1207,7 +1209,7 @@ function jmts_user_get_importer_manufacturer_form_table($jmts_user) {
             <td style="border: 0;">
                 <img src="<?= get_user_meta($jmts_user->ID, 'jmts_user_label_image_front', true) ?>" 
                      height="100" width="100"
-                     alt="Maximum upload file size: 256 MB"
+                     alt="Maximum upload file size: <?= $options['maximum_upload_file_size'] ?>"
                      />
                 <br>
                 <input type="file" 
@@ -1226,7 +1228,7 @@ function jmts_user_get_importer_manufacturer_form_table($jmts_user) {
             <td style="border: 0;">
                 <img src="<?= get_user_meta($jmts_user->ID, 'jmts_user_label_image_back', true) ?>" 
                      height="100" width="100"
-                     alt="Maximum upload file size: 256 MB"
+                     alt="Maximum upload file size: <?= $options['maximum_upload_file_size'] ?>"
                      />
                 <br>
                 <input type="file" 
@@ -1245,7 +1247,7 @@ function jmts_user_get_importer_manufacturer_form_table($jmts_user) {
             <td style="border: 0;">
                 <img src="<?= get_user_meta($jmts_user->ID, 'jmts_user_label_image_resubmission', true) ?>" 
                      height="100" width="100"
-                     alt="Maximum upload file size: 256 MB"
+                     alt="Maximum upload file size: <?= $options['maximum_upload_file_size'] ?>"
                      />
                 <br>
                 <input type="file" 
@@ -1302,7 +1304,7 @@ function jmts_user_get_importer_manufacturer_form_table($jmts_user) {
             <td style="border: 0;">
                 <img src="<?= get_user_meta($jmts_user->ID, 'jmts_user_applicant_signature', true) ?>" 
                      height="100" width="100"
-                     alt="Maximum upload file size: 256 MB"
+                     alt="Maximum upload file size: <?= $options['maximum_upload_file_size'] ?>"
                      />
                 <br>
                 <input type="file" 

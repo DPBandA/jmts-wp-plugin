@@ -12,15 +12,15 @@ function jmts_set_default_options_array() {
 
 function jmts_get_options() {
     $options = get_option('jmts_options', array());
-    //$new_options['jmts_user_default_role'] = 'subscriber';
-    //$new_options['track_outgoing_links'] = false;
-    //$merged_options = wp_parse_args($options, $new_options);
-    //$compare_options = array_diff_key($new_options, $options);
-    //if (empty($options) || !empty($compare_options)) {
-    //    update_option('jmts_options', $merged_options);
-    //}
+    $new_options['jmts_user_default_role'] = 'subscriber';
+    $new_options['maximum_upload_file_size'] = "256 MB";
+    $merged_options = wp_parse_args($options, $new_options);
+    $compare_options = array_diff_key($new_options, $options);
+    if (empty($options) || !empty($compare_options)) {
+        update_option('jmts_options', $merged_options);
+    }
 
-    return $options; //$merged_options;
+    return $merged_options; 
 }
 
 add_action('admin_menu', 'jmts_admin_menu');
@@ -54,35 +54,54 @@ function jmts_main() {
     <h3>Coming soon!</h3>
 
     <?php
-    if (isset($_GET['message']) && $_GET['message'] == '1') {
-        ?>
-        <div id='message' class='updated fade'>
-            <p><strong>Settings Saved</strong></p></div>
-        <?php
-    }
-    ?>
-    <?php
 }
 
 function jmts_settings_submenu() {
 
-    if (!empty($_POST['save_jmts_options'])) {
-        jmts_process_options();
+    if (!empty($_POST['jmts_save_options'])) {
+        jmts_save_options();
+        ?>
+        <div class='updated fade'>
+            <p><strong>Settings Saved</strong></p></div>
+        <?php
     }
-    
+
     // Retrieve plugin configuration options from database
     $options = jmts_get_options();
+    
     ?>
     <div id="jmts-settings" class="wrap">
         <h2>Settings</h2><br />
         <form method="post" action="">
-            <input type="hidden" name="save_jmts_options" value="save_jmts_options" />
+            <input type="hidden" name="jmts_save_options" value="jmts_save_options" />
             <!-- Adding security through hidden referrer field -->
             <?php wp_nonce_field('jmts'); ?>
-            Default user role: 
-            <input type="text" 
-                   name="jmts_user_default_role" 
-                   value="<?php echo esc_html($options['jmts_user_default_role']); ?>"/>
+            <table style="border: 0;">
+                <tr>
+                    <td style="border: 0;">
+                        <label for="jmts_user_default_role">
+                            <strong>Default user role:</strong>
+                        </label>
+                    </td>
+                    <td style="border: 0;">
+                        <input type="text" 
+                               name="jmts_user_default_role" 
+                               value="<?php echo esc_html($options['jmts_user_default_role']); ?>"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border: 0;">
+                        <label for="jmts_user_default_role">
+                            <strong>Maximum upload file size:</strong>
+                        </label>
+                    </td>
+                    <td style="border: 0;">
+                        <input type="text" 
+                               name="maximum_upload_file_size" 
+                               value="<?php echo esc_html($options['maximum_upload_file_size']); ?>"/>
+                    </td>
+                </tr>
+            </table>
             <br/><br/>
             <input type="submit" value="Save" class="button-primary"/>
         </form>
@@ -96,39 +115,23 @@ function jmts_admin_init() {
     add_action('admin_post_save_jmts_options', 'jmts_process_options');
 }
 
-function jmts_process_options() {
+function jmts_save_options() {
     // Check that user has proper security level
     if (!current_user_can('manage_options')) {
         wp_die('Not allowed');
     }
     // Check if nonce field configuration form is present
     check_admin_referer('jmts');
+    
     // Retrieve original plugin options array
     $options = jmts_get_options();
-    // Cycle through all text form fields and store their values
-    // in the options array
-    foreach (/*$options*/array( 'jmts_user_default_role' ) as $option_name) {
+
+    foreach ($options as $option_name => $option_value) {
         if (isset($_POST[$option_name])) {
             $options[$option_name] = sanitize_text_field($_POST[$option_name]);
         }
     }
-    // Cycle through all check box form fields and set the options
-    // array to true or false values based on presence of variables
-    // foreach ( array( 'track_outgoing_links' ) as $option_name ) {
-    // if ( isset( $_POST[$option_name] ) ) {
-    // $options[$option_name] = true;
-    //} else {
-    //$options[$option_name] = false;
-    //}
-    //}
+   
     // Store updated options array to database
-    update_option('jmts_options', $options);
-    // Redirect the page to the configuration form
-    //wp_redirect( add_query_arg( 'page', 'jmts-main-menu', 
-    //						   admin_url( 'options-general.php' ) ) );
-    //wp_redirect(add_query_arg(
-    //                array('page' => 'jmts-main-menu', 'message' => '1'),
-    //                admin_url('admin.php')));
-    //wp_redirect(home_url());
-    exit;
+    update_option('jmts_options', $options);  
 }
