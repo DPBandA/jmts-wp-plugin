@@ -2,9 +2,9 @@
 require_once plugin_dir_path(__FILE__) . '../public/user/functions.php';
 
 // Add the Importer role.
-add_action('init', 'jmts_add_importer_role');
+add_action('init', 'jmts_user_add_importer_role');
 
-function jmts_add_importer_role() {
+function jmts_user_add_importer_role() {
     add_role(
             'importer',
             'Importer',
