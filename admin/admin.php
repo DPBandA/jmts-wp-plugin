@@ -44,9 +44,9 @@ function jmts_admin_menu() {
             'jmts-settings-sub-menu',
             'jmts_settings_submenu');
 
-    global $submenu;
-    $url = 'https://dpbennett.com.jm';
-    $submenu['jmts-main-menu'][] = array('Help & Support', 'manage_options', $url);
+    //global $submenu;
+    //$url = 'https://dpbennett.com.jm';
+    //$submenu['jmts-main-menu'][] = array('Help & Support', 'manage_options', $url);
 }
 
 function jmts_main() {
