@@ -12,8 +12,10 @@ function jmts_set_default_options_array() {
 
 function jmts_get_options() {
     $options = get_option('jmts_options', array());
-    $new_options['jmts_user_default_role'] = 'subscriber';
+    $new_options['jmts_user_default_role'] = 'Subscriber';
     $new_options['maximum_upload_file_size'] = "256 MB";
+    $new_options['send_email_notification_to'] = get_option('admin_email');
+    $new_options['send_error_notification_to'] = get_option('admin_email');
     $merged_options = wp_parse_args($options, $new_options);
     $compare_options = array_diff_key($new_options, $options);
     if (empty($options) || !empty($compare_options)) {
@@ -80,7 +82,7 @@ function jmts_settings_submenu() {
                 <tr>
                     <td style="border: 0;">
                         <label for="jmts_user_default_role">
-                            <strong>Default user role:</strong>
+                            <strong>Default user role</strong>
                         </label>
                     </td>
                     <td style="border: 0;">
@@ -92,13 +94,37 @@ function jmts_settings_submenu() {
                 <tr>
                     <td style="border: 0;">
                         <label for="jmts_user_default_role">
-                            <strong>Maximum upload file size:</strong>
+                            <strong>Maximum upload file size</strong>
                         </label>
                     </td>
                     <td style="border: 0;">
                         <input type="text" 
                                name="maximum_upload_file_size" 
                                value="<?php echo esc_html($options['maximum_upload_file_size']); ?>"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border: 0;">
+                        <label for="send_email_notification_to">
+                            <strong>Send email notification to</strong>
+                        </label>
+                    </td>
+                    <td style="border: 0;">
+                        <input type="text" 
+                               name="send_email_notification_to" 
+                               value="<?php echo esc_html($options['send_email_notification_to']); ?>"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border: 0;">
+                        <label for="send_error_notification_to">
+                            <strong>Send error notification to</strong>
+                        </label>
+                    </td>
+                    <td style="border: 0;">
+                        <input type="text" 
+                               name="send_error_notification_to" 
+                               value="<?php echo esc_html($options['send_error_notification_to']); ?>"/>
                     </td>
                 </tr>
             </table>

@@ -8,6 +8,8 @@ add_action('after_setup_theme', 'jmts_remove_admin_bar');
 add_shortcode('jmts_user', 'jmts_user_importer_manufacturer_form');
 
 function jmts_user_importer_manufacturer_form() {
+    
+    $options = get_option('jmts_options', array());
 
     if (is_user_logged_in()) {
         $jmts_user = wp_get_current_user();
@@ -37,10 +39,13 @@ function jmts_user_importer_manufacturer_form() {
             </form>
         </div>
         <?php
-        // tk send email
-        $to = 'desbenn@yahoo.com';
-        $subject = 'The subject: test email after saving reg. data';
-        $body = 'The email body content';
+        
+        // Send email notification about update
+        $to = $options['send_error_notification_to'];
+        $subject = 'Importer/Manufacturer Registration Update';
+        $body = '<h5>The Importer/Manufacturer Registration informationf for the applicant '
+                . get_user_meta($jmts_user->ID, 'jmts_user_applicant_name', true).
+                ' was updated.</h5>';
         $headers = array('Content-Type: text/html; charset=UTF-8');
 
         wp_mail($to, $subject, $body, $headers);
