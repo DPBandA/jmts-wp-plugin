@@ -1,5 +1,4 @@
 <?php
-
 require_once plugin_dir_path(__FILE__) . '../public/user/functions.php';
 
 // Add the Importer role.
@@ -34,3 +33,4 @@ function jmts_user_save_importer_manufacturer_profile($user_id) {
     $user = get_user_by('id', $user_id);
     jmts_user_save__meta_data($user);
 }
+
