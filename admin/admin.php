@@ -12,15 +12,15 @@ function jmts_set_default_options_array() {
 
 function jmts_get_options() {
     $options = get_option('jmts_options', array());
-    $new_options['jmts_user_default_role'] = 'subscriber';
-    $new_options['track_outgoing_links'] = false;
-    $merged_options = wp_parse_args($options, $new_options);
-    $compare_options = array_diff_key($new_options, $options);
-    if (empty($options) || !empty($compare_options)) {
-        update_option('jmts_options', $merged_options);
-    }
+    //$new_options['jmts_user_default_role'] = 'subscriber';
+    //$new_options['track_outgoing_links'] = false;
+    //$merged_options = wp_parse_args($options, $new_options);
+    //$compare_options = array_diff_key($new_options, $options);
+    //if (empty($options) || !empty($compare_options)) {
+    //    update_option('jmts_options', $merged_options);
+    //}
 
-    return $merged_options;
+    return $options; //$merged_options;
 }
 
 add_action('admin_menu', 'jmts_admin_menu');
@@ -66,9 +66,10 @@ function jmts_main() {
 
 function jmts_settings_submenu() {
 
-    //if (!empty($_POST['save_jmts_options'])) {
-    //    jmts_process_options();
-    //}
+    if (!empty($_POST['save_jmts_options'])) {
+        jmts_process_options();
+    }
+    
     // Retrieve plugin configuration options from database
     $options = jmts_get_options();
     ?>
@@ -106,7 +107,7 @@ function jmts_process_options() {
     $options = jmts_get_options();
     // Cycle through all text form fields and store their values
     // in the options array
-    foreach ($options as $option_name) {
+    foreach (/*$options*/array( 'jmts_user_default_role' ) as $option_name) {
         if (isset($_POST[$option_name])) {
             $options[$option_name] = sanitize_text_field($_POST[$option_name]);
         }
@@ -123,10 +124,11 @@ function jmts_process_options() {
     // Store updated options array to database
     update_option('jmts_options', $options);
     // Redirect the page to the configuration form
-    wp_redirect( add_query_arg( 'page', 'jmts-main-menu', 
-    						   admin_url( 'options-general.php' ) ) );
+    //wp_redirect( add_query_arg( 'page', 'jmts-main-menu', 
+    //						   admin_url( 'options-general.php' ) ) );
     //wp_redirect(add_query_arg(
     //                array('page' => 'jmts-main-menu', 'message' => '1'),
-    //                admin_url('options-general.php')));
+    //                admin_url('admin.php')));
+    //wp_redirect(home_url());
     exit;
 }
