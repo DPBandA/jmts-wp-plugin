@@ -12,8 +12,8 @@ function jmts_set_default_options_array() {
 
 function jmts_get_options() {
     $options = get_option('jmts_options', array());
-    $new_options['jmts_default_user_role'] = 'subscriber';
-    //$new_options['track_outgoing_links'] = false;
+    $new_options['jmts_user_default_role'] = 'subscriber';
+    $new_options['track_outgoing_links'] = false;
     $merged_options = wp_parse_args($options, $new_options);
     $compare_options = array_diff_key($new_options, $options);
     if (empty($options) || !empty($compare_options)) {
@@ -65,13 +65,17 @@ function jmts_main() {
 }
 
 function jmts_settings_submenu() {
+
+    //if (!empty($_POST['save_jmts_options'])) {
+    //    jmts_process_options();
+    //}
     // Retrieve plugin configuration options from database
     $options = jmts_get_options();
     ?>
     <div id="jmts-settings" class="wrap">
         <h2>Settings</h2><br />
-        <form method="post" action="admin-post.php">
-            <input type="hidden" name="action" value="save_jmts_options" />
+        <form method="post" action="">
+            <input type="hidden" name="save_jmts_options" value="save_jmts_options" />
             <!-- Adding security through hidden referrer field -->
             <?php wp_nonce_field('jmts'); ?>
             Default user role: 
@@ -79,7 +83,7 @@ function jmts_settings_submenu() {
                    name="jmts_user_default_role" 
                    value="<?php echo esc_html($options['jmts_user_default_role']); ?>"/>
             <br/><br/>
-            <input type="submit" value="Submit" class="button-primary"/>
+            <input type="submit" value="Save" class="button-primary"/>
         </form>
     </div>
     <?php
@@ -119,10 +123,10 @@ function jmts_process_options() {
     // Store updated options array to database
     update_option('jmts_options', $options);
     // Redirect the page to the configuration form
-    //wp_redirect( add_query_arg( 'page', 'jmts-main-menu', 
-    //						   admin_url( 'options-general.php' ) ) );
-    wp_redirect(add_query_arg(
-                    array('page' => 'jmts-main-menu', 'message' => '1'),
-                    admin_url('options-general.php')));
+    wp_redirect( add_query_arg( 'page', 'jmts-main-menu', 
+    						   admin_url( 'options-general.php' ) ) );
+    //wp_redirect(add_query_arg(
+    //                array('page' => 'jmts-main-menu', 'message' => '1'),
+    //                admin_url('options-general.php')));
     exit;
 }
