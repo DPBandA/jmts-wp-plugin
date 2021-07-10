@@ -19,5 +19,6 @@ require plugin_dir_path( __FILE__ ).'/public/user/importer_manufacturer.php';
 if ( is_admin() ) {
 	require plugin_dir_path( __FILE__ ).'/admin/admin.php';	
 	require plugin_dir_path( __FILE__ ).'/admin/user-admin.php';
+        require plugin_dir_path( __FILE__ ).'/admin/job-admin.php';
 }
 

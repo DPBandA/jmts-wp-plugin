@@ -34,3 +34,30 @@ function jmts_user_save_importer_manufacturer_profile($user_id) {
     jmts_user_save__meta_data($user);
 }
 
+add_action( 'pre_user_query', function( $uqi ) {
+    global $wpdb;
+ 
+    $search = '';
+    if (isset($uqi->query_vars['search'])) {
+        $search = trim($uqi->query_vars['search']);
+    }
+
+    if ( $search ) {
+        $search = trim($search, '*');
+        $the_search = '%'.$search.'%';
+ 
+        $search_meta = $wpdb->prepare("
+        ID IN ( SELECT user_id FROM {$wpdb->usermeta}
+        WHERE ( ( meta_key='first_name' OR meta_key='last_name'
+                OR meta_key='jmts_user_applicant_business_name'
+                OR meta_key='jmts_user_applicant_name' )
+            AND {$wpdb->usermeta}.meta_value LIKE '%s' )
+        )", $the_search);
+ 
+        $uqi->query_where = str_replace(
+            'WHERE 1=1 AND (',
+            "WHERE 1=1 AND (" . $search_meta . " OR ",
+            $uqi->query_where );
+    }
+});
+
