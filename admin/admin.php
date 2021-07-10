@@ -34,8 +34,8 @@ function jmts_admin_menu() {
             'JMTS',
             'manage_options',
             'jmts-main-menu',
-            'jmts_main',
-            plugins_url('images/jmts.png', __FILE__));
+            'jmts_main'//,
+            /*plugins_url('images/jmts.png', __FILE__)*/);
 
     add_submenu_page('jmts-main-menu',
             'JMTS Settings',
