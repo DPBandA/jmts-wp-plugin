@@ -10,5 +10,4 @@ if (false != get_option('jmts_options')) {
     delete_option('jmts_options');
 }
 
-// Remove the importer role
 remove_role( 'importer' );
