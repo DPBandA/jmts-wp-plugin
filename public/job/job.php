@@ -3,12 +3,12 @@
 add_shortcode('job-list', 'jmts_job_list');
 
 function jmts_job_list() {
-    if ( isset( $_GET['job_id'] ) ) {
+    if (isset($_GET['job_id'])) {
         echo '<h2>Job Detail</h2>';
         echo $_GET['job_id'];
-        
+
         echo "<br><br><a href=\"javascript:history.go(-1)\">Go back to job list</a>";
-        
+
         exit();
     }
     
@@ -34,16 +34,27 @@ function jmts_job_list() {
         // Display posts in table layout
         $output = '<h2>Job List</h2>';
         $output .= '<table>';
-        $output .= '<tr><th style="width: 350px"><strong>Title</strong></th>';
-        $output .= '<th><strong>Job Number</strong></th></tr>';
+        $output .= '<tr>';
+        $output .= '<th><strong>Job Number</strong></th>';
+        $output .= '<th><strong>Client</strong></th>';
+        $output .= '<th><strong>Department</strong></th>';
+        $output .= '<th><strong>Instructions</strong></th>';
+        $output .= '<th><strong>Total Payments</strong></th>';
+        $output .= '<th><strong>Status</strong></th>';
+        $output .= '</tr>';
 
         // Cycle through all items retrieved
         while ($job_query->have_posts()) {
             $job_query->the_post();
-            $output .= '<tr><td><a href="' . './?job_id='. get_the_ID() . '">';
-            $output .= get_the_title(get_the_ID()) . '</a></td>';
-            $output .= '<td>' . esc_html(get_post_meta(get_the_ID(), 'job_number', true));
-            $output .= '</td></tr>';
+            $output .= '<tr>';
+            $output .= '<td><a href="' . './?job_id=' . get_the_ID() . '">';
+            $output .= esc_html(get_post_meta(get_the_ID(), 'job_number', true)) . '</a></td>';
+            $output .= '<td>' . esc_html(get_post_meta(get_the_ID(), 'client', true)) . '</td>';
+            $output .= '<td>' . esc_html(get_post_meta(get_the_ID(), 'department', true)) . '</td>';
+            $output .= '<td>' . esc_html(get_the_content(), 'instructions', true) . '</td>';
+            $output .= '<td>' . '$'. esc_html(number_format((float)get_post_meta(get_the_ID(), 'total_payments', true), 2, ".", ",")) . '</td>';
+            $output .= '<td>' . esc_html(get_post_meta(get_the_ID(), 'status', true)) . '</td>';
+            $output .= '</tr>';
         }
 
         $output .= '</table>';
@@ -66,4 +77,3 @@ function jmts_job_list() {
 
     return $output;
 }
-
