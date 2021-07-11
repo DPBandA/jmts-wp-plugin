@@ -78,6 +78,8 @@ function jmts_user_get_importer_manufacturer_form_table($jmts_user) {
                 <input type="text"
                        id="jmts_user_trn"
                        name="jmts_user_trn"
+                       pattern="[-,0-9]{9,16}"
+                       placeholder="Must contain numbers and '-' (required)"
                        required
                        value="<?= get_user_meta($jmts_user->ID, 'jmts_user_trn', true) ?>" >
             </td>

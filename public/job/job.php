@@ -32,7 +32,7 @@ function jmts_job_list() {
     // Check if any posts were returned by query
     if ($job_query->have_posts()) {
         // Display posts in table layout
-        $output = '<h2>Job List</h2>';
+        $output = '<h2>Job Tracking</h2>';
         $output .= '<table>';
         $output .= '<tr>';
         $output .= '<th><strong>Job Number</strong></th>';
