@@ -964,8 +964,9 @@ function jmts_user_get_importer_manufacturer_form_table($jmts_user) {
             </td>
             <td style="border: 0;">
                 <input type="text"
-                       pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$"
-                       placeholder="e.g. $1,000,000.00"
+                       placeholder="1000 (required)"
+                       pattern="[0-9]{1,}"
+                       required
                        id="jmts_user_total_consignment_production"
                        name="jmts_user_total_consignment_production"
                        value="<?= get_user_meta($jmts_user->ID, 'jmts_user_total_consignment_production', true) ?>" >
@@ -1004,19 +1005,7 @@ function jmts_user_get_importer_manufacturer_form_table($jmts_user) {
             <th style="border: 0;text-align: left;" colspan="2">
                 <strong>Product(s) Details:</strong>
             </th>            
-        </tr>
-        <tr>            
-            <td style="border: 0;">
-                <label for="jmts_user_product_id" >
-                    <strong>Product Id(s)</strong>
-                </label>
-            </td>
-            <td style="border: 0;">
-                <textarea name="jmts_user_product_id" 
-                          placeholder="Separate items with a comma"
-                          style="text-align:left"><?= get_user_meta($jmts_user->ID, 'jmts_user_product_id', true) ?></textarea>
-            </td>
-        </tr> 
+        </tr>       
         <tr>            
             <td style="border: 0;">
                 <label for="jmts_user_product_name">

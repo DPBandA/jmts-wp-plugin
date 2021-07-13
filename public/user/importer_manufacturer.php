@@ -54,11 +54,12 @@ function jmts_user_importer_manufacturer_form() {
     }
     ?>
     <h5 style="text-align:center;">IMPORTERS/MANUFACTURERS REGISTRATION FORM</h5>
-    <h6 style="text-align:center;">Standards Regulations, 1983</h6>
+    <h6 style="text-align:center;">Standards Regulations, 1983, Standards 
+        (Amendment) Regulations 1999 and Standards (Amendment) Regulations 2012</h6>
     <h6 style="text-align:center;">Regulation 8B</h6>
     <p style="color: red;">
         This form must be completed in full to register as an importer and or 
-        manufacturer in accordance with regulation 8B of the Standards Regulations, 1983.
+        manufacturer in accordance with regulation 8B of the Standards Regulations.
     </p>
     <form method="post" action="" enctype="multipart/form-data">
         <input type="hidden" name="form_submitted" value="true" />
