@@ -412,7 +412,7 @@ function jmts_user_get_importer_manufacturer_form_table($jmts_user) {
             </td>
             <td style="border: 0;">
                 <input type="tel"
-                       pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                       pattern="[-,0-9]{7,14}"
                        placeholder="e.g. 123-456-0789 (required)"
                        required
                        id="jmts_user_principal_phone"
@@ -428,7 +428,7 @@ function jmts_user_get_importer_manufacturer_form_table($jmts_user) {
             </td>
             <td style="border: 0;">
                 <input type="tel"
-                       pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                       pattern="[-,0-9]{7,14}"
                        placeholder="e.g. 123-456-0789 (required)"
                        required
                        id="jmts_user_principal_mobile"
@@ -444,7 +444,7 @@ function jmts_user_get_importer_manufacturer_form_table($jmts_user) {
             </td>
             <td style="border: 0;">
                 <input type="tel"
-                       pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                       pattern="[-,0-9]{7,14}"
                        placeholder="e.g. 123-456-0789 (optional)"
                        id="jmts_user_principal_fax"
                        name="jmts_user_principal_fax"
@@ -532,7 +532,7 @@ function jmts_user_get_importer_manufacturer_form_table($jmts_user) {
             </td>
             <td style="border: 0;">
                 <input type="tel"
-                       pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                       pattern="[-,0-9]{7,14}"
                        placeholder="e.g. 123-456-0789 (required)"
                        required
                        id="jmts_user_receival1_phone"
@@ -548,7 +548,7 @@ function jmts_user_get_importer_manufacturer_form_table($jmts_user) {
             </td>
             <td style="border: 0;">
                 <input type="tel"
-                       pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                       pattern="[-,0-9]{7,14}"
                        placeholder="e.g. 123-456-0789 (required)"
                        required
                        id="jmts_user_receival1_mobile"
@@ -564,7 +564,7 @@ function jmts_user_get_importer_manufacturer_form_table($jmts_user) {
             </td>
             <td style="border: 0;">
                 <input type="tel"
-                       pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                       pattern="[-,0-9]{7,14}"
                        placeholder="e.g. 123-456-0789 (optional)"
                        id="jmts_user_receival1_fax"
                        name="jmts_user_receival1_fax"
@@ -704,7 +704,7 @@ function jmts_user_get_importer_manufacturer_form_table($jmts_user) {
             </td>
             <td style="border: 0;">
                 <input type="tel"
-                       pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                       pattern="[-,0-9]{7,14}"
                        placeholder="e.g. 123-456-0789 (optional)"
                        id="jmts_user_receival2_phone"
                        name="jmts_user_receival2_phone"
@@ -719,7 +719,7 @@ function jmts_user_get_importer_manufacturer_form_table($jmts_user) {
             </td>
             <td style="border: 0;">
                 <input type="tel"
-                       pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                       pattern="[-,0-9]{7,14}"
                        placeholder="e.g. 123-456-0789 (optional)"
                        id="jmts_user_receival2_mobile"
                        name="jmts_user_receival2_mobile"
@@ -734,7 +734,7 @@ function jmts_user_get_importer_manufacturer_form_table($jmts_user) {
             </td>
             <td style="border: 0;">
                 <input type="tel"
-                       pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                       pattern="[-,0-9]{7,14}"
                        placeholder="e.g. 123-456-0789 (optional)"
                        id="jmts_user_receival2_fax"
                        name="jmts_user_receival2_fax"
