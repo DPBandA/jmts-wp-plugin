@@ -964,7 +964,7 @@ function jmts_user_get_importer_manufacturer_form_table($jmts_user) {
             </td>
             <td style="border: 0;">
                 <input type="text"
-                       placeholder="1000 (required)"
+                       placeholder="e.g. 1000 (required)"
                        pattern="[0-9]{1,}"
                        required
                        id="jmts_user_total_consignment_production"
