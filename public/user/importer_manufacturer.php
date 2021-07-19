@@ -16,7 +16,7 @@ function jmts_user_importer_manufacturer_form() {
     } else {
         ?>
         <h5 style="text-align:center;color: darkblue;">
-            PLEASE LOG IN OR REGISTER TO SUBMIT OR UPDATE THE IMPORTER REGISTRATION FORM:
+            PLEASE LOG IN OR REGISTER TO SUBMIT OR UPDATE THE IMPORTER/MANUFACTURER REGISTRATION FORM:
         </h5>     
         <div style="text-align:center;">            
             <a href="<?= site_url() ?>/wp-login.php"><input type="button" value="Log In" ></a>
